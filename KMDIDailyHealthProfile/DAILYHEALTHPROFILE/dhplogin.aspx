@@ -26,7 +26,8 @@
                 <div class="col-sm-12">
                     <h3><strong class="text-info text-center">DAILY HEALTH PROFILE</strong> </h3>
                  
-                    <div class="alert alert-warning"><strong class="text-info">Note!</strong> Change Username/Password is an option. <span class="text-danger">(Pweding mag palit ng Username at Password)</span>
+                    <div class="alert alert-warning"><strong class="text-info">Note!&nbsp;</strong><span class="text-info">Pweding palitan ang Username at Password,</span>
+               <span class="text-success">mag log-in <span class="glyphicon glyphicon-arrow-right"></span> i click ang menu icon <span class="glyphicon glyphicon-arrow-right"></span> i click ang username <span class="glyphicon glyphicon-arrow-right"></span> change password.</span>    
                     </div>
                     <blockquote>
                        <span class="text-muted">Username =</span><span class="text-info"> <strong>First name</strong><span class="text-danger">&nbsp;(example: Juan)</span> </span><br />

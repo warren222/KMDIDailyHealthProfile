@@ -56,6 +56,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         while (rd.Read())
                         {
                             Session["dhp_EMPNO"] = rd[0].ToString();
+                            Session["dhp_currentuser"] = rd[0].ToString();
                             Session["dhp_FULLNAME"] = rd[1].ToString();
                             Session["dhp_BIRTHDAY"] = rd[2].ToString();
                             Session["dhp_USERACCT"] = rd[3].ToString();

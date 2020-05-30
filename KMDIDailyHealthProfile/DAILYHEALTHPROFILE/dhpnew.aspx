@@ -57,54 +57,53 @@
 
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
+             
+                    <blockquote>
+                        <table class="table" border="0" style="white-space: nowrap;">
+                            <tr>
+                                <td>Time of day
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="cboxaddontimeofday" CssClass="form-control" runat="server">
+                                        <asp:ListItem Value="Morning (upon arrival at work)">Morning (upon arrival at work)</asp:ListItem>
+                                        <asp:ListItem Value="Midday (while at work)">Midday (while at work)</asp:ListItem>
+                                        <asp:ListItem Value="Afternoon (while at work)">Afternoon (while at work)</asp:ListItem>
+                                        <asp:ListItem Value="Afternoon / Evening (before leaving work)">Afternoon / Evening (before leaving work)</asp:ListItem>
+                                        <asp:ListItem Value="Afternoon / Evening (after leaving work / at home)">Afternoon / Evening (after leaving work / at home)</asp:ListItem>
+                                    </asp:DropDownList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Actual Time Taken
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="tboxaddonatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ControlToValidate="tboxaddonatt" ID="RequiredFieldValidator1" runat="server" ValidationGroup="addonval"
+                                        ErrorMessage="Actual Time Taken is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Temperature Reading (˚C)
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="tboxaddontr" CssClass="form-control" Text="0" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="tboxaddontr" runat="server" ForeColor="Red"
+                                        ErrorMessage="Temperature Reading (˚C) is required" ValidationGroup="addonval">*</asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ControlToValidate="tboxaddontr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
+                                        ID="RegularExpressionValidator5" runat="server" ValidationGroup="addonval" ErrorMessage="temperature must be one decimal place">*</asp:RegularExpressionValidator>
+                                </td>
+                            </tr>
+                            <tr>
 
+                                <td colspan="2">
+                                    <asp:Button ID="Button1" ValidationGroup="addonval" CssClass="btn btn-primary" runat="server" Text="add" OnClick="Button1_Click" />
+                                </td>
+                            </tr>
 
-                <table class="table" border="0" style="white-space: nowrap;">
-                    <tr>
-                        <td>Time of day
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="cboxaddontimeofday" CssClass="form-control" runat="server">
-                                <asp:ListItem Value="Morning (upon arrival at work)">Morning (upon arrival at work)</asp:ListItem>
-                                <asp:ListItem Value="Midday (while at work)">Midday (while at work)</asp:ListItem>
-                                <asp:ListItem Value="Afternoon (while at work)">Afternoon (while at work)</asp:ListItem>
-                                <asp:ListItem Value="Afternoon / Evening (before leaving work)">Afternoon / Evening (before leaving work)</asp:ListItem>
-                                <asp:ListItem Value="Afternoon / Evening (after leaving work / at home)">Afternoon / Evening (after leaving work / at home)</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Actual Time Taken
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tboxaddonatt" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ControlToValidate="tboxaddonatt" ID="RequiredFieldValidator1" runat="server" ValidationGroup="addonval"
-                                ErrorMessage="Actual Time Taken is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Temperature Reading (˚C)
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tboxaddontr" CssClass="form-control" Text="0" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="tboxaddontr" runat="server" ForeColor="Red"
-                                ErrorMessage="Temperature Reading (˚C) is required" ValidationGroup="addonval">*</asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ControlToValidate="tboxaddontr" ValidationExpression="^\d+([,\.]\d{1,1})?$" ForeColor="Red"
-                                ID="RegularExpressionValidator5" runat="server" ValidationGroup="addonval" ErrorMessage="temperature must be one decimal place">*</asp:RegularExpressionValidator>
-                        </td>
-                    </tr>
-                    <tr>
-
-                        <td colspan="2">
-                            <asp:Button ID="Button1" ValidationGroup="addonval" CssClass="btn btn-primary" runat="server" Text="add" OnClick="Button1_Click" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <asp:ValidationSummary ID="ValidationSummary3" CssClass="alert alert-danger" ValidationGroup="addonval" runat="server" />
-                        </td>
-                    </tr>
-                </table>
+                        </table>
+                    </blockquote>
+            
+                <asp:ValidationSummary ID="ValidationSummary3" CssClass="alert alert-danger" ValidationGroup="addonval" runat="server" />
 
                 <asp:Panel ID="Panel4" runat="server" ScrollBars="Auto">
                     <asp:GridView ID="GridView1" CssClass="table" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging">
@@ -341,10 +340,11 @@
                         <asp:TextBox ID="tboxLBRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
                 </tr>
-                  <tr>
+                <tr>
                     <td><strong>VOMITING
                       
-                        </strong><br />
+                    </strong>
+                        <br />
                         <small class="text-danger">(pagsusuka)</small>
                     </td>
                     <td>
@@ -377,8 +377,101 @@
 
                 </tr>
             </table>
-
         </asp:Panel>
+
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <br />
+
+                <h4><span class="text-danger">Kung may DIARRHEA at VOMITING,</span> <span class="text-info">gamitin ang form na ito upang mai-record ang ibat-ibang oras ng DIARRHEA (pagtatae) at VOMITING (pagsusuka)</span></h4>
+                <div class="container">
+                    <blockquote>
+                        <strong>SIGN/SYMPTOM</strong><small class="text-danger">(Senyales/Sintomas)</small>
+                        <br />
+                        <asp:DropDownList ID="ddlsymptom" CssClass="form-control" runat="server">
+                            <asp:ListItem Value="DIARRHEA (pagtate)">DIARRHEA (pagtatae)</asp:ListItem>
+                            <asp:ListItem Value="VOMITING (pagsusuka)">VOMITING (pagsusuka)</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ControlToValidate="ddlsymptom" ValidationGroup="symptonval" ID="RequiredFieldValidator3" runat="server"
+                            ErrorMessage="SIGN/SYMPTOM is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <br />
+                        <strong>Date of Onset</strong><small class="text-danger">(mm/dd/yyyy)</small><br />
+                        <asp:TextBox ID="tboxdateofonset" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ControlToValidate="tboxdateofonset" ValidationGroup="symptonval" ID="RequiredFieldValidator4" runat="server"
+                            ErrorMessage="Date of Onset is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <br />
+                        <strong>Estimated Time of Onset</strong>  <small class="text-danger">(H:M)</small>
+                        <br />
+                        <asp:TextBox ID="tboxtimeonset" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ControlToValidate="tboxtimeonset" ValidationGroup="symptonval" ID="RequiredFieldValidator5" runat="server"
+                            ErrorMessage="Estimated Time of Onset is required!" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <br />
+                        <strong>REMARKS</strong> <small class="text-danger">(Paglalahad)</small><br />
+                        <asp:TextBox ID="tboxremarks" CssClass="form-control" runat="server"></asp:TextBox>
+
+                        <br />
+                        <asp:Button ID="Button3" CssClass="btn btn-primary" runat="server" Text="add" ValidationGroup="symptonval" OnClick="Button3_Click" />
+                    </blockquote>
+                </div>
+                <asp:ValidationSummary ID="ValidationSummary5" CssClass="alert alert-danger" ValidationGroup="symptonval" runat="server" />
+
+                <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
+                    <asp:GridView ID="GridView2" CssClass="table" runat="server" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowCommand="GridView2_RowCommand">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnedit2" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                    <asp:LinkButton ID="btndelete2" CommandName="mydelete" OnClientClick="return confirm('delete this record')" runat="server">Delete</asp:LinkButton>
+                                    <asp:LinkButton ID="btnupdate2" ValidationGroup="addoneditval" Visible="false" CommandName="myupdate" runat="server">Update</asp:LinkButton>
+                                    <asp:LinkButton ID="btncancel2" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="<strong>SIGN/SYMPTOM</strong><small class='text-danger'>(Senyales/Sintomas)</small>">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblid2" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
+                                    <asp:Label ID="lblsymptom" runat="server" Text='<%# Bind("SYMPTOM") %>'></asp:Label>
+                                    <asp:DropDownList ID="ddleditsymptom" Text='<%# Bind("SYMPTOM") %>' Visible="false" CssClass="form-control" runat="server">
+                                        <asp:ListItem Value="DIARRHEA (pagtate)">DIARRHEA (pagtatae)</asp:ListItem>
+                                        <asp:ListItem Value="VOMITING (pagsusuka)">VOMITING (pagsusuka)</asp:ListItem>
+                                    </asp:DropDownList>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="<strong>Date of Onset</strong><small class='text-danger'>(mm/dd/yyyy)</small>">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbldateonset" runat="server" Text='<%# Bind("DATEOFONSET") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxeditdateofonset" Text='<%# Bind("DATEOFONSET") %>' Visible="false" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="<strong>Estimated Time of Onset</strong>  <small class='text-danger'>(H:M)</small>">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblestimatedtime" runat="server" Text='<%# Bind("TIMEOFONSET") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxedittimeonset" Text='<%# Bind("TIMEOFONSET") %>' Visible="false" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="<strong>REMARKS</strong> <small class='text-danger'>(Paglalahad)</small>">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblremarks" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxeditremarks" Text='<%# Bind("REMARKS") %>' Width="300" Visible="false" CssClass="form-control" runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                        </Columns>
+                        <HeaderStyle Wrap="False" />
+                        <RowStyle Wrap="False" />
+                        <EmptyDataTemplate>
+                            <div class="alert alert-info">
+                                <h3><strong>Empty Table!</strong>
+                                </h3>
+                            </div>
+                        </EmptyDataTemplate>
+                        <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                        <PagerSettings PageButtonCount="8" />
+                        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                    </asp:GridView>
+                </asp:Panel>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
         <div class="text-center">
             <strong>NOTE/OBSERVATIONS</strong>
             <br />

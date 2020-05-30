@@ -20,7 +20,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
                 if (!IsPostBack)
                 {
-                    lbldate.Text= Session["dhpdate"].ToString();
+                    lbldate.Text = Session["dhpdate"].ToString();
                     lblname.Text = Session["dhpname"].ToString();
                     lblempno.Text = Session["dhpempno"].ToString();
                     lblage.Text = Session["dhpage"].ToString();
@@ -35,6 +35,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         tboxCOM.Enabled = false;
                     }
                     getbodytempdata();
+                    loadsymptoms();
                 }
 
             }
@@ -178,9 +179,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxOSDO.Text = rd["OSDO"].ToString();
                                 tboxOSET.Text = rd["OSET"].ToString();
                                 tboxOSRE.Text = rd["OSRE"].ToString();
-                                tboxOS.Text =rd["OS"].ToString();
+                                tboxOS.Text = rd["OS"].ToString();
                                 tboxCOM.Text = rd["COMMENT"].ToString();
-                            
+
                             }
 
                         }
@@ -192,10 +193,144 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 errorrmessage(ex.Message.ToString());
             }
         }
-     
+
         private bool getbol(string val)
         {
             return (val != "0");
+        }
+        private string historystr(string actionmade)
+        {
+         
+                string insertstr = " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from ASNWERSHEETtbl_history) " +
+                                  "insert into ASNWERSHEETtbl_history " +
+                                   "(ID ,	" +
+                                       "ACTIONMADE,	" +
+                                         "EMPNOEDITEDBY,	" +
+                                           "DATEALTERED,	" +
+                                   "EMPNO,	" +
+                                   "DHPID,	" +
+                                   "DCEX ,	" +
+                                   "DCEXno ,	" +
+                                   "DCDO ,	" +
+                                   "DCET ,	" +
+                                   "DCRE ,	" +
+                                   "FEEX ,	" +
+                                   "FEEXno ,	" +
+                                   "FEDO ,	" +
+                                   "FEET ,	" +
+                                   "FERE ,	" +
+                                   "MPEX ,	" +
+                                   "MPEXno ,	" +
+                                   "MPDO ,	" +
+                                   "MPET ,	" +
+                                   "MPRE ,	" +
+                                   "WEEX ,	" +
+                                   "WEEXno ,	" +
+                                   "WEDO ,	" +
+                                   "WEET ,	" +
+                                   "WERE ,	" +
+                                   "DSEX ,	" +
+                                   "DSEXno ,	" +
+                                   "DSDO ,	" +
+                                   "DSET ,	" +
+                                   "DSRE ,	" +
+                                   "DTEX ,	" +
+                                   "DTEXno ,	" +
+                                   "DTDO ,	" +
+                                   "DTET ,	" +
+                                   "DTRE ,	" +
+                                   "DIEX ,	" +
+                                   "DIEXno ,	" +
+                                   "DIDO ,	" +
+                                   "DIET ,	" +
+                                   "DIRE ,	" +
+                                   "DBEX ,	" +
+                                   "DBEXno ,	" +
+                                   "DBDO ,	" +
+                                   "DBET ,	" +
+                                   "DBRE ,	" +
+                                   "LBEX ,	" +
+                                   "LBEXno ,	" +
+                                   "LBDO ,	" +
+                                   "LBET ,	" +
+                                   "LBRE ,	" +
+                                   "VOEX ,	" +
+                                   "VOEXno ,	" +
+                                   "VODO ,	" +
+                                   "VOET ,	" +
+                                   "VORE ,	" +
+                                   "OSEX ,	" +
+                                   "OSEXno ,	" +
+                                   "OSDO ,	" +
+                                   "OSET ,	" +
+                                   "OSRE ,	" +
+                                   " OS,COMMENT) " +
+                                   "values	" +
+                                   "(@idpp ,	" +
+                                       "'"+actionmade+"',	" +
+                                         "@editedby,	" +
+                                           "getdate(),	" +
+                                   "@empno," +
+                                   "@dhpid," +
+                                   "@DCEX ," +
+                                   "@DCEXno ," +
+                                   "@DCDO ," +
+                                   "@DCET ," +
+                                   "@DCRE ," +
+                                   "@FEEX ," +
+                                   "@FEEXno ," +
+                                   "@FEDO ," +
+                                   "@FEET ," +
+                                   "@FERE ," +
+                                   "@MPEX ," +
+                                   "@MPEXno ," +
+                                   "@MPDO ," +
+                                   "@MPET ," +
+                                   "@MPRE ," +
+                                   "@WEEX ," +
+                                   "@WEEXno ," +
+                                   "@WEDO ," +
+                                   "@WEET ," +
+                                   "@WERE ," +
+                                   "@DSEX ," +
+                                   "@DSEXno ," +
+                                   "@DSDO ," +
+                                   "@DSET ," +
+                                   "@DSRE ," +
+                                   "@DTEX ," +
+                                   "@DTEXno ," +
+                                   "@DTDO ," +
+                                   "@DTET ," +
+                                   "@DTRE ," +
+                                   "@DIEX ," +
+                                   "@DIEXno ," +
+                                   "@DIDO ," +
+                                   "@DIET ," +
+                                   "@DIRE ," +
+                                   "@DBEX ," +
+                                   "@DBEXno ," +
+                                   "@DBDO ," +
+                                   "@DBET ," +
+                                   "@DBRE ," +
+                                   "@LBEX ," +
+                                   "@LBEXno ," +
+                                   "@LBDO ," +
+                                   "@LBET ," +
+                                   "@LBRE ," +
+                                   "@VOEX ," +
+                                   "@VOEXno ," +
+                                   "@VODO ," +
+                                   "@VOET ," +
+                                   "@VORE ," +
+                                   "@OSEX ," +
+                                   "@OSEXno ," +
+                                   "@OSDO ," +
+                                   "@OSET ," +
+                                   "@OSRE , " +
+                                   " @OS,@COMMENT) ";
+                return insertstr;
+            
+          
         }
         private void insertanswersheet()
         {
@@ -325,7 +460,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     "@OSDO ," +
                                     "@OSET ," +
                                     "@OSRE , " +
-                                    " @OS,@COMMENT) ";
+                                    " @OS,@COMMENT) "+
+                                    historystr("Insert");
                 string updatestr = " update ASNWERSHEETtbl set " +
                                     " DCEX = @DCEX , " +
                                     " DCEXno = @DCEXno , " +
@@ -384,7 +520,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     " OSRE = @OSRE ,  " +
                                     " OS = @OS ,  " +
                                     " COMMENT = @COMMENT " +
-                                    " where EMPNO=@empno and DHPID=@dhpid ";
+                                    " where EMPNO=@empno and DHPID=@dhpid "+
+                                          historystr("Update");
 
 
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
@@ -442,8 +579,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void setparam(SqlCommand sqlcmd)
         {
-           
 
+            sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
             sqlcmd.Parameters.AddWithValue("@empno", empno);
             sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
             sqlcmd.Parameters.AddWithValue("@DCEX", DCEXyes.Checked);
@@ -503,8 +640,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@OSRE", tboxOSRE.Text);
             sqlcmd.Parameters.AddWithValue("@OS", tboxOS.Text);
             sqlcmd.Parameters.AddWithValue("@COMMENT", tboxCOM.Text);
-         
-          
+
+
             sqlcmd.ExecuteNonQuery();
         }
 
@@ -518,12 +655,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp)" +
-                    " insert into dhp_bodytemp (id,empno,dhpid,ACTUALTIMETAKEN,timeofday,TEMPREADING)values(@id,@empno,@dhpid,@att,@timeofday,@tr)";
+                    " insert into dhp_bodytemp (id,empno,dhpid,ACTUALTIMETAKEN,timeofday,TEMPREADING)values(@id,@empno,@dhpid,@att,@timeofday,@tr)"+
+                    " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
+                    " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED,TIMEOFDAY,ACTUALTIMETAKEN,TEMPREADING) values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@timeofday,@att,@tr)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    DataTable tb = new DataTable();
+                 
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
@@ -531,6 +670,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@att", tboxaddonatt.Text);
                         sqlcmd.Parameters.AddWithValue("@timeofday", cboxaddontimeofday.Text);
                         sqlcmd.Parameters.AddWithValue("@tr", tboxaddontr.Text);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -551,7 +691,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-         
+
             if (e.CommandName == "myedit")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
@@ -560,11 +700,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
             }
             else if (e.CommandName == "mycancel")
             {
-              
+
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
-                visibility(row,true, false);
-          
+                visibility(row, true, false);
+
             }
             else if (e.CommandName == "myupdate")
             {
@@ -606,14 +746,19 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string str = " delete from dhp_bodytemp where id = @id";
+                string str = " delete from dhp_bodytemp where id = @id"+
+                        " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
+                    " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED) values(@idpp,@id,@empno,@dhpid,'Delete',@editedby,getdate())";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    DataTable tb = new DataTable();
+                  
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.ExecuteNonQuery();
                     }
@@ -637,18 +782,23 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string str = " update dhp_bodytemp set ACTUALTIMETAKEN=@att,timeofday=@timeofday,TEMPREADING=@tr where id = @id";
+                string str = " update dhp_bodytemp set ACTUALTIMETAKEN=@att,timeofday=@timeofday,TEMPREADING=@tr where id = @id"+
+                   " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
+                    " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED,TIMEOFDAY,ACTUALTIMETAKEN,TEMPREADING) values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@timeofday,@att,@tr)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    DataTable tb = new DataTable();
+               
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@att", att);
                         sqlcmd.Parameters.AddWithValue("@timeofday", td);
                         sqlcmd.Parameters.AddWithValue("@tr", tr);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -671,6 +821,221 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             GridView1.PageIndex = e.NewPageIndex;
             getbodytempdata();
+        }
+        private void loadsymptoms()
+        {
+            try
+            {
+                string str = "SELECT * FROM DHP_symptom WHERE DHPID=@dhpid and empno=@empno";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    DataTable tb = new DataTable();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        
+                        GridView2.DataSource = tb;
+                        GridView2.DataBind();
+                
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "symptonval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+        }
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom) " +
+                                 " insert into DHP_symptom (ID,EMPNO,DHPID,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS) " +
+                                 "values " +
+                                 "(@id, @empno, @dhpid, @SYMPTOM, @DATEOFONSET, @TIMEOFONSET, @REMARKS)"+
+" declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom_history)				" +
+" insert into DHP_symptom_history 																			" +
+" (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS)		" +
+" values																									" +
+" (@idpp,@id, @empno, @dhpid,'Insert',@editedby,getdate(),@SYMPTOM, @DATEOFONSET, @TIMEOFONSET, @REMARKS)	";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    DataTable tb = new DataTable();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@SYMPTOM", ddlsymptom.Text);
+                        sqlcmd.Parameters.AddWithValue("@DATEOFONSET", tboxdateofonset.Text);
+                        sqlcmd.Parameters.AddWithValue("@TIMEOFONSET", tboxtimeonset.Text);
+                        sqlcmd.Parameters.AddWithValue("@REMARKS", tboxremarks.Text);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "symptonval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                loadsymptoms();
+            }
+
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            loadsymptoms();
+        }
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                g2visibility(row, true, false);
+            }
+            else if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                g2visibility(row, false, true);
+            }
+            else if (e.CommandName == "myupdate")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                updatesymptom(((Label)row.FindControl("lblid2")).Text,
+                    ((DropDownList)row.FindControl("ddleditsymptom")).Text,
+                ((TextBox)row.FindControl("tboxeditdateofonset")).Text,
+                ((TextBox)row.FindControl("tboxedittimeonset")).Text,
+                ((TextBox)row.FindControl("tboxeditremarks")).Text);
+            }
+            else if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                deletesymptom(((Label)row.FindControl("lblid2")).Text);
+            }
+        }
+
+        private void deletesymptom(string id)
+        {
+            try
+            {
+                string str = "delete from DHP_symptom where id  = @id"+
+                       " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom_history)				" +
+" insert into DHP_symptom_history 																			" +
+" (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED)		" +
+" values																									" +
+" (@idpp,@id, @empno, @dhpid,'Delete',@editedby,getdate())	";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+               
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "symptonval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                loadsymptoms();
+            }
+        }
+
+        private void updatesymptom(string id, string symptom, string dateofonset, string timeofonset, string remarks)
+        {
+            try
+            {
+                string str = "update DHP_symptom set SYMPTOM= @SYMPTOM,DATEOFONSET= @DATEOFONSET, TIMEOFONSET=@TIMEOFONSET, REMARKS=@REMARKS where id = @id"+
+                    " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom_history)				" +
+" insert into DHP_symptom_history 																			" +
+" (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS)		" +
+" values																									" +
+" (@idpp,@id, @empno, @dhpid,'Update',@editedby,getdate(),@SYMPTOM, @DATEOFONSET, @TIMEOFONSET, @REMARKS)	";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    DataTable tb = new DataTable();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@SYMPTOM", symptom);
+                        sqlcmd.Parameters.AddWithValue("@DATEOFONSET", dateofonset);
+                        sqlcmd.Parameters.AddWithValue("@TIMEOFONSET", timeofonset);
+                        sqlcmd.Parameters.AddWithValue("@REMARKS", remarks);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "symptonval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                loadsymptoms();
+            }
+        }
+
+        private void g2visibility(GridViewRow row, bool x, bool y)
+        {
+            ((LinkButton)row.FindControl("btnedit2")).Visible = y;
+            ((LinkButton)row.FindControl("btndelete2")).Visible = y;
+            ((Label)row.FindControl("lblsymptom")).Visible = y;
+            ((Label)row.FindControl("lbldateonset")).Visible = y;
+            ((Label)row.FindControl("lblestimatedtime")).Visible = y;
+            ((Label)row.FindControl("lblremarks")).Visible = y;
+
+            ((LinkButton)row.FindControl("btnupdate2")).Visible = x;
+            ((LinkButton)row.FindControl("btncancel2")).Visible = x;
+            ((DropDownList)row.FindControl("ddleditsymptom")).Visible = x;
+            ((TextBox)row.FindControl("tboxeditdateofonset")).Visible = x;
+            ((TextBox)row.FindControl("tboxedittimeonset")).Visible = x;
+            ((TextBox)row.FindControl("tboxeditremarks")).Visible = x;
         }
     }
 }
