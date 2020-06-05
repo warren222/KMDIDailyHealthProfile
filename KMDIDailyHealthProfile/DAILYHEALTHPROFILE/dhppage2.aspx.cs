@@ -33,6 +33,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                     getdata();
                     gettravelhistory();
+                    getpersoninteract();
                     access();
                 }
 
@@ -51,7 +52,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 pnl3.Enabled = true;
                 pnl4.Enabled = true;
                 pnl5.Visible = true;
-                tboxexposuretovirus.Enabled = true;            
+                tboxexposuretovirus.Enabled = true;
             }
             else
             {
@@ -89,10 +90,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
             createsignaturepath("patient");
             createsignaturepath("physician");
             createsignaturepath("administered");
+            createsignaturepath("patientreco");
         }
         private void createsignaturepath(string foldername)
         {
-            string filepath = "~/Uploads/DHPuploads/page2/signature/"+foldername+"/" + empno + dhpid + "/";
+            string filepath = "~/Uploads/DHPuploads/page2/signature/" + foldername + "/" + empno + dhpid + "/";
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));
             if (!IsExists)
             {
@@ -131,17 +133,17 @@ namespace webaftersales.DAILYHEALTHPROFILE
                             string span = " <span class='glyphicon glyphicon-arrow-right'></span> ";
                             while (rd.Read())
                             {
-                                co += "<strong class='text-info'>" + rd[0].ToString()+"</strong>" + span;
+                                co += "<strong class='text-info'>" + rd[0].ToString() + "</strong>" + span;
                             }
                             if (co == "")
                             {
                                 co = span;
                             }
                             string complete = "From " + co;
-                            
+
                             int colength = complete.Length - 55;
 
-                            lbltravelsummary.Text = complete.Substring(0,colength);
+                            lbltravelsummary.Text = complete.Substring(0, colength);
                         }
                     }
                 }
@@ -161,12 +163,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
             getimage(Panel1, "patient");
             getimage(pnlphysician, "physician");
             getimage(pnladministered, "administered");
+            getimage(pnlpatientreco, "patientreco");
         }
-        private void getimage(Panel pnl,string foldername)
+        private void getimage(Panel pnl, string foldername)
         {
             pnl.Controls.Clear();
             Image img = new Image();
-            string filepath = "~/Uploads/DHPuploads/page2/signature/"+foldername+"/" + empno + dhpid + "/";
+            string filepath = "~/Uploads/DHPuploads/page2/signature/" + foldername + "/" + empno + dhpid + "/";
 
             foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath)))
             {
@@ -220,7 +223,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER from dhppage2 where empno =@empno and dhpid=@dhpid";
+                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT from dhppage2 where empno =@empno and dhpid=@dhpid";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -244,6 +247,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxrecocallin.Text = rd["RECOCALLIN"].ToString();
                                 tboxrecoother.Text = rd["RECOOTHER"].ToString();
                                 sendhome = rd["RECOSENDHOME"].ToString();
+                                tboxrecopatient.Text= rd["RECOPATIENT"].ToString();
                             }
                         }
 
@@ -288,8 +292,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-
-
                 string testresult = "";
                 foreach (ListItem li in cboxTESTRESULT.Items)
                 {
@@ -308,8 +310,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 bool exist = false;
                 string insertstr = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhppage2)" +
                                 " insert into dhppage2" +
-                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,recoendo,recocallin,recosendhome,recoother)" +
-                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@testresult,@patientname,@administeredby,@physician,@recoendo,@recocallin,@recosendhome,@recoother)";
+                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,recoendo,recocallin,recosendhome,recoother,recopatient)" +
+                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@testresult,@patientname,@administeredby,@physician,@recoendo,@recocallin,@recosendhome,@recoother,@patientreco)";
                 string updatestr = " update dhppage2 set				   " +
                                 " EXPOSURETOVIRUS=@exposuretovirus,	   " +
                                 " DATETESTDONE=@datetestdone,		   " +
@@ -320,7 +322,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 " recoendo=@recoendo,				   " +
                                 " recocallin=@recocallin,			   " +
                                 " recosendhome=@recosendhome,		   " +
-                                " recoother=@recoother				   " +
+                                " recoother=@recoother,				   " +
+                                " recopatient=@patientreco				   " +
                                 " where EMPNO=@empno and DHPID=@dhpid  ";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -381,12 +384,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@datetestdone", tboxdatetestdone.Text);
             sqlcmd.Parameters.AddWithValue("@testresult", testresult);
             sqlcmd.Parameters.AddWithValue("@patientname", tboxpatientname.Text);
-            sqlcmd.Parameters.AddWithValue("@administeredby",tboxadministeredby.Text);
+            sqlcmd.Parameters.AddWithValue("@administeredby", tboxadministeredby.Text);
             sqlcmd.Parameters.AddWithValue("@physician", tboxphysician.Text);
             sqlcmd.Parameters.AddWithValue("@recoendo", tboxrecoendo.Text);
             sqlcmd.Parameters.AddWithValue("@recocallin", tboxrecocallin.Text);
             sqlcmd.Parameters.AddWithValue("@recosendhome", sendhome);
             sqlcmd.Parameters.AddWithValue("@recoother", tboxrecoother.Text);
+            sqlcmd.Parameters.AddWithValue("@patientreco", tboxrecopatient.Text);
             sqlcmd.ExecuteNonQuery();
         }
 
@@ -468,7 +472,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         {
                             GridView1.Columns[0].Visible = false;
                         }
-                       
+
                     }
                 }
             }
@@ -647,6 +651,188 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             insert();
             Session["dhp_pagesender"] = "page2_administered";
+            Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
+        }
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                ((LinkButton)row.FindControl("btneditg2")).Visible = false;
+                ((LinkButton)row.FindControl("btndeleteg2")).Visible = false;
+                ((Label)row.FindControl("lblfullnameg2")).Visible = false;
+
+                ((TextBox)row.FindControl("tboxfullnameg2")).Visible = true;
+                ((LinkButton)row.FindControl("btnupdateg2")).Visible = true;
+                ((LinkButton)row.FindControl("btncancelg2")).Visible = true;
+            }
+            else if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+                ((LinkButton)row.FindControl("btneditg2")).Visible = true;
+                ((LinkButton)row.FindControl("btndeleteg2")).Visible = true;
+                ((Label)row.FindControl("lblfullnameg2")).Visible = true;
+
+                ((TextBox)row.FindControl("tboxfullnameg2")).Visible = false;
+                ((LinkButton)row.FindControl("btnupdateg2")).Visible = false;
+                ((LinkButton)row.FindControl("btncancelg2")).Visible = false;
+            }
+            else if (e.CommandName == "myupdate")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+
+                updatepersonsinteract(((Label)row.FindControl("lblidg2")).Text,
+             ((TextBox)row.FindControl("tboxfullnameg2")).Text);
+            }
+            else if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView2.Rows[rowindex];
+
+                deletepersonsinteract(((Label)row.FindControl("lblidg2")).Text);
+            }
+        }
+
+        private void deletepersonsinteract(string id)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "delete from personsinteract where id = @id";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "g2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                getpersoninteract();
+            }
+        }
+
+        private void updatepersonsinteract(string id, string fullname)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "update personsinteract set fullname=@fullname where id = @id";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@fullname", fullname);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "g2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                getpersoninteract();
+            }
+        }
+
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            getpersoninteract();
+        }
+
+        private void getpersoninteract()
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " select * from personsinteract where dhpid=@dhpid and empno=@empno";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        DataTable tb = new DataTable();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        GridView2.DataSource = tb;
+                        GridView2.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "g2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "declare @id as integer  =  (select isnull(max(isnull(id,0)),0)+1 from personsinteract)" +
+                    " insert into personsinteract (id,empno,dhpid,fullname)values(@id,@empno,@dhpid,@fullname)";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@fullname", tboxfullname.Text);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "g2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                getpersoninteract();
+            }
+        }
+
+        protected void LinkButton8_Click(object sender, EventArgs e)
+        {
+            insert();
+            Session["dhp_pagesender"] = "page2_clientsreco";
             Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
         }
     }

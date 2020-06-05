@@ -81,6 +81,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -258,12 +259,24 @@
     <Compile Include="DAILYHEALTHPROFILE\dhppage3.aspx.designer.cs">
       <DependentUpon>dhppage3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhpreport.aspx.cs">
+      <DependentUpon>dhpreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\dhpreport.aspx.designer.cs">
+      <DependentUpon>dhpreport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\dhpsignature.aspx.cs">
       <DependentUpon>dhpsignature.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DAILYHEALTHPROFILE\dhpsignature.aspx.designer.cs">
       <DependentUpon>dhpsignature.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\ds\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -285,6 +298,7 @@
     <Content Include="DAILYHEALTHPROFILE\dhpnew.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhppage2.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhppage3.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\dhpreport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpsignature.aspx" />
     <Content Include="DAILYHEALTHPROFILE\scripts\sign.js" />
     <Content Include="favicon.ico" />
@@ -297,6 +311,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DAILYHEALTHPROFILE\DHPmaster.Master" />
+    <Content Include="DAILYHEALTHPROFILE\ds\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="DAILYHEALTHPROFILE\ds\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DAILYHEALTHPROFILE\ds\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -355,6 +380,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

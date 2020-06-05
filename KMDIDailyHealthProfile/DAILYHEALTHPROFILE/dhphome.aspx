@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid f">
+    <div class="container-fluid">
 
 
         <div class="well">
@@ -19,6 +19,9 @@
                     <div class="input-group">
                         <div class="input-group-addon">DATE</div>
                         <asp:TextBox ID="tboxdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                        <div class="input-group-btn">
+                            <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-print"></span></asp:LinkButton>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -31,6 +34,7 @@
                         <asp:TextBox ID="tboxsearchkey" CssClass="form-control" runat="server"></asp:TextBox>
                         <div class="input-group-btn">
                             <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-default" OnClick="LinkButton3_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+
                         </div>
                     </div>
                 </div>
@@ -102,8 +106,12 @@
                                 </table>
 
                                 <asp:LinkButton ID="LinkButton4" CommandName="page1" CssClass='<%# Eval("page1").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 1</asp:LinkButton>
-                                <asp:LinkButton ID="LinkButton5" CommandName="page2" CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 2</asp:LinkButton>
-                                <asp:LinkButton ID="LinkButton6" CommandName="page3" CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 3</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton5" CommandName="page2" 
+                                     Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
+                                    CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 2</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton6" CommandName="page3" 
+                                     Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
+                                    CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 3</asp:LinkButton>
                                 <br />
 
 

@@ -132,7 +132,50 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <strong>Possible Exposure to Virus:s:</strong>&nbsp;<label class="text-success">(Please record possible incident where the patient/ employee could’ve contracted the virus)</label>
+    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+        <ContentTemplate>
+            <h3><strong class="text-info">Mga taong nakasama/nakasalamuha</strong></h3>
+            <div class="container">
+                <blockquote>
+                    Full name:<br />
+                    <asp:TextBox ID="tboxfullname" placeholder="Full name" CssClass="form-control" runat="server"></asp:TextBox><br />
+                    <asp:Button ID="Button2" CssClass="btn btn-primary" ValidationGroup="g2" runat="server" Text="add" OnClick="Button2_Click" />
+                </blockquote>
+                <asp:ValidationSummary ID="ValidationSummary5" CssClass="alert alert-danger" ValidationGroup="g2" runat="server" />
+            </div>
+            <br />
+            <asp:GridView ID="GridView2" runat="server" CssClass="table" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowCommand="GridView2_RowCommand">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btneditg2" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                            <asp:LinkButton ID="btndeleteg2" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
+                            <asp:LinkButton ID="btnupdateg2" Visible="false" CommandName="myupdate" runat="server">Update</asp:LinkButton>
+                            <asp:LinkButton ID="btncancelg2" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Full name">
+                        <ItemTemplate>
+                            <asp:Label ID="lblidg2" runat="server" Text='<%# Bind("ID") %>' Visible="false"></asp:Label>
+                            <asp:Label ID="lblfullnameg2" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                            <asp:TextBox ID="tboxfullnameg2" Visible="false" CssClass="form-control" Text='<%# Bind("FULLNAME") %>' runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <EmptyDataTemplate>
+                    <div class="alert alert-info">
+                        <h3><strong>Travel History is Empty!</strong>
+                        </h3>
+                    </div>
+                </EmptyDataTemplate>
+                <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                <PagerSettings PageButtonCount="8" />
+                <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+            </asp:GridView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <br />
+    <strong>Possible Exposure to Virus:</strong>&nbsp;<label class="text-success">(Please record possible incident where the patient/ employee could’ve contracted the virus)</label>
     <asp:TextBox ID="tboxexposuretovirus" CssClass="form-control" TextMode="MultiLine" Rows="10" runat="server"></asp:TextBox>
     <h3>
         <label style="text-decoration: underline">TEST RESULTS (if applicable)</label></h3>
@@ -172,10 +215,10 @@
             <asp:Panel ID="pnl3" runat="server">
                 Confirming Physician:<asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Sign here...</asp:LinkButton><br />
                 <asp:Panel ID="pnlphysician" runat="server"></asp:Panel>
-            <asp:TextBox CssClass="form-control" ID="tboxphysician" placeholder="Confirming Physician" runat="server"></asp:TextBox><br />
+                <asp:TextBox CssClass="form-control" ID="tboxphysician" placeholder="Confirming Physician" runat="server"></asp:TextBox><br />
                 Test Administered by:<asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Sign here...</asp:LinkButton><br />
-                   <asp:Panel ID="pnladministered" runat="server"></asp:Panel>
-            <asp:TextBox CssClass="form-control" ID="tboxadministeredby" placeholder="Test Administered" runat="server"></asp:TextBox>
+                <asp:Panel ID="pnladministered" runat="server"></asp:Panel>
+                <asp:TextBox CssClass="form-control" ID="tboxadministeredby" placeholder="Test Administered" runat="server"></asp:TextBox>
             </asp:Panel>
         </div>
     </div>
@@ -187,6 +230,9 @@
                 <asp:CheckBox ID="cboxrecocallin" Text="Call in for medical Attention and / or endorsement to hospital specify:" runat="server" /><asp:TextBox ID="tboxrecocallin" CssClass="form-control" runat="server"></asp:TextBox><br />
                 <asp:CheckBox ID="cboxrecosendhome" Text="Send home" runat="server" /><br />
                 <asp:CheckBox ID="cboxrecoother" Text="Others:" runat="server" /><asp:TextBox ID="tboxrecoother" CssClass="form-control" runat="server"></asp:TextBox><br />
+                Patient Name:<asp:LinkButton ID="LinkButton8" runat="server" OnClick="LinkButton8_Click">Sign here...</asp:LinkButton>
+                <asp:Panel ID="pnlpatientreco" runat="server"></asp:Panel>
+                <asp:TextBox ID="tboxrecopatient" CssClass="form-control" placeholder="Patient Name" runat="server"></asp:TextBox><br />
             </blockquote>
         </div>
     </asp:Panel>
@@ -194,6 +240,7 @@
         <ContentTemplate>
             <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="val2" CssClass="alert alert-success" runat="server" />
             <asp:LinkButton ID="LinkButton2" CssClass="btn btn-primary" runat="server" OnClick="LinkButton2_Click">save page 2</asp:LinkButton>
+
         </ContentTemplate>
     </asp:UpdatePanel>
 

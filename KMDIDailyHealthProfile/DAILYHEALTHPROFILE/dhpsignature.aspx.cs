@@ -62,7 +62,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
-            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered")
+            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered" || pagesender == "page2_clientsreco")
             {
                 senderbutton(pagesender);
             }
@@ -89,6 +89,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 filepath = "~/Uploads/DHPuploads/page2/signature/patient/" + empno + dhpid + "/";
             }
+            else if (senderpage == "page2_clientsreco")
+            {
+                filepath = "~/Uploads/DHPuploads/page2/signature/patientreco/" + empno + dhpid + "/";
+            }
             else
             {
                 filepath = "~/Uploads/DHPuploads/" + senderpage + "/" + "signature/" + empno + dhpid + "/";
@@ -104,7 +108,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 file.Delete();
             }
             UploadImage(Request.Form["myurl"].ToString().Replace("data:image/png;base64,", ""), Server.MapPath(filepath + empno + senderpage + DateTime.Now.ToString("HH:mm:ss").Replace(":","") + ".jpg"));
-            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered")
+            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered" || pagesender == "page2_clientsreco")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }
@@ -116,7 +120,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered")
+            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered" || pagesender == "page2_clientsreco")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }

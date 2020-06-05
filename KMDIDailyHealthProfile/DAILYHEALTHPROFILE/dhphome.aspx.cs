@@ -32,6 +32,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     {
                         cboxstatus.Checked = Convert.ToBoolean(Session["dhpcbox"]);
                     }
+                    if (acct == "Admin")
+                    {
+                        LinkButton2.Visible = true;
+                    }
+                    else
+                    {
+                        LinkButton2.Visible = false;
+                    }
                         getdata();
                 }
 
@@ -213,6 +221,20 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             GridView1.PageIndex = e.NewPageIndex;
             getdata();
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            if (tboxdate.Text == "")
+            {
+                ScriptManager.RegisterStartupScript(this, Page.GetType(), "Script", "alert('please select date!');", true);
+            }
+            else
+            {
+                Session["dhpdatekey"] = tboxdate.Text;
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhpreport.aspx");
+            }
+         
         }
     }
 }
