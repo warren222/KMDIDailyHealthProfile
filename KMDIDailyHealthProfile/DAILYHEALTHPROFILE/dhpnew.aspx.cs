@@ -164,11 +164,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxDBDO.Text = rd["DBDO"].ToString();
                                 tboxDBET.Text = rd["DBET"].ToString();
                                 tboxDBRE.Text = rd["DBRE"].ToString();
-                                LBEXyes.Checked = getbol(rd["LBEX"].ToString());
-                                LBEXno.Checked = getbol(rd["LBEXno"].ToString());
-                                tboxLBDO.Text = rd["LBDO"].ToString();
-                                tboxLBET.Text = rd["LBET"].ToString();
-                                tboxLBRE.Text = rd["LBRE"].ToString();
+                             
                                 VOEXyes.Checked = getbol(rd["VOEX"].ToString());
                                 VOEXno.Checked = getbol(rd["VOEXno"].ToString());
                                 tboxVODO.Text = rd["VODO"].ToString();
@@ -249,11 +245,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                    "DBDO ,	" +
                                    "DBET ,	" +
                                    "DBRE ,	" +
-                                   "LBEX ,	" +
-                                   "LBEXno ,	" +
-                                   "LBDO ,	" +
-                                   "LBET ,	" +
-                                   "LBRE ,	" +
                                    "VOEX ,	" +
                                    "VOEXno ,	" +
                                    "VODO ,	" +
@@ -312,11 +303,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                    "@DBDO ," +
                                    "@DBET ," +
                                    "@DBRE ," +
-                                   "@LBEX ," +
-                                   "@LBEXno ," +
-                                   "@LBDO ," +
-                                   "@LBET ," +
-                                   "@LBRE ," +
                                    "@VOEX ," +
                                    "@VOEXno ," +
                                    "@VODO ," +
@@ -385,11 +371,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     "DBDO ,	" +
                                     "DBET ,	" +
                                     "DBRE ,	" +
-                                    "LBEX ,	" +
-                                    "LBEXno ,	" +
-                                    "LBDO ,	" +
-                                    "LBET ,	" +
-                                    "LBRE ,	" +
                                     "VOEX ,	" +
                                     "VOEXno ,	" +
                                     "VODO ,	" +
@@ -445,11 +426,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     "@DBDO ," +
                                     "@DBET ," +
                                     "@DBRE ," +
-                                    "@LBEX ," +
-                                    "@LBEXno ," +
-                                    "@LBDO ," +
-                                    "@LBET ," +
-                                    "@LBRE ," +
                                     "@VOEX ," +
                                     "@VOEXno ," +
                                     "@VODO ," +
@@ -503,11 +479,6 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     " DBDO = @DBDO , " +
                                     " DBET = @DBET , " +
                                     " DBRE = @DBRE , " +
-                                    " LBEX = @LBEX , " +
-                                    " LBEXno = @LBEXno , " +
-                                    " LBDO = @LBDO , " +
-                                    " LBET = @LBET , " +
-                                    " LBRE = @LBRE , " +
                                     " VOEX = @VOEX , " +
                                     " VOEXno = @VOEXno , " +
                                     " VODO = @VODO , " +
@@ -623,11 +594,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@DBDO", tboxDBDO.Text);
             sqlcmd.Parameters.AddWithValue("@DBET", tboxDBET.Text);
             sqlcmd.Parameters.AddWithValue("@DBRE", tboxDBRE.Text);
-            sqlcmd.Parameters.AddWithValue("@LBEX", LBEXyes.Checked);
-            sqlcmd.Parameters.AddWithValue("@LBEXno", LBEXno.Checked);
-            sqlcmd.Parameters.AddWithValue("@LBDO", tboxLBDO.Text);
-            sqlcmd.Parameters.AddWithValue("@LBET", tboxLBET.Text);
-            sqlcmd.Parameters.AddWithValue("@LBRE", tboxLBRE.Text);
+          
             sqlcmd.Parameters.AddWithValue("@VOEX", VOEXyes.Checked);
             sqlcmd.Parameters.AddWithValue("@VOEXno", VOEXno.Checked);
             sqlcmd.Parameters.AddWithValue("@VODO", tboxVODO.Text);

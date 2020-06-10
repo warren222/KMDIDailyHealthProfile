@@ -293,7 +293,7 @@
 
                 </tr>
                 <tr>
-                    <td><strong>DIARRHEA</strong><br />
+                    <td><strong>DIARRHEA/LBM</strong><br />
                         <small class="text-danger">(pagtatae)</small>
                     </td>
                     <td>
@@ -321,23 +321,6 @@
                         <asp:TextBox ID="tboxDBET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
                     <td>
                         <asp:TextBox ID="tboxDBRE" CssClass="form-control" runat="server"></asp:TextBox></td>
-
-                </tr>
-                <tr>
-                    <td><strong>LOOSE BOWEL
-                        <br />
-                        MOVEMENT</strong><br />
-                        <small class="text-danger">(pagtatae)</small>
-                    </td>
-                    <td>
-                        <asp:RadioButton CssClass="btn btn-default" GroupName="LBEX" ID="LBEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="LBEX" ID="LBEXno" runat="server" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="tboxLBDO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
-                    <td>
-                        <asp:TextBox ID="tboxLBET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
-                    <td>
-                        <asp:TextBox ID="tboxLBRE" CssClass="form-control" runat="server"></asp:TextBox></td>
 
                 </tr>
                 <tr>

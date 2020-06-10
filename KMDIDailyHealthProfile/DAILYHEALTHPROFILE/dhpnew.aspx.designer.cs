@@ -553,51 +553,6 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxDBRE;
         
         /// <summary>
-        /// LBEXyes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton LBEXyes;
-        
-        /// <summary>
-        /// LBEXno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton LBEXno;
-        
-        /// <summary>
-        /// tboxLBDO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxLBDO;
-        
-        /// <summary>
-        /// tboxLBET control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxLBET;
-        
-        /// <summary>
-        /// tboxLBRE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxLBRE;
-        
-        /// <summary>
         /// VOEXyes control.
         /// </summary>
         /// <remarks>
