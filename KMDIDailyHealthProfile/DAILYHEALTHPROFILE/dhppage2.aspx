@@ -182,8 +182,30 @@
     <div class="row">
         <div class="col-sm-6">
             <asp:Panel ID="pnl2" runat="server">
-                DATE OF TEST DONE
-            <asp:TextBox ID="tboxdatetestdone" TextMode="Date" runat="server"></asp:TextBox>
+                <table>
+                    <tr>
+                        <td>DATE OF TEST DONE
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tboxdatetestdone" TextMode="Date" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time of Test
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tboxtimetest" TextMode="Time" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Test Kit Serial Number
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tboxserialno" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
+
                 <div class="container">
                     <blockquote>
                         <asp:CheckBoxList ID="cboxTESTRESULT" runat="server">
