@@ -201,6 +201,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 setsession(row);
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage3.aspx");
             }
+            if (e.CommandName == "myreport")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                setsession(row);
+                Response.Redirect("~/DAILYHEALTHPROFILE/RPTpage.aspx");
+            }
         }
         private void setsession(GridViewRow row)
         {

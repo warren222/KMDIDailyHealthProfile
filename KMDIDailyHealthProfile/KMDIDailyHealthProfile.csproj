@@ -278,6 +278,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\RPTpage.aspx.cs">
+      <DependentUpon>RPTpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\RPTpage.aspx.designer.cs">
+      <DependentUpon>RPTpage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -300,11 +307,13 @@
     <Content Include="DAILYHEALTHPROFILE\dhppage3.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpreport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpsignature.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\RPTpage.aspx" />
     <Content Include="DAILYHEALTHPROFILE\scripts\sign.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Ok-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -382,6 +391,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPT.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc" />
   </ItemGroup>
   <PropertyGroup>

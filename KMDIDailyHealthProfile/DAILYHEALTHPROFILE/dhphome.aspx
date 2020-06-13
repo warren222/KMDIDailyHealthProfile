@@ -112,6 +112,10 @@
                                 <asp:LinkButton ID="LinkButton6" CommandName="page3" 
                                      Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
                                     CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 3</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton7" CommandName="myreport"
+                                     Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
+                                     CssClass="btn btn-success"
+                                    runat="server">Report</asp:LinkButton>
                                 <br />
 
 
