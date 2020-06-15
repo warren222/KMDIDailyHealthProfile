@@ -18,18 +18,25 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
         SelectCommand="
-SELECT 
+
+select * into #tbl from (select empno,rdate from dhrtbl where rdate = case when ISDATE(@RDATE)=1 THEN CAST(@RDATE AS DATE) ELSE @RDATE END) as tbl
+select 
 SURNAME+', '+FIRSTNAME+' '+MI AS FULLNAME,
-CASE WHEN ISDATE(RDATE)=1 THEN FORMAT(CAST(RDATE AS DATE),'MMM-dd-yyyy') ELSE RDATE END as [DATE],
+CASE WHEN RDATE IS NOT NULL THEN 'Submitted' else '' end as REPORT,
+case when ISDATE(@RDATE)=1 THEN FORMAT(CAST(@RDATE AS DATE),'MMM-dd-yyyy') ELSE @RDATE END as [DATE],
 A.EMPNO,
 BIRTHDAY,
 CAST(DATEDIFF(DD,CAST(BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE,
 DEPARTMENT  
-FROM DHRtbl as a
-left join emptbl as b
+
+ from emptbl as a
+left join 
+#tbl as b
 on a.empno = b.empno
- WHERE case when isdate(a.RDATE)=1 then cast(a.RDATE as date) else a.RDATE end = case when @RDATE = '' then a.RDATE else @RDATE end
-        order by SURNAME asc">
+
+where 
+userstatus = 'Active'
+ORDER BY SURNAME ASC">
         <SelectParameters>
             <asp:SessionParameter Name="RDATE" SessionField="dhpdatekey" Type="String" />
         </SelectParameters>

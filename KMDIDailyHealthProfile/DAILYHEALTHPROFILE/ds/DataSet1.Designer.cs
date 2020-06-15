@@ -361,6 +361,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             private global::System.Data.DataColumn columnDEPARTMENT;
             
+            private global::System.Data.DataColumn columnREPORT;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public EMPTBLDataTable() {
@@ -444,6 +446,14 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn REPORTColumn {
+                get {
+                    return this.columnREPORT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +489,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EMPTBLRow AddEMPTBLRow(string EMPNO, string FULLNAME, string BIRTHDAY, string AGE, string DATE, string DEPARTMENT) {
+            public EMPTBLRow AddEMPTBLRow(string EMPNO, string FULLNAME, string BIRTHDAY, string AGE, string DATE, string DEPARTMENT, string REPORT) {
                 EMPTBLRow rowEMPTBLRow = ((EMPTBLRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         EMPNO,
@@ -487,7 +497,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         BIRTHDAY,
                         AGE,
                         DATE,
-                        DEPARTMENT};
+                        DEPARTMENT,
+                        REPORT};
                 rowEMPTBLRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEMPTBLRow);
                 return rowEMPTBLRow;
@@ -516,6 +527,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 this.columnAGE = base.Columns["AGE"];
                 this.columnDATE = base.Columns["DATE"];
                 this.columnDEPARTMENT = base.Columns["DEPARTMENT"];
+                this.columnREPORT = base.Columns["REPORT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +545,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 base.Columns.Add(this.columnDATE);
                 this.columnDEPARTMENT = new global::System.Data.DataColumn("DEPARTMENT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDEPARTMENT);
+                this.columnREPORT = new global::System.Data.DataColumn("REPORT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnREPORT);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2013,6 +2027,22 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string REPORT {
+                get {
+                    try {
+                        return ((string)(this[this.tableEMPTBL.REPORTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'REPORT\' in table \'EMPTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEMPTBL.REPORTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEMPNONull() {
                 return this.IsNull(this.tableEMPTBL.EMPNOColumn);
             }
@@ -2081,6 +2111,18 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDEPARTMENTNull() {
                 this[this.tableEMPTBL.DEPARTMENTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsREPORTNull() {
+                return this.IsNull(this.tableEMPTBL.REPORTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetREPORTNull() {
+                this[this.tableEMPTBL.REPORTColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
         {
             if (Session["dhp_USERNAME"] != null)
             {
-                
+                //ReportParameter param1 = new ReportParameter("mydate", Session["dhpdatekey"].ToString());
+                //ReportViewer1.LocalReport.SetParameters(param1);
             }
             else
             {
