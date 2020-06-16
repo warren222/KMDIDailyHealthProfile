@@ -3697,6 +3697,7 @@
                         <PaddingLeft>20pt</PaddingLeft>
                       </Style>
                     </Image>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
