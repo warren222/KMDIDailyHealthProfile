@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +13,46 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["dhp_USERNAME"] != null)
+            {
 
+                if (!IsPostBack)
+                {
+
+                    string filepath = "~/Uploads/DHPuploads/page2/signature/patient/" + empno + dhpid + "/";
+
+                    foreach (string strfilename in Directory.GetFiles(Server.MapPath(filepath)))
+                    {
+
+                        FileInfo fileinfo = new FileInfo(strfilename);
+                        ReportViewer1.LocalReport.EnableExternalImages = true;
+                        string prepared = new Uri(Server.MapPath("~/Uploads/DHPuploads/page2/signature/patient/" + empno + dhpid + "/" + fileinfo.Name)).AbsoluteUri;
+                        ReportParameter param1 = new ReportParameter("patientsignature", prepared);
+                        ReportViewer1.LocalReport.SetParameters(param1);
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
+            }
+        }
+        private string empno
+        {
+            get
+            {
+                return Session["dhpempno"].ToString();
+            }
+        }
+        private string dhpid
+        {
+            get
+            {
+                return Session["dhp_id"].ToString();
+            }
         }
     }
 }

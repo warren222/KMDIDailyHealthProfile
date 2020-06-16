@@ -30,6 +30,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         private DHPtravelhistoryDataTable tableDHPtravelhistory;
         
+        private DHPPAGE2DataTable tableDHPPAGE2;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -66,6 +68,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 }
                 if ((ds.Tables["DHPtravelhistory"] != null)) {
                     base.Tables.Add(new DHPtravelhistoryDataTable(ds.Tables["DHPtravelhistory"]));
+                }
+                if ((ds.Tables["DHPPAGE2"] != null)) {
+                    base.Tables.Add(new DHPPAGE2DataTable(ds.Tables["DHPPAGE2"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -112,6 +117,16 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         public DHPtravelhistoryDataTable DHPtravelhistory {
             get {
                 return this.tableDHPtravelhistory;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DHPPAGE2DataTable DHPPAGE2 {
+            get {
+                return this.tableDHPPAGE2;
             }
         }
         
@@ -191,6 +206,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 if ((ds.Tables["DHPtravelhistory"] != null)) {
                     base.Tables.Add(new DHPtravelhistoryDataTable(ds.Tables["DHPtravelhistory"]));
                 }
+                if ((ds.Tables["DHPPAGE2"] != null)) {
+                    base.Tables.Add(new DHPPAGE2DataTable(ds.Tables["DHPPAGE2"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -242,6 +260,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                     this.tableDHPtravelhistory.InitVars();
                 }
             }
+            this.tableDHPPAGE2 = ((DHPPAGE2DataTable)(base.Tables["DHPPAGE2"]));
+            if ((initTable == true)) {
+                if ((this.tableDHPPAGE2 != null)) {
+                    this.tableDHPPAGE2.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +282,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             base.Tables.Add(this.tableASNWESHEETtbl);
             this.tableDHPtravelhistory = new DHPtravelhistoryDataTable();
             base.Tables.Add(this.tableDHPtravelhistory);
+            this.tableDHPPAGE2 = new DHPPAGE2DataTable();
+            base.Tables.Add(this.tableDHPPAGE2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -275,6 +301,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeDHPtravelhistory() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeDHPPAGE2() {
             return false;
         }
         
@@ -341,6 +373,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DHPtravelhistoryRowChangeEventHandler(object sender, DHPtravelhistoryRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void DHPPAGE2RowChangeEventHandler(object sender, DHPPAGE2RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1875,6 +1910,479 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DHPtravelhistoryDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DHPPAGE2DataTable : global::System.Data.TypedTableBase<DHPPAGE2Row> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnEMPNO;
+            
+            private global::System.Data.DataColumn columnDHPID;
+            
+            private global::System.Data.DataColumn columnEXPOSURETOVIRUS;
+            
+            private global::System.Data.DataColumn columnDATETESTDONE;
+            
+            private global::System.Data.DataColumn columnTIMETEST;
+            
+            private global::System.Data.DataColumn columnSERIALNO;
+            
+            private global::System.Data.DataColumn columnTESTRESULT;
+            
+            private global::System.Data.DataColumn columnPATIENTNAME;
+            
+            private global::System.Data.DataColumn columnADMINISTEREDBY;
+            
+            private global::System.Data.DataColumn columnPHYSICIAN;
+            
+            private global::System.Data.DataColumn columnRECONDO;
+            
+            private global::System.Data.DataColumn columnRECOCALLIN;
+            
+            private global::System.Data.DataColumn columnRECOSENDHOME;
+            
+            private global::System.Data.DataColumn columnRECOOTHER;
+            
+            private global::System.Data.DataColumn columnRECOPATIENT;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DHPPAGE2DataTable() {
+                this.TableName = "DHPPAGE2";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DHPPAGE2DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected DHPPAGE2DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EMPNOColumn {
+                get {
+                    return this.columnEMPNO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DHPIDColumn {
+                get {
+                    return this.columnDHPID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EXPOSURETOVIRUSColumn {
+                get {
+                    return this.columnEXPOSURETOVIRUS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DATETESTDONEColumn {
+                get {
+                    return this.columnDATETESTDONE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TIMETESTColumn {
+                get {
+                    return this.columnTIMETEST;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SERIALNOColumn {
+                get {
+                    return this.columnSERIALNO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TESTRESULTColumn {
+                get {
+                    return this.columnTESTRESULT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PATIENTNAMEColumn {
+                get {
+                    return this.columnPATIENTNAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ADMINISTEREDBYColumn {
+                get {
+                    return this.columnADMINISTEREDBY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PHYSICIANColumn {
+                get {
+                    return this.columnPHYSICIAN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RECONDOColumn {
+                get {
+                    return this.columnRECONDO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RECOCALLINColumn {
+                get {
+                    return this.columnRECOCALLIN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RECOSENDHOMEColumn {
+                get {
+                    return this.columnRECOSENDHOME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RECOOTHERColumn {
+                get {
+                    return this.columnRECOOTHER;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RECOPATIENTColumn {
+                get {
+                    return this.columnRECOPATIENT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DHPPAGE2Row this[int index] {
+                get {
+                    return ((DHPPAGE2Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DHPPAGE2RowChangeEventHandler DHPPAGE2RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DHPPAGE2RowChangeEventHandler DHPPAGE2RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DHPPAGE2RowChangeEventHandler DHPPAGE2RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event DHPPAGE2RowChangeEventHandler DHPPAGE2RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddDHPPAGE2Row(DHPPAGE2Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DHPPAGE2Row AddDHPPAGE2Row(
+                        string ID, 
+                        string EMPNO, 
+                        string DHPID, 
+                        string EXPOSURETOVIRUS, 
+                        string DATETESTDONE, 
+                        string TIMETEST, 
+                        string SERIALNO, 
+                        string TESTRESULT, 
+                        string PATIENTNAME, 
+                        string ADMINISTEREDBY, 
+                        string PHYSICIAN, 
+                        string RECONDO, 
+                        string RECOCALLIN, 
+                        string RECOSENDHOME, 
+                        string RECOOTHER, 
+                        string RECOPATIENT) {
+                DHPPAGE2Row rowDHPPAGE2Row = ((DHPPAGE2Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        EMPNO,
+                        DHPID,
+                        EXPOSURETOVIRUS,
+                        DATETESTDONE,
+                        TIMETEST,
+                        SERIALNO,
+                        TESTRESULT,
+                        PATIENTNAME,
+                        ADMINISTEREDBY,
+                        PHYSICIAN,
+                        RECONDO,
+                        RECOCALLIN,
+                        RECOSENDHOME,
+                        RECOOTHER,
+                        RECOPATIENT};
+                rowDHPPAGE2Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDHPPAGE2Row);
+                return rowDHPPAGE2Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DHPPAGE2DataTable cln = ((DHPPAGE2DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DHPPAGE2DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnEMPNO = base.Columns["EMPNO"];
+                this.columnDHPID = base.Columns["DHPID"];
+                this.columnEXPOSURETOVIRUS = base.Columns["EXPOSURETOVIRUS"];
+                this.columnDATETESTDONE = base.Columns["DATETESTDONE"];
+                this.columnTIMETEST = base.Columns["TIMETEST"];
+                this.columnSERIALNO = base.Columns["SERIALNO"];
+                this.columnTESTRESULT = base.Columns["TESTRESULT"];
+                this.columnPATIENTNAME = base.Columns["PATIENTNAME"];
+                this.columnADMINISTEREDBY = base.Columns["ADMINISTEREDBY"];
+                this.columnPHYSICIAN = base.Columns["PHYSICIAN"];
+                this.columnRECONDO = base.Columns["RECONDO"];
+                this.columnRECOCALLIN = base.Columns["RECOCALLIN"];
+                this.columnRECOSENDHOME = base.Columns["RECOSENDHOME"];
+                this.columnRECOOTHER = base.Columns["RECOOTHER"];
+                this.columnRECOPATIENT = base.Columns["RECOPATIENT"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnEMPNO = new global::System.Data.DataColumn("EMPNO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMPNO);
+                this.columnDHPID = new global::System.Data.DataColumn("DHPID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDHPID);
+                this.columnEXPOSURETOVIRUS = new global::System.Data.DataColumn("EXPOSURETOVIRUS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXPOSURETOVIRUS);
+                this.columnDATETESTDONE = new global::System.Data.DataColumn("DATETESTDONE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDATETESTDONE);
+                this.columnTIMETEST = new global::System.Data.DataColumn("TIMETEST", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTIMETEST);
+                this.columnSERIALNO = new global::System.Data.DataColumn("SERIALNO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSERIALNO);
+                this.columnTESTRESULT = new global::System.Data.DataColumn("TESTRESULT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTESTRESULT);
+                this.columnPATIENTNAME = new global::System.Data.DataColumn("PATIENTNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPATIENTNAME);
+                this.columnADMINISTEREDBY = new global::System.Data.DataColumn("ADMINISTEREDBY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnADMINISTEREDBY);
+                this.columnPHYSICIAN = new global::System.Data.DataColumn("PHYSICIAN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPHYSICIAN);
+                this.columnRECONDO = new global::System.Data.DataColumn("RECONDO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRECONDO);
+                this.columnRECOCALLIN = new global::System.Data.DataColumn("RECOCALLIN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRECOCALLIN);
+                this.columnRECOSENDHOME = new global::System.Data.DataColumn("RECOSENDHOME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRECOSENDHOME);
+                this.columnRECOOTHER = new global::System.Data.DataColumn("RECOOTHER", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRECOOTHER);
+                this.columnRECOPATIENT = new global::System.Data.DataColumn("RECOPATIENT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRECOPATIENT);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DHPPAGE2Row NewDHPPAGE2Row() {
+                return ((DHPPAGE2Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DHPPAGE2Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DHPPAGE2Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DHPPAGE2RowChanged != null)) {
+                    this.DHPPAGE2RowChanged(this, new DHPPAGE2RowChangeEvent(((DHPPAGE2Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DHPPAGE2RowChanging != null)) {
+                    this.DHPPAGE2RowChanging(this, new DHPPAGE2RowChangeEvent(((DHPPAGE2Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DHPPAGE2RowDeleted != null)) {
+                    this.DHPPAGE2RowDeleted(this, new DHPPAGE2RowChangeEvent(((DHPPAGE2Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DHPPAGE2RowDeleting != null)) {
+                    this.DHPPAGE2RowDeleting(this, new DHPPAGE2RowChangeEvent(((DHPPAGE2Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveDHPPAGE2Row(DHPPAGE2Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DHPPAGE2DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3613,6 +4121,469 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DHPPAGE2Row : global::System.Data.DataRow {
+            
+            private DHPPAGE2DataTable tableDHPPAGE2;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal DHPPAGE2Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDHPPAGE2 = ((DHPPAGE2DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ID {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EMPNO {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.EMPNOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EMPNO\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.EMPNOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DHPID {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.DHPIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DHPID\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.DHPIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EXPOSURETOVIRUS {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.EXPOSURETOVIRUSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EXPOSURETOVIRUS\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.EXPOSURETOVIRUSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DATETESTDONE {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.DATETESTDONEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DATETESTDONE\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.DATETESTDONEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TIMETEST {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.TIMETESTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIMETEST\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.TIMETESTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SERIALNO {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.SERIALNOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SERIALNO\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.SERIALNOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TESTRESULT {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.TESTRESULTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TESTRESULT\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.TESTRESULTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PATIENTNAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.PATIENTNAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PATIENTNAME\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.PATIENTNAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ADMINISTEREDBY {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.ADMINISTEREDBYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ADMINISTEREDBY\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.ADMINISTEREDBYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PHYSICIAN {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.PHYSICIANColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PHYSICIAN\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.PHYSICIANColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RECONDO {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.RECONDOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RECONDO\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.RECONDOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RECOCALLIN {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.RECOCALLINColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RECOCALLIN\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.RECOCALLINColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RECOSENDHOME {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.RECOSENDHOMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RECOSENDHOME\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.RECOSENDHOMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RECOOTHER {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.RECOOTHERColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RECOOTHER\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.RECOOTHERColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RECOPATIENT {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.RECOPATIENTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RECOPATIENT\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.RECOPATIENTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableDHPPAGE2.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIDNull() {
+                this[this.tableDHPPAGE2.IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEMPNONull() {
+                return this.IsNull(this.tableDHPPAGE2.EMPNOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEMPNONull() {
+                this[this.tableDHPPAGE2.EMPNOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDHPIDNull() {
+                return this.IsNull(this.tableDHPPAGE2.DHPIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDHPIDNull() {
+                this[this.tableDHPPAGE2.DHPIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEXPOSURETOVIRUSNull() {
+                return this.IsNull(this.tableDHPPAGE2.EXPOSURETOVIRUSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEXPOSURETOVIRUSNull() {
+                this[this.tableDHPPAGE2.EXPOSURETOVIRUSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDATETESTDONENull() {
+                return this.IsNull(this.tableDHPPAGE2.DATETESTDONEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDATETESTDONENull() {
+                this[this.tableDHPPAGE2.DATETESTDONEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTIMETESTNull() {
+                return this.IsNull(this.tableDHPPAGE2.TIMETESTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTIMETESTNull() {
+                this[this.tableDHPPAGE2.TIMETESTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSERIALNONull() {
+                return this.IsNull(this.tableDHPPAGE2.SERIALNOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSERIALNONull() {
+                this[this.tableDHPPAGE2.SERIALNOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTESTRESULTNull() {
+                return this.IsNull(this.tableDHPPAGE2.TESTRESULTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTESTRESULTNull() {
+                this[this.tableDHPPAGE2.TESTRESULTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPATIENTNAMENull() {
+                return this.IsNull(this.tableDHPPAGE2.PATIENTNAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPATIENTNAMENull() {
+                this[this.tableDHPPAGE2.PATIENTNAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsADMINISTEREDBYNull() {
+                return this.IsNull(this.tableDHPPAGE2.ADMINISTEREDBYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetADMINISTEREDBYNull() {
+                this[this.tableDHPPAGE2.ADMINISTEREDBYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPHYSICIANNull() {
+                return this.IsNull(this.tableDHPPAGE2.PHYSICIANColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPHYSICIANNull() {
+                this[this.tableDHPPAGE2.PHYSICIANColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRECONDONull() {
+                return this.IsNull(this.tableDHPPAGE2.RECONDOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRECONDONull() {
+                this[this.tableDHPPAGE2.RECONDOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRECOCALLINNull() {
+                return this.IsNull(this.tableDHPPAGE2.RECOCALLINColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRECOCALLINNull() {
+                this[this.tableDHPPAGE2.RECOCALLINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRECOSENDHOMENull() {
+                return this.IsNull(this.tableDHPPAGE2.RECOSENDHOMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRECOSENDHOMENull() {
+                this[this.tableDHPPAGE2.RECOSENDHOMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRECOOTHERNull() {
+                return this.IsNull(this.tableDHPPAGE2.RECOOTHERColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRECOOTHERNull() {
+                this[this.tableDHPPAGE2.RECOOTHERColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRECOPATIENTNull() {
+                return this.IsNull(this.tableDHPPAGE2.RECOPATIENTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRECOPATIENTNull() {
+                this[this.tableDHPPAGE2.RECOPATIENTColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3700,6 +4671,40 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DHPtravelhistoryRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class DHPPAGE2RowChangeEvent : global::System.EventArgs {
+            
+            private DHPPAGE2Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DHPPAGE2RowChangeEvent(DHPPAGE2Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DHPPAGE2Row Row {
                 get {
                     return this.eventRow;
                 }

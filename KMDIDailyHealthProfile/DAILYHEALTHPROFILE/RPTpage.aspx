@@ -10,7 +10,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <div class="well">
+    <div class="well">
         <h3><strong>Report viewer</strong></h3>
         <div class="navbar-right">
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhphome.aspx" runat="server">back</asp:LinkButton>
@@ -22,8 +22,8 @@
             <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
             <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
         </SelectParameters>
-      </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
         SelectCommand="SELECT SURNAME,
 FIRSTNAME,
 MI,
@@ -38,7 +38,7 @@ CAST(DATEDIFF(DD,CAST(BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE FROM [E
         </SelectParameters>
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
         SelectCommand="
 
  SELECT 
@@ -51,20 +51,48 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
           (SELECT [SERIALNO] FROM DHPPAGE2 WHERE [EMPNO] = @EMPNO AND [DHPID]=@DHPID ) AS [SERIALNO]
   FROM [emptbl] where empno = @EMPNO">
 
-             <SelectParameters>
+        <SelectParameters>
             <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
             <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server"
+        ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+        SelectCommand="
 
-      <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-          <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPT.rdlc">
-              <DataSources>
-                  <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
-                  <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet2" />
-                  <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet3" />
-              </DataSources>
-          </LocalReport>
-      
+ SELECT 
+       [ID]
+      ,[EMPNO]
+      ,[DHPID]
+      ,[EXPOSURETOVIRUS]
+      ,[DATETESTDONE]
+      ,[TIMETEST]
+      ,[SERIALNO]
+      ,[TESTRESULT]
+      ,[PATIENTNAME]
+      ,[ADMINISTEREDBY]
+      ,[PHYSICIAN]
+      ,[RECOENDO]
+      ,[RECOCALLIN]
+      ,[RECOSENDHOME]
+      ,[RECOOTHER]
+      ,[RECOPATIENT]
+  FROM [DHPPAGE2] where empno = @EMPNO and DHPID=@DHPID">
+
+        <SelectParameters>
+            <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
+            <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+        <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPT.rdlc">
+            <DataSources>
+                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+                <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet2" />
+                <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet3" />
+                <rsweb:ReportDataSource DataSourceId="SqlDataSource4" Name="DataSet4" />
+            </DataSources>
+        </LocalReport>
+
     </rsweb:ReportViewer>
 </asp:Content>
