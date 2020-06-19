@@ -398,6 +398,16 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             private global::System.Data.DataColumn columnREPORT;
             
+            private global::System.Data.DataColumn columnMorning;
+            
+            private global::System.Data.DataColumn columnMidday;
+            
+            private global::System.Data.DataColumn columnAfternoon;
+            
+            private global::System.Data.DataColumn columnAfternoonBefore;
+            
+            private global::System.Data.DataColumn columnAfternoonAfter;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public EMPTBLDataTable() {
@@ -489,6 +499,46 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MorningColumn {
+                get {
+                    return this.columnMorning;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MiddayColumn {
+                get {
+                    return this.columnMidday;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AfternoonColumn {
+                get {
+                    return this.columnAfternoon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AfternoonBeforeColumn {
+                get {
+                    return this.columnAfternoonBefore;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AfternoonAfterColumn {
+                get {
+                    return this.columnAfternoonAfter;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -524,7 +574,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EMPTBLRow AddEMPTBLRow(string EMPNO, string FULLNAME, string BIRTHDAY, string AGE, string DATE, string DEPARTMENT, string REPORT) {
+            public EMPTBLRow AddEMPTBLRow(string EMPNO, string FULLNAME, string BIRTHDAY, string AGE, string DATE, string DEPARTMENT, string REPORT, string Morning, string Midday, string Afternoon, string AfternoonBefore, string AfternoonAfter) {
                 EMPTBLRow rowEMPTBLRow = ((EMPTBLRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         EMPNO,
@@ -533,7 +583,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         AGE,
                         DATE,
                         DEPARTMENT,
-                        REPORT};
+                        REPORT,
+                        Morning,
+                        Midday,
+                        Afternoon,
+                        AfternoonBefore,
+                        AfternoonAfter};
                 rowEMPTBLRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEMPTBLRow);
                 return rowEMPTBLRow;
@@ -563,6 +618,11 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 this.columnDATE = base.Columns["DATE"];
                 this.columnDEPARTMENT = base.Columns["DEPARTMENT"];
                 this.columnREPORT = base.Columns["REPORT"];
+                this.columnMorning = base.Columns["Morning"];
+                this.columnMidday = base.Columns["Midday"];
+                this.columnAfternoon = base.Columns["Afternoon"];
+                this.columnAfternoonBefore = base.Columns["AfternoonBefore"];
+                this.columnAfternoonAfter = base.Columns["AfternoonAfter"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -582,6 +642,16 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 base.Columns.Add(this.columnDEPARTMENT);
                 this.columnREPORT = new global::System.Data.DataColumn("REPORT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnREPORT);
+                this.columnMorning = new global::System.Data.DataColumn("Morning", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMorning);
+                this.columnMidday = new global::System.Data.DataColumn("Midday", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMidday);
+                this.columnAfternoon = new global::System.Data.DataColumn("Afternoon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAfternoon);
+                this.columnAfternoonBefore = new global::System.Data.DataColumn("AfternoonBefore", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAfternoonBefore);
+                this.columnAfternoonAfter = new global::System.Data.DataColumn("AfternoonAfter", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAfternoonAfter);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1989,6 +2059,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             private global::System.Data.DataColumn columnRECOPATIENT;
             
+            private global::System.Data.DataColumn columnLICENSENO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DHPPAGE2DataTable() {
@@ -2152,6 +2224,14 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LICENSENOColumn {
+                get {
+                    return this.columnLICENSENO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2203,7 +2283,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         string RECOCALLIN, 
                         string RECOSENDHOME, 
                         string RECOOTHER, 
-                        string RECOPATIENT) {
+                        string RECOPATIENT, 
+                        string LICENSENO) {
                 DHPPAGE2Row rowDHPPAGE2Row = ((DHPPAGE2Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -2221,7 +2302,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         RECOCALLIN,
                         RECOSENDHOME,
                         RECOOTHER,
-                        RECOPATIENT};
+                        RECOPATIENT,
+                        LICENSENO};
                 rowDHPPAGE2Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDHPPAGE2Row);
                 return rowDHPPAGE2Row;
@@ -2260,6 +2342,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 this.columnRECOSENDHOME = base.Columns["RECOSENDHOME"];
                 this.columnRECOOTHER = base.Columns["RECOOTHER"];
                 this.columnRECOPATIENT = base.Columns["RECOPATIENT"];
+                this.columnLICENSENO = base.Columns["LICENSENO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2297,6 +2380,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 base.Columns.Add(this.columnRECOOTHER);
                 this.columnRECOPATIENT = new global::System.Data.DataColumn("RECOPATIENT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRECOPATIENT);
+                this.columnLICENSENO = new global::System.Data.DataColumn("LICENSENO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLICENSENO);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2551,6 +2636,86 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Morning {
+                get {
+                    try {
+                        return ((string)(this[this.tableEMPTBL.MorningColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Morning\' in table \'EMPTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEMPTBL.MorningColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Midday {
+                get {
+                    try {
+                        return ((string)(this[this.tableEMPTBL.MiddayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Midday\' in table \'EMPTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEMPTBL.MiddayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Afternoon {
+                get {
+                    try {
+                        return ((string)(this[this.tableEMPTBL.AfternoonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Afternoon\' in table \'EMPTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEMPTBL.AfternoonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AfternoonBefore {
+                get {
+                    try {
+                        return ((string)(this[this.tableEMPTBL.AfternoonBeforeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AfternoonBefore\' in table \'EMPTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEMPTBL.AfternoonBeforeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AfternoonAfter {
+                get {
+                    try {
+                        return ((string)(this[this.tableEMPTBL.AfternoonAfterColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AfternoonAfter\' in table \'EMPTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEMPTBL.AfternoonAfterColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEMPNONull() {
                 return this.IsNull(this.tableEMPTBL.EMPNOColumn);
             }
@@ -2631,6 +2796,66 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetREPORTNull() {
                 this[this.tableEMPTBL.REPORTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMorningNull() {
+                return this.IsNull(this.tableEMPTBL.MorningColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMorningNull() {
+                this[this.tableEMPTBL.MorningColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMiddayNull() {
+                return this.IsNull(this.tableEMPTBL.MiddayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMiddayNull() {
+                this[this.tableEMPTBL.MiddayColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAfternoonNull() {
+                return this.IsNull(this.tableEMPTBL.AfternoonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAfternoonNull() {
+                this[this.tableEMPTBL.AfternoonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAfternoonBeforeNull() {
+                return this.IsNull(this.tableEMPTBL.AfternoonBeforeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAfternoonBeforeNull() {
+                this[this.tableEMPTBL.AfternoonBeforeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAfternoonAfterNull() {
+                return this.IsNull(this.tableEMPTBL.AfternoonAfterColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAfternoonAfterNull() {
+                this[this.tableEMPTBL.AfternoonAfterColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4392,6 +4617,22 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LICENSENO {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.LICENSENOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LICENSENO\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.LICENSENOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableDHPPAGE2.IDColumn);
             }
@@ -4580,6 +4821,18 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRECOPATIENTNull() {
                 this[this.tableDHPPAGE2.RECOPATIENTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLICENSENONull() {
+                return this.IsNull(this.tableDHPPAGE2.LICENSENOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLICENSENONull() {
+                this[this.tableDHPPAGE2.LICENSENOColumn] = global::System.Convert.DBNull;
             }
         }
         

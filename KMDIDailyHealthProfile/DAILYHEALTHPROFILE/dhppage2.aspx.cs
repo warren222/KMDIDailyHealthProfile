@@ -223,7 +223,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT from dhppage2 where empno =@empno and dhpid=@dhpid";
+                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT from dhppage2 where empno =@empno and dhpid=@dhpid";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -250,6 +250,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxrecopatient.Text= rd["RECOPATIENT"].ToString();
                                 tboxtimetest.Text= rd["TIMETEST"].ToString();
                                 tboxserialno.Text = rd["SERIALNO"].ToString();
+                                tboxlicense.Text = rd["LICENSENO"].ToString();
                             }
                         }
 
@@ -312,8 +313,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 bool exist = false;
                 string insertstr = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhppage2)" +
                                 " insert into dhppage2" +
-                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,recoendo,recocallin,recosendhome,recoother,recopatient)" +
-                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@timetest,@serialno,@testresult,@patientname,@administeredby,@physician,@recoendo,@recocallin,@recosendhome,@recoother,@patientreco)";
+                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,recoendo,recocallin,recosendhome,recoother,recopatient)" +
+                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@timetest,@serialno,@testresult,@patientname,@administeredby,@physician,@licenseno,@recoendo,@recocallin,@recosendhome,@recoother,@patientreco)";
                 string updatestr = " update dhppage2 set				   " +
                                 " EXPOSURETOVIRUS=@exposuretovirus,	   " +
                                 " DATETESTDONE=@datetestdone,		   " +
@@ -323,6 +324,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 " PATIENTNAME=@patientname,			   " +
                                 " ADMINISTEREDBY=@administeredby,	   " +
                                 " PHYSICIAN=@physician,				   " +
+                                " LICENSENO=@licenseno,				   " +
                                 " recoendo=@recoendo,				   " +
                                 " recocallin=@recocallin,			   " +
                                 " recosendhome=@recosendhome,		   " +
@@ -392,6 +394,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@patientname", tboxpatientname.Text);
             sqlcmd.Parameters.AddWithValue("@administeredby", tboxadministeredby.Text);
             sqlcmd.Parameters.AddWithValue("@physician", tboxphysician.Text);
+            sqlcmd.Parameters.AddWithValue("@licenseno", tboxlicense.Text);
             sqlcmd.Parameters.AddWithValue("@recoendo", tboxrecoendo.Text);
             sqlcmd.Parameters.AddWithValue("@recocallin", tboxrecocallin.Text);
             sqlcmd.Parameters.AddWithValue("@recosendhome", sendhome);

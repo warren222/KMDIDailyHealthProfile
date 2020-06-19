@@ -238,6 +238,8 @@
                 Confirming Physician:<asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Sign here...</asp:LinkButton><br />
                 <asp:Panel ID="pnlphysician" runat="server"></asp:Panel>
                 <asp:TextBox CssClass="form-control" ID="tboxphysician" placeholder="Confirming Physician" runat="server"></asp:TextBox><br />
+                License No.:<br />
+                <asp:TextBox CssClass="form-control" ID="tboxlicense" placeholder="License No" runat="server"></asp:TextBox><br />
                 Test Administered by:<asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Sign here...</asp:LinkButton><br />
                 <asp:Panel ID="pnladministered" runat="server"></asp:Panel>
                 <asp:TextBox CssClass="form-control" ID="tboxadministeredby" placeholder="Test Administered" runat="server"></asp:TextBox>

@@ -22,6 +22,11 @@
               <xs:element name="DATE" msprop:Generator_ColumnVarNameInTable="columnDATE" msprop:Generator_ColumnPropNameInRow="DATE" msprop:Generator_ColumnPropNameInTable="DATEColumn" msprop:Generator_UserColumnName="DATE" type="xs:string" minOccurs="0" />
               <xs:element name="DEPARTMENT" msprop:Generator_ColumnVarNameInTable="columnDEPARTMENT" msprop:Generator_ColumnPropNameInRow="DEPARTMENT" msprop:Generator_ColumnPropNameInTable="DEPARTMENTColumn" msprop:Generator_UserColumnName="DEPARTMENT" type="xs:string" minOccurs="0" />
               <xs:element name="REPORT" msprop:Generator_ColumnVarNameInTable="columnREPORT" msprop:Generator_ColumnPropNameInRow="REPORT" msprop:Generator_ColumnPropNameInTable="REPORTColumn" msprop:Generator_UserColumnName="REPORT" type="xs:string" minOccurs="0" />
+              <xs:element name="Morning" msprop:Generator_ColumnVarNameInTable="columnMorning" msprop:Generator_ColumnPropNameInRow="Morning" msprop:Generator_ColumnPropNameInTable="MorningColumn" msprop:Generator_UserColumnName="Morning" type="xs:string" minOccurs="0" />
+              <xs:element name="Midday" msprop:Generator_ColumnVarNameInTable="columnMidday" msprop:Generator_ColumnPropNameInRow="Midday" msprop:Generator_ColumnPropNameInTable="MiddayColumn" msprop:Generator_UserColumnName="Midday" type="xs:string" minOccurs="0" />
+              <xs:element name="Afternoon" msprop:Generator_ColumnVarNameInTable="columnAfternoon" msprop:Generator_ColumnPropNameInRow="Afternoon" msprop:Generator_ColumnPropNameInTable="AfternoonColumn" msprop:Generator_UserColumnName="Afternoon" type="xs:string" minOccurs="0" />
+              <xs:element name="AfternoonBefore" msprop:Generator_ColumnVarNameInTable="columnAfternoonBefore" msprop:Generator_ColumnPropNameInRow="AfternoonBefore" msprop:Generator_ColumnPropNameInTable="AfternoonBeforeColumn" msprop:Generator_UserColumnName="AfternoonBefore" type="xs:string" minOccurs="0" />
+              <xs:element name="AfternoonAfter" msprop:Generator_ColumnVarNameInTable="columnAfternoonAfter" msprop:Generator_ColumnPropNameInRow="AfternoonAfter" msprop:Generator_ColumnPropNameInTable="AfternoonAfterColumn" msprop:Generator_UserColumnName="AfternoonAfter" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -108,6 +113,7 @@
               <xs:element name="RECOSENDHOME" msprop:Generator_ColumnVarNameInTable="columnRECOSENDHOME" msprop:Generator_ColumnPropNameInRow="RECOSENDHOME" msprop:Generator_ColumnPropNameInTable="RECOSENDHOMEColumn" msprop:Generator_UserColumnName="RECOSENDHOME" type="xs:string" minOccurs="0" />
               <xs:element name="RECOOTHER" msprop:Generator_ColumnVarNameInTable="columnRECOOTHER" msprop:Generator_ColumnPropNameInRow="RECOOTHER" msprop:Generator_ColumnPropNameInTable="RECOOTHERColumn" msprop:Generator_UserColumnName="RECOOTHER" type="xs:string" minOccurs="0" />
               <xs:element name="RECOPATIENT" msprop:Generator_ColumnVarNameInTable="columnRECOPATIENT" msprop:Generator_ColumnPropNameInRow="RECOPATIENT" msprop:Generator_ColumnPropNameInTable="RECOPATIENTColumn" msprop:Generator_UserColumnName="RECOPATIENT" type="xs:string" minOccurs="0" />
+              <xs:element name="LICENSENO" msprop:Generator_ColumnVarNameInTable="columnLICENSENO" msprop:Generator_ColumnPropNameInRow="LICENSENO" msprop:Generator_ColumnPropNameInTable="LICENSENOColumn" msprop:Generator_UserColumnName="LICENSENO" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
