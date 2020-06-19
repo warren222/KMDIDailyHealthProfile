@@ -19,7 +19,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
         SelectCommand="
 
-select * into #tbl from (select empno,rdate from dhrtbl where rdate = case when ISDATE(@RDATE)=1 THEN CAST(@RDATE AS DATE) ELSE @RDATE END) as tbl
+select * into #tbl from (select empno,rdate,id from dhrtbl where rdate = case when ISDATE(@RDATE)=1 THEN CAST(@RDATE AS DATE) ELSE @RDATE END) as tbl
 select 
 SURNAME+', '+FIRSTNAME+' '+MI AS FULLNAME,
 CASE WHEN RDATE IS NOT NULL THEN 'Submitted' else '' end as REPORT,

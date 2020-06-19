@@ -75,7 +75,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.60417in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -317,7 +317,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Morning</Value>
+                              <Value>Morning (upon arrival at work)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -350,7 +350,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Midday</Value>
+                              <Value>Midday (while at work)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -383,7 +383,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Afternoon</Value>
+                              <Value>Afternoon (while at work)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -416,7 +416,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Afternoon Before</Value>
+                              <Value>Afternoon  / Evening (before leaving work)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -449,7 +449,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Afternoon After</Value>
+                              <Value>Afternoon / Evening (after leaving work / at home)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -900,7 +900,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.58208in</Top>
-        <Height>0.5in</Height>
+        <Height>0.85417in</Height>
         <Width>10.5in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -944,7 +944,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>1.08208in</Height>
+    <Height>1.43625in</Height>
     <Style />
   </Body>
   <Width>10.5in</Width>
