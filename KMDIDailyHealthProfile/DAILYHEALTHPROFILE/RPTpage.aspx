@@ -17,7 +17,69 @@
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="SELECT * FROM [ASNWERSHEETtbl] WHERE (([DHPID] = @DHPID) AND ([EMPNO] = @EMPNO))">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="
+        SELECT 
+        [ID]
+      ,[EMPNO]
+      ,[DHPID]
+      ,[DCEX]
+      ,[DCEXno]
+      ,CASE WHEN ISDATE ([DCDO]) = 1 THEN FORMAT(CAST([DCDO] AS DATE),'MMMM dd, yyyy') ELSE [DCDO] END AS [DCDO]
+      ,[DCET]
+      ,[DCRE]
+      ,[FEEX]
+      ,[FEEXno]
+      ,CASE WHEN ISDATE ([FEDO]) = 1 THEN FORMAT(CAST([FEDO] AS DATE),'MMMM dd, yyyy') ELSE [FEDO] END AS [FEDO]
+      ,[FEET]
+      ,[FERE]
+      ,[MPEX]
+      ,[MPEXno]
+      ,CASE WHEN ISDATE ([MPDO]) = 1 THEN FORMAT(CAST([MPDO] AS DATE),'MMMM dd, yyyy') ELSE [MPDO] END AS [MPDO]
+      ,[MPET]
+      ,[MPRE]
+      ,[WEEX]
+      ,[WEEXno]
+      ,CASE WHEN ISDATE ([WEDO]) = 1 THEN FORMAT(CAST([WEDO] AS DATE),'MMMM dd, yyyy') ELSE [WEDO] END AS [WEDO]
+      ,[WEET]
+      ,[WERE]
+      ,[DSEX]
+      ,[DSEXno]
+      ,CASE WHEN ISDATE ([DSDO]) = 1 THEN FORMAT(CAST([DSDO] AS DATE),'MMMM dd, yyyy') ELSE [DSDO] END AS [DSDO]
+      ,[DSET]
+      ,[DSRE]
+      ,[DTEX]
+      ,[DTEXno]
+      ,CASE WHEN ISDATE ([DTDO]) = 1 THEN FORMAT(CAST([DTDO] AS DATE),'MMMM dd, yyyy') ELSE [DTDO] END AS [DTDO]
+      ,[DTET]
+      ,[DTRE]
+      ,[DIEX]
+      ,[DIEXno]
+      ,CASE WHEN ISDATE ([DIDO]) = 1 THEN FORMAT(CAST([DIDO] AS DATE),'MMMM dd, yyyy') ELSE [DIDO] END AS [DIDO]
+      ,[DIET]
+      ,[DIRE]
+      ,[DBEX]
+      ,[DBEXno]
+      ,CASE WHEN ISDATE ([DBDO]) = 1 THEN FORMAT(CAST([DBDO] AS DATE),'MMMM dd, yyyy') ELSE [DBDO] END AS [DBDO]
+      ,[DBET]
+      ,[DBRE]
+      ,[LBEX]
+      ,[LBEXno]
+      ,CASE WHEN ISDATE ([LBDO]) = 1 THEN FORMAT(CAST([LBDO] AS DATE),'MMMM dd, yyyy') ELSE [LBDO] END AS [LBDO]
+      ,[LBET]
+      ,[LBRE]
+      ,[VOEX]
+      ,[VOEXno]
+      ,CASE WHEN ISDATE ([VODO]) = 1 THEN FORMAT(CAST([VODO] AS DATE),'MMMM dd, yyyy') ELSE [VODO] END AS [VODO]
+      ,[VOET]
+      ,[VORE]
+      ,[OSEX]
+      ,[OSEXno]
+      ,CASE WHEN ISDATE ([OSDO]) = 1 THEN FORMAT(CAST([OSDO] AS DATE),'MMMM dd, yyyy') ELSE [OSDO] END AS [OSDO]
+      ,[OSET]
+      ,[OSRE]
+      ,[OS]
+      ,[COMMENT]
+         FROM [ASNWERSHEETtbl] WHERE (([DHPID] = @DHPID) AND ([EMPNO] = @EMPNO))">
         <SelectParameters>
             <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
             <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
@@ -31,6 +93,8 @@ DEPARTMENT,
 POSCODE,
 EMPNO,
 BIRTHDAY,
+GENDER,
+ADDRESS,
 surname+', '+firstname+' '+mi as FULLNAME,
 CAST(DATEDIFF(DD,CAST(BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE FROM [EMPTBL] as a WHERE ([EMPNO] = @EMPNO)">
         <SelectParameters>
@@ -47,7 +111,7 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
   STUFF((SELECT ', '+FULLNAME
       
   FROM PERSONSINTERACT WHERE [EMPNO] = @EMPNO AND [DHPID]=@DHPID FOR XML PATH('')),1,2,'') AS PERSONINTERACT,
-     (SELECT [DATETESTDONE] FROM DHPPAGE2 WHERE [EMPNO] = @EMPNO AND [DHPID]=@DHPID ) AS DATETESTDONE,
+     (SELECT CASE WHEN ISDATE([DATETESTDONE])=1 THEN FORMAT(CAST(DATETESTDONE AS DATE),'MMMM dd, yyyy') ELSE DATETESTDONE END FROM DHPPAGE2 WHERE [EMPNO] = @EMPNO AND [DHPID]=@DHPID ) AS DATETESTDONE,
           (SELECT [SERIALNO] FROM DHPPAGE2 WHERE [EMPNO] = @EMPNO AND [DHPID]=@DHPID ) AS [SERIALNO]
   FROM [emptbl] where empno = @EMPNO">
 

@@ -26,7 +26,7 @@
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Left>0.01036cm</Left>
         <Height>0.67938cm</Height>
-        <Width>8.08271cm</Width>
+        <Width>13.87872cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1989,7 +1989,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RAPID TEST RESUTS</Value>
+                <Value>RAPID TEST RESULTS</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontSize>8pt</FontSize>
@@ -2061,7 +2061,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>gM POSITIVE</Value>
+                <Value>IgM POSITIVE</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontSize>8pt</FontSize>
@@ -2347,7 +2347,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>gM POSITIVE</Value>
+                <Value>POSITIVE</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontSize>8pt</FontSize>
@@ -2383,7 +2383,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>IgG POSITIVE</Value>
+                <Value>PENDING</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontSize>8pt</FontSize>
@@ -2619,21 +2619,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox54">
+                    <Textbox Name="ADDRESS">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!ADDRESS.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox54</rd:DefaultName>
+                      <rd:DefaultName>ADDRESS</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -2824,14 +2824,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox44">
+                    <Textbox Name="GENDER">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!GENDER.Value</Value>
                               <Style>
                                 <FontStyle>Normal</FontStyle>
                                 <FontWeight>Bold</FontWeight>
@@ -2843,7 +2843,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox44</rd:DefaultName>
+                      <rd:DefaultName>GENDER</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -3272,7 +3272,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=iif(First(Fields!TESTRESULT.Value, "DataSet4") Like "*IgM Negative*", Chr(254), iif(First(Fields!TESTRESULT.Value, "DataSet4") Like "*IgG Negative*", Chr(254), Chr(168)))</Value>
+                <Value>=iif(First(Fields!TESTRESULT.Value, "DataSet4") Like "*IgM Negative*" and First(Fields!TESTRESULT.Value, "DataSet4") Like "*IgG Negative*", Chr(254), Chr(168))</Value>
                 <Style>
                   <FontFamily>Wingdings</FontFamily>
                   <FontSize>18pt</FontSize>
@@ -3870,7 +3870,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Microsoft.VisualBasic.Strings.Chr(168)</Value>
+                    <Value>=iif(First(Fields!RECOSENDHOME.Value, "DataSet4") = "",  Chr(168), Chr(254))</Value>
                     <Style>
                       <FontFamily>Wingdings</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -3917,7 +3917,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox64</rd:DefaultName>
-            <Top>0.30625in</Top>
+            <Top>0.05625in</Top>
             <Left>3.92853in</Left>
             <Height>0.20417in</Height>
             <Width>3.63972in</Width>
@@ -3939,7 +3939,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Microsoft.VisualBasic.Strings.Chr(168)</Value>
+                    <Value>=iif(First(Fields!RECOENDO.Value, "DataSet4") = "",  Chr(168), Chr(254))</Value>
                     <Style>
                       <FontFamily>Wingdings</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -3950,7 +3950,6 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>0.24375in</Top>
             <Left>3.64033in</Left>
             <Height>0.26667in</Height>
             <Width>0.26042in</Width>
@@ -3991,6 +3990,75 @@
             <Height>0.2118in</Height>
             <Width>1.30208in</Width>
             <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox84">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>ENDORSE HOSPITAL</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox64</rd:DefaultName>
+            <Top>0.34589in</Top>
+            <Left>3.92267in</Left>
+            <Height>0.20417in</Height>
+            <Width>3.63972in</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox54">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=iif(First(Fields!RECOCALLIN.Value, "DataSet4") = "",  Chr(168), Chr(254))</Value>
+                    <Style>
+                      <FontFamily>Wingdings</FontFamily>
+                      <FontSize>18pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox10</rd:DefaultName>
+            <Top>0.74611cm</Top>
+            <Left>3.63447in</Left>
+            <Height>0.26667in</Height>
+            <Width>0.26042in</Width>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4276,6 +4344,38 @@
           <DataField>DEPARTMENT</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="REPORT">
+          <DataField>REPORT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Morning">
+          <DataField>Morning</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Midday">
+          <DataField>Midday</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Afternoon">
+          <DataField>Afternoon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AfternoonBefore">
+          <DataField>AfternoonBefore</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AfternoonAfter">
+          <DataField>AfternoonAfter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GENDER">
+          <DataField>GENDER</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ADDRESS">
+          <DataField>ADDRESS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
@@ -4368,8 +4468,8 @@
           <DataField>PHYSICIAN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="RECONDO">
-          <DataField>RECONDO</DataField>
+        <Field Name="RECOENDO">
+          <DataField>RECOENDO</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RECOCALLIN">
