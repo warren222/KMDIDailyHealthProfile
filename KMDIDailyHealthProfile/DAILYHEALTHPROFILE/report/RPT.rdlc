@@ -3917,7 +3917,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox64</rd:DefaultName>
-            <Top>0.05625in</Top>
+            <Top>0.35625in</Top>
             <Left>3.92853in</Left>
             <Height>0.20417in</Height>
             <Width>3.63972in</Width>
@@ -3950,6 +3950,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
+            <Top>0.3in</Top>
             <Left>3.64033in</Left>
             <Height>0.26667in</Height>
             <Width>0.26042in</Width>
@@ -4007,7 +4008,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>ENDORSE HOSPITAL</Value>
+                    <Value>ENDORSE TO HOSPITAL</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>8pt</FontSize>
@@ -4021,8 +4022,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox64</rd:DefaultName>
-            <Top>0.34589in</Top>
-            <Left>3.92267in</Left>
+            <Top>0.05909in</Top>
+            <Left>3.92853in</Left>
             <Height>0.20417in</Height>
             <Width>3.63972in</Width>
             <ZIndex>5</ZIndex>
@@ -4054,8 +4055,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>0.74611cm</Top>
-            <Left>3.63447in</Left>
+            <Top>0.01763cm</Top>
+            <Left>3.64033in</Left>
             <Height>0.26667in</Height>
             <Width>0.26042in</Width>
             <ZIndex>6</ZIndex>
