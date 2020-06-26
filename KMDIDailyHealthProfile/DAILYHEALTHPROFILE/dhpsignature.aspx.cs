@@ -62,7 +62,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
-            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered" || pagesender == "page2_clientsreco")
+            if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered" || pagesender == "page2_clientsreco" || pagesender== "reportpage")
             {
                 senderbutton(pagesender);
             }
@@ -77,7 +77,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             string filepath = "";
 
-            if(senderpage == "page2_physician")
+            if(senderpage == "page2_physician" || pagesender == "reportpage")
             {
                 filepath = "~/Uploads/DHPuploads/page2/signature/physician/" + empno + dhpid + "/";
             }
@@ -112,6 +112,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }
+            else if (pagesender == "reportpage")
+            {
+                Response.Redirect("~/DAILYHEALTHPROFILE/RPTpage.aspx");
+            }
             else if (pagesender == "page3")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage3.aspx");
@@ -123,6 +127,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
             if (pagesender == "page2_patient" || pagesender == "page2_physician" || pagesender == "page2_administered" || pagesender == "page2_clientsreco")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
+            }
+            else if (pagesender == "reportpage")
+            {
+                Response.Redirect("~/DAILYHEALTHPROFILE/RPTpage.aspx");
             }
             else if (pagesender == "page3")
             {

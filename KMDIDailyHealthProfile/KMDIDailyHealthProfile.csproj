@@ -285,6 +285,13 @@
     <Compile Include="DAILYHEALTHPROFILE\RPTpage.aspx.designer.cs">
       <DependentUpon>RPTpage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\thirdparty\PRTreportthird.aspx.cs">
+      <DependentUpon>PRTreportthird.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\thirdparty\PRTreportthird.aspx.designer.cs">
+      <DependentUpon>PRTreportthird.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -309,6 +316,7 @@
     <Content Include="DAILYHEALTHPROFILE\dhpsignature.aspx" />
     <Content Include="DAILYHEALTHPROFILE\RPTpage.aspx" />
     <Content Include="DAILYHEALTHPROFILE\scripts\sign.js" />
+    <Content Include="DAILYHEALTHPROFILE\thirdparty\PRTreportthird.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
