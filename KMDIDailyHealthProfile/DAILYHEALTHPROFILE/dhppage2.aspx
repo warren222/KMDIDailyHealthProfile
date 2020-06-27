@@ -56,7 +56,7 @@
     <asp:ValidationSummary ID="ValidationSummary4" CssClass="alert alert-danger" ValidationGroup="mainval" runat="server" />
     <h4>(To be used when a sudden feeling/sensation or symptom is exhibited during working hours – before and during isolation as the case may be)</h4>
     <h3><strong>CONCISE CLINICAL HISTORY</strong></h3>
-    <strong>Travel History/Record:</strong>&nbsp;<label class="text-success">(please indicate previous day’s sequence of movement)</label>
+  <%--  <strong>Travel History/Record:</strong>&nbsp;<label class="text-success">(please indicate previous day’s sequence of movement)</label>
     <br />
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
@@ -131,7 +131,7 @@
                     <asp:Label ID="lbltravelsummary" runat="server"></asp:Label></h4>
             </div>
         </ContentTemplate>
-    </asp:UpdatePanel>
+    </asp:UpdatePanel>--%>
     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
         <ContentTemplate>
             <h3><strong class="text-info">Mga taong nakasama/nakasalamuha</strong></h3>
@@ -260,6 +260,16 @@
             </blockquote>
         </div>
     </asp:Panel>
+
+       <div class="text-center">
+            <strong>NOTE/OBSERVATIONS</strong>
+            <br />
+            <small class="text-info">(Nurse’s comments)</small><br />
+            <asp:TextBox ID="tboxCOM" runat="server" TextMode="MultiLine" Rows="10" CssClass="form-control"></asp:TextBox>
+
+        </div>
+        <br />
+
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="val2" CssClass="alert alert-success" runat="server" />
@@ -268,5 +278,6 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
+    
 
 </asp:Content>

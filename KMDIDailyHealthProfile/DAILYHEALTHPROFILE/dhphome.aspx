@@ -128,7 +128,7 @@
                                 <br />
                                 <small class="text-info">(Nurse’s comments)</small><br />
                                 <blockquote>
-                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("COMMENT") %>'></asp:Label>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("COMMENTP2") %>'></asp:Label>
                                 </blockquote>
                             </div>
                         </div>
