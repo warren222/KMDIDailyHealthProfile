@@ -1078,7 +1078,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhptravelhistory)" +
                     "declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
-                    " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)";
+                    " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)"+
+                      " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
+                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) "+
+                      " values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@sorting,@travelhistory)";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -1088,6 +1091,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         sqlcmd.Parameters.AddWithValue("@travelhistory", travelhistory);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -1201,7 +1205,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " delete from dhptravelhistory where id = @id";
+                string str = " delete from dhptravelhistory where id = @id"+
+                              " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
+                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED) " +
+                      " values(@idpp,@id,@empno,@dhpid,'Delete',@editedby,getdate())";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -1209,6 +1216,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcon.Open();
                         DataTable tb = new DataTable();
                         sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -1232,7 +1242,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id";
+                string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id"+
+                       " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
+                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) " +
+                      " values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@sorting,@travelhistory)";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -1242,6 +1255,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@sorting", sorting);
                         sqlcmd.Parameters.AddWithValue("@travelhistory", travelhistory);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }

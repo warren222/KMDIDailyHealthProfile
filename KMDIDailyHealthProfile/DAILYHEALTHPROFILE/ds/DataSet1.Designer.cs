@@ -2089,6 +2089,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             private global::System.Data.DataColumn columnLICENSENO;
             
+            private global::System.Data.DataColumn columnRECOFITTOWORK;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DHPPAGE2DataTable() {
@@ -2260,6 +2262,14 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RECOFITTOWORKColumn {
+                get {
+                    return this.columnRECOFITTOWORK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2312,7 +2322,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         string RECOSENDHOME, 
                         string RECOOTHER, 
                         string RECOPATIENT, 
-                        string LICENSENO) {
+                        string LICENSENO, 
+                        string RECOFITTOWORK) {
                 DHPPAGE2Row rowDHPPAGE2Row = ((DHPPAGE2Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -2331,7 +2342,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         RECOSENDHOME,
                         RECOOTHER,
                         RECOPATIENT,
-                        LICENSENO};
+                        LICENSENO,
+                        RECOFITTOWORK};
                 rowDHPPAGE2Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDHPPAGE2Row);
                 return rowDHPPAGE2Row;
@@ -2371,6 +2383,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 this.columnRECOOTHER = base.Columns["RECOOTHER"];
                 this.columnRECOPATIENT = base.Columns["RECOPATIENT"];
                 this.columnLICENSENO = base.Columns["LICENSENO"];
+                this.columnRECOFITTOWORK = base.Columns["RECOFITTOWORK"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2410,6 +2423,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 base.Columns.Add(this.columnRECOPATIENT);
                 this.columnLICENSENO = new global::System.Data.DataColumn("LICENSENO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLICENSENO);
+                this.columnRECOFITTOWORK = new global::System.Data.DataColumn("RECOFITTOWORK", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRECOFITTOWORK);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4717,6 +4732,22 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RECOFITTOWORK {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.RECOFITTOWORKColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RECOFITTOWORK\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.RECOFITTOWORKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableDHPPAGE2.IDColumn);
             }
@@ -4917,6 +4948,18 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLICENSENONull() {
                 this[this.tableDHPPAGE2.LICENSENOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRECOFITTOWORKNull() {
+                return this.IsNull(this.tableDHPPAGE2.RECOFITTOWORKColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRECOFITTOWORKNull() {
+                this[this.tableDHPPAGE2.RECOFITTOWORKColumn] = global::System.Convert.DBNull;
             }
         }
         

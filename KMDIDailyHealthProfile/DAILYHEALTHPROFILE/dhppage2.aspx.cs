@@ -223,7 +223,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT,COMMENT from dhppage2 where empno =@empno and dhpid=@dhpid";
+                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT,COMMENT,RECOFITTOWORK from dhppage2 where empno =@empno and dhpid=@dhpid";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -233,6 +233,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         string testresult = "";
                         string sendhome = "";
+                        string fittowork = "";
                         using (SqlDataReader rd = sqlcmd.ExecuteReader())
                         {
                             while (rd.Read())
@@ -252,6 +253,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxserialno.Text = rd["SERIALNO"].ToString();
                                 tboxlicense.Text = rd["LICENSENO"].ToString();
                                 tboxCOM.Text = rd["COMMENT"].ToString();
+                                fittowork = rd["RECOFITTOWORK"].ToString();
                             }
                         }
 
@@ -274,6 +276,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         if (sendhome != "")
                         {
                             cboxrecosendhome.Checked = true;
+                        }
+                        if (fittowork != "")
+                        {
+                            cboxrecofittowork.Checked = true;
                         }
                         if (tboxrecoother.Text != "")
                         {
@@ -309,13 +315,21 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 {
                     sendhome = "Send home";
                 }
+
+
+                string f="";
+                if (cboxrecofittowork.Checked)
+                {
+                    f = "fit to work";
+                }
+             
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string find = "select * from dhppage2 where empno=@empno and dhpid=@dhpid";
                 bool exist = false;
                 string insertstr = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhppage2)" +
                                 " insert into dhppage2" +
-                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,recoendo,recocallin,recosendhome,recoother,recopatient,comment)" +
-                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@timetest,@serialno,@testresult,@patientname,@administeredby,@physician,@licenseno,@recoendo,@recocallin,@recosendhome,@recoother,@patientreco,@comment)";
+                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,recoendo,recocallin,recosendhome,recoother,recopatient,comment,RECOFITTOWORK)" +
+                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@timetest,@serialno,@testresult,@patientname,@administeredby,@physician,@licenseno,@recoendo,@recocallin,@recosendhome,@recoother,@patientreco,@comment,@fittowork)";
                 string updatestr = " update dhppage2 set				   " +
                                 " EXPOSURETOVIRUS=@exposuretovirus,	   " +
                                 " DATETESTDONE=@datetestdone,		   " +
@@ -331,6 +345,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 " recosendhome=@recosendhome,		   " +
                                 " recoother=@recoother,				   " +
                                 " recopatient=@patientreco,				   " +
+                                " RECOFITTOWORK=@fittowork,				   " +
                                  " comment=@comment				   " +
                                 " where EMPNO=@empno and DHPID=@dhpid  ";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
@@ -359,14 +374,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(updatestr, sqlcon))
                         {
-                            setparam(sqlcmd, testresult, sendhome);
+                            setparam(sqlcmd, testresult, sendhome, f);
                         }
                     }
                     else
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(insertstr, sqlcon))
                         {
-                            setparam(sqlcmd, testresult, sendhome);
+                            setparam(sqlcmd, testresult, sendhome, f);
                         }
                     }
                 }
@@ -384,7 +399,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Page.Validators.Add(err);
             }
         }
-        private void setparam(SqlCommand sqlcmd, string testresult, string sendhome)
+        private void setparam(SqlCommand sqlcmd, string testresult, string sendhome, string fittowork)
         {
             sqlcmd.Parameters.AddWithValue("@empno", empno);
             sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
@@ -403,6 +418,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@recoother", tboxrecoother.Text);
             sqlcmd.Parameters.AddWithValue("@patientreco", tboxrecopatient.Text);
             sqlcmd.Parameters.AddWithValue("@comment", tboxCOM.Text);
+            sqlcmd.Parameters.AddWithValue("@fittowork", fittowork);
             sqlcmd.ExecuteNonQuery();
         }
 

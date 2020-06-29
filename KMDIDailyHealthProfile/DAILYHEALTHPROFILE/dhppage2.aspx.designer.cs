@@ -337,6 +337,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.Panel pnl4;
         
         /// <summary>
+        /// cboxrecofittowork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cboxrecofittowork;
+        
+        /// <summary>
         /// cboxrecoendo control.
         /// </summary>
         /// <remarks>

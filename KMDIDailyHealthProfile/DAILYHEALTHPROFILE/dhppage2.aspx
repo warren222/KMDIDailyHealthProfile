@@ -250,6 +250,7 @@
     <asp:Panel ID="pnl4" runat="server">
         <div class="container">
             <blockquote>
+                <asp:CheckBox ID="cboxrecofittowork" Text="FIT TO WORK" runat="server" /><br />
                 <asp:CheckBox ID="cboxrecoendo" Text="Endorse to respective LGU : " runat="server" /><asp:TextBox ID="tboxrecoendo" CssClass="form-control" runat="server"></asp:TextBox><br />
                 <asp:CheckBox ID="cboxrecocallin" Text="Call in for medical Attention and / or endorsement to hospital specify:" runat="server" /><asp:TextBox ID="tboxrecocallin" CssClass="form-control" runat="server"></asp:TextBox><br />
                 <asp:CheckBox ID="cboxrecosendhome" Text="Send home" runat="server" /><br />

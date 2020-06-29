@@ -142,6 +142,7 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
       ,[RECOSENDHOME]
       ,[RECOOTHER]
       ,[RECOPATIENT]
+      ,[RECOFITTOWORK]
   FROM [DHPPAGE2] where empno = @EMPNO and DHPID=@DHPID">
 
         <SelectParameters>
@@ -161,5 +162,5 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
 
     </rsweb:ReportViewer>
     <br />
-    <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Physician signature</asp:LinkButton>
+    <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click" Visible="False"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Physician signature</asp:LinkButton>
 </asp:Content>
