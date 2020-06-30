@@ -1049,14 +1049,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView3.DataSource = tb;
                         GridView3.DataBind();
-                        if (acct == "Admin")
-                        {
-                            GridView3.Columns[0].Visible = true;
-                        }
-                        else
-                        {
-                            GridView3.Columns[0].Visible = false;
-                        }
+                      
 
                     }
                 }

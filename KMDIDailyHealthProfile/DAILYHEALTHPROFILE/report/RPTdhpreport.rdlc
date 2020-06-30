@@ -58,24 +58,21 @@
               <Width>0.54167in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01042in</Width>
+              <Width>1.22917in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01042in</Width>
+              <Width>1.3125in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.28125in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01042in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.06249in</Width>
+              <Width>1.25in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.60417in</Height>
+              <Height>0.30209in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -317,7 +314,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Morning (upon arrival at work)</Value>
+                              <Value>Upon arrival at work</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -350,7 +347,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Midday (while at work)</Value>
+                              <Value>While at work</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -383,7 +380,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Afternoon (while at work)</Value>
+                              <Value>Before leaving work</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -416,7 +413,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Afternoon  / Evening (before leaving work)</Value>
+                              <Value>Outside of work</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -427,39 +424,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox9">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Afternoon / Evening (after leaving work / at home)</Value>
-                              <Style>
-                                <FontSize>8pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -705,14 +669,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Morning">
+                    <Textbox Name="Upon">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Morning.Value</Value>
+                              <Value>=Fields!Upon.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -721,7 +685,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Morning</rd:DefaultName>
+                      <rd:DefaultName>Upon</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -738,14 +702,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Midday">
+                    <Textbox Name="While">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Midday.Value</Value>
+                              <Value>=Fields!While.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -754,7 +718,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Midday</rd:DefaultName>
+                      <rd:DefaultName>While</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -771,14 +735,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Afternoon">
+                    <Textbox Name="Before">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Afternoon.Value</Value>
+                              <Value>=Fields!Before.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -787,7 +751,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Afternoon</rd:DefaultName>
+                      <rd:DefaultName>Before</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -804,14 +768,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="AfternoonBefore">
+                    <Textbox Name="Outside">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!AfternoonBefore.Value</Value>
+                              <Value>=Fields!Outside.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
                               </Style>
@@ -820,40 +784,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>AfternoonBefore</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>=iif(Fields!REPORT.Value="Submitted","LightGrey","Transparent")</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="AfternoonAfter">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!AfternoonAfter.Value</Value>
-                              <Style>
-                                <FontSize>6pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>AfternoonAfter</rd:DefaultName>
+                      <rd:DefaultName>Outside</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -885,7 +816,6 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -900,8 +830,8 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.58208in</Top>
-        <Height>0.85417in</Height>
-        <Width>10.5in</Width>
+        <Height>0.55209in</Height>
+        <Width>10.4792in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -944,10 +874,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>1.43625in</Height>
+    <Height>1.13417in</Height>
     <Style />
   </Body>
-  <Width>10.5in</Width>
+  <Width>10.48961in</Width>
   <Page>
     <PageHeight>8.5in</PageHeight>
     <PageWidth>11in</PageWidth>
@@ -1003,24 +933,28 @@
           <DataField>REPORT</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Morning">
-          <DataField>Morning</DataField>
+        <Field Name="Upon">
+          <DataField>Upon</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Midday">
-          <DataField>Midday</DataField>
+        <Field Name="While">
+          <DataField>While</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Afternoon">
-          <DataField>Afternoon</DataField>
+        <Field Name="Before">
+          <DataField>Before</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="AfternoonBefore">
-          <DataField>AfternoonBefore</DataField>
+        <Field Name="Outside">
+          <DataField>Outside</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="AfternoonAfter">
-          <DataField>AfternoonAfter</DataField>
+        <Field Name="GENDER">
+          <DataField>GENDER</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ADDRESS">
+          <DataField>ADDRESS</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

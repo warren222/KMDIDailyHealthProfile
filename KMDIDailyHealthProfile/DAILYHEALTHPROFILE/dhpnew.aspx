@@ -65,11 +65,10 @@
                             </td>
                             <td>
                                 <asp:DropDownList ID="cboxaddontimeofday" CssClass="form-control" runat="server">
-                                    <asp:ListItem Value="Morning (upon arrival at work)">Morning (upon arrival at work)</asp:ListItem>
-                                    <asp:ListItem Value="Midday (while at work)">Midday (while at work)</asp:ListItem>
-                                    <asp:ListItem Value="Afternoon (while at work)">Afternoon (while at work)</asp:ListItem>
-                                    <asp:ListItem Value="Afternoon / Evening (before leaving work)">Afternoon / Evening (before leaving work)</asp:ListItem>
-                                    <asp:ListItem Value="Afternoon / Evening (after leaving work / at home)">Afternoon / Evening (after leaving work / at home)</asp:ListItem>
+                                    <asp:ListItem Value="Upon arrival at work"></asp:ListItem>
+                                    <asp:ListItem Value="While at work"></asp:ListItem>
+                                    <asp:ListItem Value="Before leaving work"></asp:ListItem>
+                                    <asp:ListItem Value="Outside of work"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -121,11 +120,10 @@
                                     <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                     <asp:Label ID="lbltimeofday" runat="server" Text='<%# Bind("TIMEOFDAY") %>'></asp:Label>
                                     <asp:DropDownList ID="cboxeditaddontimeofday" Width="300" Visible="false" Text='<%# Bind("TIMEOFDAY") %>' CssClass="form-control" runat="server">
-                                        <asp:ListItem Value="Morning (upon arrival at work)">Morning (upon arrival at work)</asp:ListItem>
-                                        <asp:ListItem Value="Midday (while at work)">Midday (while at work)</asp:ListItem>
-                                        <asp:ListItem Value="Afternoon (while at work)">Afternoon (while at work)</asp:ListItem>
-                                        <asp:ListItem Value="Afternoon / Evening (before leaving work)">Afternoon / Evening (before leaving work)</asp:ListItem>
-                                        <asp:ListItem Value="Afternoon / Evening (after leaving work / at home)">Afternoon / Evening (after leaving work / at home)</asp:ListItem>
+                                      <asp:ListItem Value="Upon arrival at work"></asp:ListItem>
+                                        <asp:ListItem Value="While at work"></asp:ListItem>
+                                        <asp:ListItem Value="Before leaving work"></asp:ListItem>
+                                        <asp:ListItem Value="Outside of work"></asp:ListItem>
                                     </asp:DropDownList>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -194,7 +192,7 @@
                         </div>
                         <br />
                         <div class="input-group">
-                            <div class="input-group-addon">Others</div>
+                            <div class="input-group-addon">Name of place</div>
                             <asp:TextBox ID="tboxother" CssClass="form-control" runat="server"></asp:TextBox>
                             <div class="input-group-btn">
                                 <asp:LinkButton ID="LinkButton5" CssClass="btn btn-default" runat="server" OnClick="LinkButton5_Click">add</asp:LinkButton>

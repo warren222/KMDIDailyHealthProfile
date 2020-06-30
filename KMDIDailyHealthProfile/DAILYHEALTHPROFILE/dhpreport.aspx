@@ -28,11 +28,10 @@ A.EMPNO,
 BIRTHDAY,
 CAST(DATEDIFF(DD,CAST(BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE,
 DEPARTMENT,  
-stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Morning (upon arrival at work)' for xml path('')),1,2,('')) as [Morning],
-stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Midday (while at work)' for xml path('')),1,2,('')) as [Midday],
-stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Afternoon (while at work)' for xml path('')),1,2,('')) as [Afternoon],
-stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Afternoon / Evening (before leaving work)' for xml path('')),1,2,('')) as [AfternoonBefore],
-stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Afternoon / Evening (after leaving work / at home)' for xml path('')),1,2,('')) as [AfternoonAfter]
+stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Upon arrival at work' for xml path('')),1,2,('')) as [Upon],
+stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='While at work' for xml path('')),1,2,('')) as [While],
+stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Before leaving work' for xml path('')),1,2,('')) as [Before],
+stuff((select ', '+format(cast([ACTUALTIMETAKEN] as datetime),'hh:mm tt')+' / '+cast([TEMPREADING] as varchar(20)) from [DHP_bodytemp] where empno = a.empno and DHPID=b.ID and [TIMEOFDAY]='Outside of work' for xml path('')),1,2,('')) as [Outside]
  from emptbl as a
 left join 
 #tbl as b
