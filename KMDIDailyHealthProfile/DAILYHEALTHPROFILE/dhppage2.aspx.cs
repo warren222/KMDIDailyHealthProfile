@@ -41,6 +41,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     {
                         tboxpatientname.Text= Session["dhpname"].ToString();
                     }
+                    if (tboxrecopatient.Text == "")
+                    {
+                        tboxrecopatient.Text= Session["dhpname"].ToString();
+                    }
                     if (tboxphysician.Text == "")
                     {
                         tboxphysician.Text = "Dra. Chiaoling Sua-Lao";
