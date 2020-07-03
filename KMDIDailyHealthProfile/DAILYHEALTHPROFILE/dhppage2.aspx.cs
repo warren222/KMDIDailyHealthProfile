@@ -31,10 +31,24 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblempno.Text = Session["dhpempno"].ToString();
                     lblage.Text = Session["dhpage"].ToString();
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
+                  
                     getdata();
                     //gettravelhistory();
                     getpersoninteract();
                     access();
+
+                    if (tboxpatientname.Text == "")
+                    {
+                        tboxpatientname.Text= Session["dhpname"].ToString();
+                    }
+                    if (tboxphysician.Text == "")
+                    {
+                        tboxphysician.Text = "Dra. Chiaoling Sua-Lao";
+                    }
+                    if (tboxlicense.Text == "")
+                    {
+                        tboxlicense.Text = "0072107";
+                    }
                 }
 
             }

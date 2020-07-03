@@ -10,11 +10,14 @@
 
 
         <div class="well">
-            <h3><strong>Daily Health Profile</strong>   <small>
-                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">new</asp:LinkButton></small></h3>
+            <h3><strong>Daily Health Profile </strong></h3>
 
             <br />
             <div class="row">
+                <div class="col-sm-6">
+                    <asp:LinkButton ID="LinkButton1" Width="100%" CssClass="btn btn-default" Font-Size="XX-Large" runat="server" OnClick="LinkButton1_Click"><h1>Add New Record</h1></asp:LinkButton>
+                    <br />
+                </div>
                 <div class="col-sm-6">
                     <div class="input-group">
                         <div class="input-group-addon">DATE</div>
@@ -23,9 +26,7 @@
                             <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-print"></span></asp:LinkButton>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-
+                    <br />
                     <div class="input-group">
                         <div class="input-group-addon">
                             <asp:CheckBox ID="cboxstatus" runat="server" />
@@ -106,15 +107,15 @@
                                 </table>
 
                                 <asp:LinkButton ID="LinkButton4" CommandName="page1" CssClass='<%# Eval("page1").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 1</asp:LinkButton>
-                                <asp:LinkButton ID="LinkButton5" CommandName="page2" 
-                                     Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
+                                <asp:LinkButton ID="LinkButton5" CommandName="page2"
+                                    Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
                                     CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 2</asp:LinkButton>
-                                <asp:LinkButton ID="LinkButton6" CommandName="page3" 
-                                     Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
+                                <asp:LinkButton ID="LinkButton6" CommandName="page3"
+                                    Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
                                     CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 3</asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton7" CommandName="myreport"
-                                     Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
-                                     CssClass="btn btn-success"
+                                    Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
+                                    CssClass="btn btn-success"
                                     runat="server">Report</asp:LinkButton>
                                 <br />
 

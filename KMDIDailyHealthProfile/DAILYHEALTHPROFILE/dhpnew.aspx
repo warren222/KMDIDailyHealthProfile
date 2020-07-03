@@ -120,7 +120,7 @@
                                     <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
                                     <asp:Label ID="lbltimeofday" runat="server" Text='<%# Bind("TIMEOFDAY") %>'></asp:Label>
                                     <asp:DropDownList ID="cboxeditaddontimeofday" Width="300" Visible="false" Text='<%# Bind("TIMEOFDAY") %>' CssClass="form-control" runat="server">
-                                      <asp:ListItem Value="Upon arrival at work"></asp:ListItem>
+                                        <asp:ListItem Value="Upon arrival at work"></asp:ListItem>
                                         <asp:ListItem Value="While at work"></asp:ListItem>
                                         <asp:ListItem Value="Before leaving work"></asp:ListItem>
                                         <asp:ListItem Value="Outside of work"></asp:ListItem>
@@ -179,6 +179,7 @@
                                 <asp:ListItem Value="home">home</asp:ListItem>
                                 <asp:ListItem Value="school">school</asp:ListItem>
                                 <asp:ListItem Value="work">work</asp:ListItem>
+                                <asp:ListItem Value="bank">bank</asp:ListItem>
                                 <asp:ListItem Value="drugstore">drugstore</asp:ListItem>
                                 <asp:ListItem Value="hospital / clinic">hospital / clinic</asp:ListItem>
                                 <asp:ListItem Value="wet market">wet market</asp:ListItem>
