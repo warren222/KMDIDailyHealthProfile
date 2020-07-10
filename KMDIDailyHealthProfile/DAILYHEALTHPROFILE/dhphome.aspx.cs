@@ -105,7 +105,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 errorrmessage(ex.Message.ToString());
             }
-        }
+        } 
 
         private void errorrmessage(string message)
         {

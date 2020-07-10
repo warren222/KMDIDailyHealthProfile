@@ -54,7 +54,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
                         ReportViewer1.LocalReport.SetParameters(param1);
 
                     }
-
+         
                 }
 
             }
