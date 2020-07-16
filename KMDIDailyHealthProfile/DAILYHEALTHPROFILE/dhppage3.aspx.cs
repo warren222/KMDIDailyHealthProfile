@@ -717,5 +717,17 @@ namespace webaftersales.DAILYHEALTHPROFILE
             GridView2.PageIndex = e.NewPageIndex;
             getdatatb2();
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            if (Session["pagesender"].ToString() == "dhphome")
+            {
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhphome.aspx");
+            }
+            else if (Session["pagesender"].ToString() == "reportgen")
+            {
+                Response.Redirect("~/DAILYHEALTHPROFILE/reportgen.aspx");
+            }
+        }
     }
 }

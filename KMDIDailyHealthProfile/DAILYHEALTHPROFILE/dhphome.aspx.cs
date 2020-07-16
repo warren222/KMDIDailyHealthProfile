@@ -185,6 +185,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 setsession(row);
+                Session["pagesender"] = "dhphome";
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhpnew.aspx");
             }
             if (e.CommandName == "page2")
@@ -192,6 +193,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 setsession(row);
+                Session["pagesender"] = "dhphome";
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
             }
             if (e.CommandName == "page3")
@@ -199,6 +201,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView1.Rows[rowindex];
                 setsession(row);
+                Session["pagesender"] = "dhphome";
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhppage3.aspx");
             }
             if (e.CommandName == "myreport")

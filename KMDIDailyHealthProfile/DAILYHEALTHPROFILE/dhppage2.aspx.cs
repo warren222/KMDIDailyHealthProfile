@@ -20,6 +20,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
             if (Session["dhp_USERNAME"] != null)
             {
+            
                 signaturephoto();
                 testresultphotos();
                 loadimages();
@@ -460,7 +461,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     if (fileExtension == ".jpg" || fileExtension == ".png" || fileExtension == ".jpeg" || fileExtension == ".gif")
                     {
                         double filesize = thefile.ContentLength;
-                        if (filesize < 4194304.00)
+                        if (filesize < 29360128.00)
                         {
                             thefile.SaveAs(Server.MapPath(filepath3 + empno + dhpid + "/" + thefile.FileName));
                             loadimages();
@@ -469,7 +470,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         else
                         {
                             CustomValidator err = new CustomValidator();
-                            errorrmessage("You can only upload files of size lesser than 4 MB, but you are uploading a file of " + Math.Round((filesize / 1048576.00), 2) + " MB");
+                            errorrmessage("You can only upload files of size lesser than 28 MB, but you are uploading a file of " + Math.Round((filesize / 1048576.00), 2) + " MB");
                         }
                     }
                     else
@@ -880,6 +881,18 @@ namespace webaftersales.DAILYHEALTHPROFILE
             insert();
             Session["dhp_pagesender"] = "page2_clientsreco";
             Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            if (Session["pagesender"].ToString() == "dhphome")
+            {
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhphome.aspx");
+            }
+            else if (Session["pagesender"].ToString() == "reportgen")
+            {
+                Response.Redirect("~/DAILYHEALTHPROFILE/reportgen.aspx");
+            }
         }
     }
 }

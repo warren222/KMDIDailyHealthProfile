@@ -9,7 +9,7 @@
     <div class="well">
         <h3><strong>Page 1</strong></h3>
         <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhphome.aspx" runat="server">back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click">back</asp:LinkButton>
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -52,7 +52,7 @@
             </h4>
         </blockquote>
         <br />
-        <h4 class="text-info"><strong>Body Temperature Records for the day:</strong> </h4>
+        <h4><strong>Body Temperature Records for the day:</strong>&nbsp;<span class="text-info">(mga temperatura ng katawan para sa araw)</span> </h4>
 
 
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -166,9 +166,9 @@
         </asp:UpdatePanel>
 
 
-        <h4>(To be used when a sudden feeling/sensation or symptom is exhibited during working hours – before and during isolation as the case may be)</h4>
+        <%--  <h4>(To be used when a sudden feeling/sensation or symptom is exhibited during working hours – before and during isolation as the case may be)</h4>--%>
         <h3><strong>CONCISE CLINICAL HISTORY</strong></h3>
-        <strong>Travel History/Record:</strong>&nbsp;<label class="text-success">(please indicate previous day’s sequence of movement)</label>
+        <strong>Travel History/Record:</strong>&nbsp;<span class="text-success">(please indicate previous day’s sequence of movement)</span>&nbsp;<span class="text-info">(ihayag ang pagkasunod sunod ng mga pinuntahan noong mga nakaraang araw)</span>
         <br />
         <asp:UpdatePanel ID="UpdatePanel5" runat="server">
             <ContentTemplate>
@@ -176,16 +176,18 @@
                     <asp:Panel ID="pnl1" runat="server">
                         <div class="input-group">
                             <asp:DropDownList CssClass="form-control" Height="35" ID="dltravelhistory" runat="server">
-                                <asp:ListItem Value="home">home</asp:ListItem>
-                                <asp:ListItem Value="school">school</asp:ListItem>
-                                <asp:ListItem Value="work">work</asp:ListItem>
-                                <asp:ListItem Value="bank">bank</asp:ListItem>
-                                <asp:ListItem Value="drugstore">drugstore</asp:ListItem>
-                                <asp:ListItem Value="hospital / clinic">hospital / clinic</asp:ListItem>
-                                <asp:ListItem Value="wet market">wet market</asp:ListItem>
-                                <asp:ListItem Value="grocery store">grocery store</asp:ListItem>
-                                <asp:ListItem Value="gym">gym</asp:ListItem>
-                                <asp:ListItem Value="church">church</asp:ListItem>
+                                <asp:ListItem Value="Home">Home</asp:ListItem>
+                                <asp:ListItem Value="School">School</asp:ListItem>
+                                <asp:ListItem Value="Work">Work</asp:ListItem>
+                                <asp:ListItem Value="Bank">Bank</asp:ListItem>
+                                <asp:ListItem Value="Food joint / Restaurant">Food joint / Restaurant</asp:ListItem>
+                                <asp:ListItem Value="Drive-thru">Drive-thru</asp:ListItem>
+                                <asp:ListItem Value="Drugstore">Drugstore</asp:ListItem>
+                                <asp:ListItem Value="Hospital / Clinic">Hospital / Clinic</asp:ListItem>
+                                <asp:ListItem Value="Wet market">Wet market</asp:ListItem>
+                                <asp:ListItem Value="Grocery store">Grocery store</asp:ListItem>
+                                <asp:ListItem Value="Gym">Gym</asp:ListItem>
+                                <asp:ListItem Value="Church">Church</asp:ListItem>
                             </asp:DropDownList>
                             <div class="input-group-btn">
                                 <asp:LinkButton ID="LinkButton4" Height="35" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">add</asp:LinkButton>
@@ -265,35 +267,35 @@
                             <td>
                                 <strong>SIGN/SYMPTOM</strong>
                                 <br />
-                                <small class="text-danger">(Senyales/Sintomas)</small>
+                                <small class="text-info">(Senyales/Sintomas)</small>
                             </td>
                             <td>
                                 <strong>Experienced</strong>
                                 <br />
-                                <small class="text-danger">(Naranasan)</small><br />
+                                <small class="text-info">(Naranasan)</small><br />
                                 YES | NO
                             </td>
                             <td>
                                 <strong>Date of Onset</strong>
                                 <br />
-                                <small class="text-danger">(mm/dd/yy</small>
+                                <small class="text-info">(mm/dd/yy)</small>
                             </td>
                             <td>
                                 <strong>Estimated Time
                             <br />
                                     of Onset</strong>
                                 <br />
-                                <small class="text-danger">(H:M)</small>
+                                <small class="text-info">(H:M)</small>
                             </td>
                             <td style="width: 350px; min-width: 350px;">
                                 <strong>REMARKS</strong>
                                 <br />
-                                <small class="text-danger">(Paglalahad)</small>
+                                <small class="text-info">(Paglalahad)</small>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>DRY COUGH</strong><br />
-                                <small class="text-danger">(tuyo o matigas na ubo)</small>
+                                <small class="text-info">(tuyo o matigas na ubo)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="DCEX" ID="DCEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="DCEX" ID="DCEXno" runat="server" /></td>
@@ -307,7 +309,7 @@
                         </tr>
                         <tr>
                             <td><strong>FEVER</strong><br />
-                                <small class="text-danger">(lagnat – 37.5˚ o higit pa ↑)</small>
+                                <small class="text-info">(lagnat – 37.5˚ o higit pa ↑)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="FEEX" ID="FEEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="FEEX" ID="FEEXno" runat="server" />
@@ -322,7 +324,7 @@
                         </tr>
                         <tr>
                             <td><strong>MUSCLE PAIN</strong><br />
-                                <small class="text-danger">(pananakit ng kalamnan)</small>
+                                <small class="text-info">(pananakit ng kalamnan)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="MPEX" ID="MPEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="MPEX" ID="MPEXno" runat="server" /></td>
@@ -336,7 +338,7 @@
                         </tr>
                         <tr>
                             <td><strong>WEAKNESS</strong><br />
-                                <small class="text-danger">((panghihina))</small>
+                                <small class="text-info">((panghihina))</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="WEEX" ID="WEEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="WEEX" ID="WEEXno" runat="server" /></td>
@@ -351,7 +353,7 @@
                         <tr>
                             <td><strong>DECREASED SENSE<br />
                                 OF SMELL</strong><br />
-                                <small class="text-danger">(kawalan ng pang-amoy)</small>
+                                <small class="text-info">(kawalan ng pang-amoy)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="DSEX" ID="DSEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="DSEX" ID="DSEXno" runat="server" />
@@ -367,7 +369,7 @@
                         <tr>
                             <td><strong>DECREASED SENSE<br />
                                 OF TASTE</strong><br />
-                                <small class="text-danger">(kawalan ng panlasa)</small>
+                                <small class="text-info">(kawalan ng panlasa)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="DTEX" ID="DTEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="DTEX" ID="DTEXno" runat="server" />
@@ -382,7 +384,7 @@
                         </tr>
                         <tr>
                             <td><strong>DIARRHEA/LBM</strong><br />
-                                <small class="text-danger">(pagtatae)</small>
+                                <small class="text-info">(pagtatae)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="DIEX" ID="DIEXyes" runat="server" AutoPostBack="True" OnCheckedChanged="DIEXyes_CheckedChanged" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="DIEX" ID="DIEXno" runat="server" AutoPostBack="True" OnCheckedChanged="DIEXyes_CheckedChanged" />
@@ -398,7 +400,7 @@
                         <tr>
                             <td><strong>DIFFICULTY OF<br />
                                 BREATHING</strong><br />
-                                <small class="text-danger">(hirap na paghinga)</small>
+                                <small class="text-info">(hirap na paghinga)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="DBEX" ID="DBEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="DBEX" ID="DBEXno" runat="server" />
@@ -416,7 +418,7 @@
                       
                             </strong>
                                 <br />
-                                <small class="text-danger">(pagsusuka)</small>
+                                <small class="text-info">(pagsusuka)</small>
                             </td>
                             <td>
                                 <asp:RadioButton CssClass="btn btn-default" GroupName="VOEX" ID="VOEXyes" runat="server" AutoPostBack="True" OnCheckedChanged="DIEXyes_CheckedChanged" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="VOEX" ID="VOEXno" runat="server" AutoPostBack="True" OnCheckedChanged="DIEXyes_CheckedChanged" />
@@ -432,7 +434,7 @@
                         <tr>
                             <td><strong>OTHER SYMPTOM(s)</strong><br />
                                 <asp:TextBox ID="tboxOS" CssClass="form-control" runat="server"></asp:TextBox>
-                                <small class="text-danger">(Iba pang kakaibang
+                                <small class="text-info">(Iba pang kakaibang
                             <br />
                                     karamdaman)</small>
                             </td>

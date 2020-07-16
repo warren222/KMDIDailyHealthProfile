@@ -32,6 +32,9 @@
                         <li class="active">
                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/DAILYHEALTHPROFILE/dhphome.aspx">
                                  <span class="glyphicon glyphicon-home"></span>&nbsp;Home</asp:HyperLink></li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/reportgen.aspx">PAPD collection</asp:LinkButton>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li></li>

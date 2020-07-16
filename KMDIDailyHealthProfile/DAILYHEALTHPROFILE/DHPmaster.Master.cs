@@ -12,6 +12,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void Page_Load(object sender, EventArgs e)
         {
             username.Text = Session["dhp_USERNAME"].ToString() + " ";
+            if (Session["dhp_USERACCT"].ToString() == "Admin")
+            {
+                LinkButton3.Visible = true;
+            }
+            else
+            {
+                LinkButton3.Visible = false;
+            }
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {

@@ -12,7 +12,7 @@
     <div class="well">
         <h3><strong>Page 3</strong></h3>
         <div class="navbar-right">
-            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhphome.aspx" runat="server">back</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click">back</asp:LinkButton>
         </div>
     </div>
     <h3 class="text-info">EMPLOYEE DAILY HEALTH PROFILE</h3>

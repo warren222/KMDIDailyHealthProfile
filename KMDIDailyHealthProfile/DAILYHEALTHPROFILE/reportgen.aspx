@@ -10,17 +10,19 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well">
-        <h3><strong>Report viewer</strong></h3>
+        <h3><strong>PROJECT ARK PATIENT DATA&nbsp;<span class="text-info">collection</span> </strong></h3>
 
     </div>
     <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
 
-            <div class="row">
+    <div class="row">
 
-                <div class="col-sm-4">
+        <div class="col-sm-4">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+
+
                     <div class="input-group">
                         <div class="input-group-addon">DATE</div>
                         <asp:TextBox ID="tboxdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
@@ -38,7 +40,8 @@
                         </div>
                     </div>
                     <asp:Panel ID="Panel1" Height="800" runat="server" ScrollBars="Auto">
-                        <asp:GridView ID="GridView1" CssClass="table" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+
+                        <asp:GridView ID="GridView1" CssClass="table" runat="server" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" PageSize="12">
                             <Columns>
                                 <asp:TemplateField HeaderText="Employee">
                                     <ItemTemplate>
@@ -52,7 +55,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" CommandName="myselect" CssClass="btn btn-default" runat="server">SELECT</asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" CommandName="myselect" CssClass="btn btn-default" Width="100%" runat="server">SELECT</asp:LinkButton><br />
+                                        <small>
+                                            <asp:LinkButton ID="LinkButton2" CommandName="page1" runat="server">Page1</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton4" CommandName="page2" runat="server">Page2</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton5" CommandName="page3" runat="server">Page3</asp:LinkButton>
+                                        </small>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -73,8 +81,14 @@
                             <SortedDescendingHeaderStyle BackColor="#242121" />
                         </asp:GridView>
                     </asp:Panel>
-                </div>
-                <div class="col-sm-8">
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <div class="col-sm-8">
+            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                <ContentTemplate>
+
+
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="
         SELECT 
         [ID]
@@ -221,9 +235,10 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
 
                         </rsweb:ReportViewer>
                     </asp:Panel>
-                </div>
-            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
 
-        </ContentTemplate>
-    </asp:UpdatePanel>
+    </div>
+
 </asp:Content>

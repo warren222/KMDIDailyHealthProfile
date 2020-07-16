@@ -35,6 +35,19 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
 
                     Session["dhp_id"] = "0";
 
+                    if (Session["dhpreportsearchkey"] != null)
+                    {
+                        tboxsearchkey.Text = Session["dhpreportsearchkey"].ToString();
+                    }
+                    if (Session["dhpreportdatekey"] != null)
+                    {
+                        tboxdate.Text = Session["dhpreportdatekey"].ToString();
+                    }
+                    if (Session["dhpreportcbox"] != null)
+                    {
+                        cboxstatus.Checked = Convert.ToBoolean(Session["dhpreportcbox"]);
+                    }
+
                     loademployees();
                     ReportViewer1.LocalReport.EnableExternalImages = true;
                     loadreport();
@@ -207,6 +220,30 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
                 setsession(row);
                 loadreport();
 
+            }
+            if (e.CommandName == "page1")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                setsession(row);
+                Session["pagesender"] = "reportgen";
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhpnew.aspx");
+            }
+            if (e.CommandName == "page2")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                setsession(row);
+                Session["pagesender"] = "reportgen";
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhppage2.aspx");
+            }
+            if (e.CommandName == "page3")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView1.Rows[rowindex];
+                setsession(row);
+                Session["pagesender"] = "reportgen";
+                Response.Redirect("~/DAILYHEALTHPROFILE/dhppage3.aspx");
             }
         }
         private void setsession(GridViewRow row)
