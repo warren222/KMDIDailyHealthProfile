@@ -432,6 +432,23 @@
 
                         </tr>
                         <tr>
+                            <td><strong>COLDS
+                      
+                            </strong>
+                                <br />
+                                <small class="text-info">(Sipon)</small>
+                            </td>
+                            <td>
+                                <asp:RadioButton CssClass="btn btn-default" GroupName="COEX" ID="COEXyes" runat="server" />&nbsp;&nbsp;<asp:RadioButton CssClass="btn btn-default" GroupName="COEX" ID="COEXno" runat="server" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="tboxCODO" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox></td>
+                            <td>
+                                <asp:TextBox ID="tboxCOET" TextMode="Time" CssClass="form-control" runat="server"></asp:TextBox></td>
+                            <td>
+                                <asp:TextBox ID="tboxCORE" CssClass="form-control" runat="server"></asp:TextBox></td>
+                        </tr>
+                        <tr>
                             <td><strong>OTHER SYMPTOM(s)</strong><br />
                                 <asp:TextBox ID="tboxOS" CssClass="form-control" runat="server"></asp:TextBox>
                                 <small class="text-info">(Iba pang kakaibang

@@ -180,6 +180,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxVODO.Text = rd["VODO"].ToString();
                                 tboxVOET.Text = rd["VOET"].ToString();
                                 tboxVORE.Text = rd["VORE"].ToString();
+
+                                COEXyes.Checked = getbol(rd["COEX"].ToString());
+                                COEXno.Checked = getbol(rd["COEXno"].ToString());
+                                tboxCODO.Text = rd["CODO"].ToString();
+                                tboxCOET.Text = rd["COET"].ToString();
+                                tboxCORE.Text = rd["CORE"].ToString();
+
                                 OSEXyes.Checked = getbol(rd["OSEX"].ToString());
                                 OSEXno.Checked = getbol(rd["OSEXno"].ToString());
                                 tboxOSDO.Text = rd["OSDO"].ToString();
@@ -260,6 +267,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                    "VODO ,	" +
                                    "VOET ,	" +
                                    "VORE ,	" +
+                                   "COEX ,	" +
+                                   "COEXno ,	" +
+                                   "CODO ,	" +
+                                   "COET ,	" +
+                                   "CORE ,	" +
                                    "OSEX ,	" +
                                    "OSEXno ,	" +
                                    "OSDO ,	" +
@@ -318,6 +330,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                    "@VODO ," +
                                    "@VOET ," +
                                    "@VORE ," +
+                                   "@COEX ," +
+                                   "@COEXno ," +
+                                   "@CODO ," +
+                                   "@COET ," +
+                                   "@CORE ," +
                                    "@OSEX ," +
                                    "@OSEXno ," +
                                    "@OSDO ," +
@@ -386,6 +403,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     "VODO ,	" +
                                     "VOET ,	" +
                                     "VORE ,	" +
+                                    "COEX ,	" +
+                                    "COEXno ,	" +
+                                    "CODO ,	" +
+                                    "COET ,	" +
+                                    "CORE ,	" +
                                     "OSEX ,	" +
                                     "OSEXno ,	" +
                                     "OSDO ,	" +
@@ -441,6 +463,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     "@VODO ," +
                                     "@VOET ," +
                                     "@VORE ," +
+                                    "@COEX ," +
+                                    "@COEXno ," +
+                                    "@CODO ," +
+                                    "@COET ," +
+                                    "@CORE ," +
                                     "@OSEX ," +
                                     "@OSEXno ," +
                                     "@OSDO ," +
@@ -494,6 +521,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     " VODO = @VODO , " +
                                     " VOET = @VOET , " +
                                     " VORE = @VORE , " +
+                                    " COEX = @COEX , " +
+                                    " COEXno = @COEXno , " +
+                                    " CODO = @CODO , " +
+                                    " COET = @COET , " +
+                                    " CORE = @CORE , " +
                                     " OSEX = @OSEX , " +
                                     " OSEXno = @OSEXno , " +
                                     " OSDO = @OSDO , " +
@@ -603,12 +635,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@DBDO", tboxDBDO.Text);
             sqlcmd.Parameters.AddWithValue("@DBET", tboxDBET.Text);
             sqlcmd.Parameters.AddWithValue("@DBRE", tboxDBRE.Text);
-          
             sqlcmd.Parameters.AddWithValue("@VOEX", VOEXyes.Checked);
             sqlcmd.Parameters.AddWithValue("@VOEXno", VOEXno.Checked);
             sqlcmd.Parameters.AddWithValue("@VODO", tboxVODO.Text);
             sqlcmd.Parameters.AddWithValue("@VOET", tboxVOET.Text);
             sqlcmd.Parameters.AddWithValue("@VORE", tboxVORE.Text);
+            sqlcmd.Parameters.AddWithValue("@COEX", COEXyes.Checked);
+            sqlcmd.Parameters.AddWithValue("@COEXno", COEXno.Checked);
+            sqlcmd.Parameters.AddWithValue("@CODO", tboxCODO.Text);
+            sqlcmd.Parameters.AddWithValue("@COET", tboxCOET.Text);
+            sqlcmd.Parameters.AddWithValue("@CORE", tboxCORE.Text);
             sqlcmd.Parameters.AddWithValue("@OSEX", OSEXyes.Checked);
             sqlcmd.Parameters.AddWithValue("@OSEXno", OSEXno.Checked);
             sqlcmd.Parameters.AddWithValue("@OSDO", tboxOSDO.Text);
