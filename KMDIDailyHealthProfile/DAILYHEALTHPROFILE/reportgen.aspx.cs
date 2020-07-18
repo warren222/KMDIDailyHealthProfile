@@ -163,6 +163,13 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
         private void loadreport()
         {
             ReportViewer1.LocalReport.EnableExternalImages = true;
+
+
+            string blanksign = new Uri(Server.MapPath("~/images/blank.jpg")).AbsoluteUri;
+            ReportParameter blankparam = new ReportParameter("patientsignature", blanksign);
+            ReportViewer1.LocalReport.SetParameters(blankparam);
+
+
             string filepath = "~/Uploads/DHPuploads/page2/signature/patient/" + empno + dhpid + "/";
             string filepath2 = "~/Uploads/DHPuploads/page2/signature/physician/" + empno + dhpid + "/";
             Boolean IsExists = System.IO.Directory.Exists(Server.MapPath(filepath));

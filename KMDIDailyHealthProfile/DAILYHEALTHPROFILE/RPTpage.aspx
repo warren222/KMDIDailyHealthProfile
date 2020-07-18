@@ -17,7 +17,7 @@
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="
+     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="
         SELECT 
         [ID]
       ,[EMPNO]
@@ -85,11 +85,11 @@
       ,[OS]
       ,[COMMENT]
          FROM [ASNWERSHEETtbl] WHERE (([DHPID] = @DHPID) AND ([EMPNO] = @EMPNO))">
-        <SelectParameters>
-            <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
-            <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
+            <SelectParameters>
+                <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
+                <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
         SelectCommand="SELECT SURNAME,
 FIRSTNAME,

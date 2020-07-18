@@ -895,6 +895,26 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             private global::System.Data.DataColumn columnDSRE;
             
+            private global::System.Data.DataColumn columnCOEX;
+            
+            private global::System.Data.DataColumn columnCOEXno;
+            
+            private global::System.Data.DataColumn columnCODO;
+            
+            private global::System.Data.DataColumn columnCOET;
+            
+            private global::System.Data.DataColumn columnCORE;
+            
+            private global::System.Data.DataColumn columnVOEX;
+            
+            private global::System.Data.DataColumn columnVOEXno;
+            
+            private global::System.Data.DataColumn columnVODO;
+            
+            private global::System.Data.DataColumn columnVOET;
+            
+            private global::System.Data.DataColumn columnVORE;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ASNWESHEETtblDataTable() {
@@ -1314,6 +1334,86 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn COEXColumn {
+                get {
+                    return this.columnCOEX;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn COEXnoColumn {
+                get {
+                    return this.columnCOEXno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CODOColumn {
+                get {
+                    return this.columnCODO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn COETColumn {
+                get {
+                    return this.columnCOET;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn COREColumn {
+                get {
+                    return this.columnCORE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VOEXColumn {
+                get {
+                    return this.columnVOEX;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VOEXnoColumn {
+                get {
+                    return this.columnVOEXno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VODOColumn {
+                get {
+                    return this.columnVODO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VOETColumn {
+                get {
+                    return this.columnVOET;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VOREColumn {
+                get {
+                    return this.columnVORE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1397,7 +1497,17 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         string OS, 
                         string COMMENT, 
                         string DCRE, 
-                        string DSRE) {
+                        string DSRE, 
+                        string COEX, 
+                        string COEXno, 
+                        string CODO, 
+                        string COET, 
+                        string CORE, 
+                        string VOEX, 
+                        string VOEXno, 
+                        string VODO, 
+                        string VOET, 
+                        string VORE) {
                 ASNWESHEETtblRow rowASNWESHEETtblRow = ((ASNWESHEETtblRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DCEX,
@@ -1447,7 +1557,17 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         OS,
                         COMMENT,
                         DCRE,
-                        DSRE};
+                        DSRE,
+                        COEX,
+                        COEXno,
+                        CODO,
+                        COET,
+                        CORE,
+                        VOEX,
+                        VOEXno,
+                        VODO,
+                        VOET,
+                        VORE};
                 rowASNWESHEETtblRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowASNWESHEETtblRow);
                 return rowASNWESHEETtblRow;
@@ -1518,6 +1638,16 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 this.columnCOMMENT = base.Columns["COMMENT"];
                 this.columnDCRE = base.Columns["DCRE"];
                 this.columnDSRE = base.Columns["DSRE"];
+                this.columnCOEX = base.Columns["COEX"];
+                this.columnCOEXno = base.Columns["COEXno"];
+                this.columnCODO = base.Columns["CODO"];
+                this.columnCOET = base.Columns["COET"];
+                this.columnCORE = base.Columns["CORE"];
+                this.columnVOEX = base.Columns["VOEX"];
+                this.columnVOEXno = base.Columns["VOEXno"];
+                this.columnVODO = base.Columns["VODO"];
+                this.columnVOET = base.Columns["VOET"];
+                this.columnVORE = base.Columns["VORE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1619,6 +1749,26 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 base.Columns.Add(this.columnDCRE);
                 this.columnDSRE = new global::System.Data.DataColumn("DSRE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDSRE);
+                this.columnCOEX = new global::System.Data.DataColumn("COEX", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCOEX);
+                this.columnCOEXno = new global::System.Data.DataColumn("COEXno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCOEXno);
+                this.columnCODO = new global::System.Data.DataColumn("CODO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCODO);
+                this.columnCOET = new global::System.Data.DataColumn("COET", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCOET);
+                this.columnCORE = new global::System.Data.DataColumn("CORE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCORE);
+                this.columnVOEX = new global::System.Data.DataColumn("VOEX", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVOEX);
+                this.columnVOEXno = new global::System.Data.DataColumn("VOEXno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVOEXno);
+                this.columnVODO = new global::System.Data.DataColumn("VODO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVODO);
+                this.columnVOET = new global::System.Data.DataColumn("VOET", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVOET);
+                this.columnVORE = new global::System.Data.DataColumn("VORE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVORE);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3700,6 +3850,166 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string COEX {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.COEXColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'COEX\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.COEXColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string COEXno {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.COEXnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'COEXno\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.COEXnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CODO {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.CODOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CODO\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.CODOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string COET {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.COETColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'COET\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.COETColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CORE {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.COREColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CORE\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.COREColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string VOEX {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.VOEXColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VOEX\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.VOEXColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string VOEXno {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.VOEXnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VOEXno\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.VOEXnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string VODO {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.VODOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VODO\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.VODOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string VOET {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.VOETColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VOET\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.VOETColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string VORE {
+                get {
+                    try {
+                        return ((string)(this[this.tableASNWESHEETtbl.VOREColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VORE\' in table \'ASNWESHEETtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASNWESHEETtbl.VOREColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDCEXNull() {
                 return this.IsNull(this.tableASNWESHEETtbl.DCEXColumn);
             }
@@ -4272,6 +4582,126 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDSRENull() {
                 this[this.tableASNWESHEETtbl.DSREColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCOEXNull() {
+                return this.IsNull(this.tableASNWESHEETtbl.COEXColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCOEXNull() {
+                this[this.tableASNWESHEETtbl.COEXColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCOEXnoNull() {
+                return this.IsNull(this.tableASNWESHEETtbl.COEXnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCOEXnoNull() {
+                this[this.tableASNWESHEETtbl.COEXnoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCODONull() {
+                return this.IsNull(this.tableASNWESHEETtbl.CODOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCODONull() {
+                this[this.tableASNWESHEETtbl.CODOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCOETNull() {
+                return this.IsNull(this.tableASNWESHEETtbl.COETColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCOETNull() {
+                this[this.tableASNWESHEETtbl.COETColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCORENull() {
+                return this.IsNull(this.tableASNWESHEETtbl.COREColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCORENull() {
+                this[this.tableASNWESHEETtbl.COREColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVOEXNull() {
+                return this.IsNull(this.tableASNWESHEETtbl.VOEXColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVOEXNull() {
+                this[this.tableASNWESHEETtbl.VOEXColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVOEXnoNull() {
+                return this.IsNull(this.tableASNWESHEETtbl.VOEXnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVOEXnoNull() {
+                this[this.tableASNWESHEETtbl.VOEXnoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVODONull() {
+                return this.IsNull(this.tableASNWESHEETtbl.VODOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVODONull() {
+                this[this.tableASNWESHEETtbl.VODOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVOETNull() {
+                return this.IsNull(this.tableASNWESHEETtbl.VOETColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVOETNull() {
+                this[this.tableASNWESHEETtbl.VOETColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVORENull() {
+                return this.IsNull(this.tableASNWESHEETtbl.VOREColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVORENull() {
+                this[this.tableASNWESHEETtbl.VOREColumn] = global::System.Convert.DBNull;
             }
         }
         
