@@ -203,7 +203,24 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
                 ReportViewer1.LocalReport.SetParameters(param1);
 
             }
-            ReportViewer1.LocalReport.Refresh();
+
+            string s = "0";
+            if (cbox.Checked)
+            {
+                s = "1";
+
+            }
+            string d = "";
+            if (tboxdateah.Text != "")
+            {
+                d = Convert.ToDateTime(tboxdateah.Text).ToString("MMMM dd, yyyy");
+            }
+            ReportParameter dateconducted = new ReportParameter("dateconducted", d);
+            ReportParameter cboxvalue = new ReportParameter("cboxvalue", s);
+            ReportViewer1.LocalReport.SetParameters(dateconducted);
+            ReportViewer1.LocalReport.SetParameters(cboxvalue);
+
+            //ReportViewer1.LocalReport.Refresh();
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
@@ -262,6 +279,11 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             Session["dhpempno"] = ((Label)row.FindControl("lblempno")).Text;
             Session["dhpbirthday"] = ((Label)row.FindControl("lblbirthday")).Text;
 
+        }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            loadreport();
         }
     }
 }

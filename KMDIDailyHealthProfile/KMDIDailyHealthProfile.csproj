@@ -278,6 +278,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\quarantinereport.aspx.cs">
+      <DependentUpon>quarantinereport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\quarantinereport.aspx.designer.cs">
+      <DependentUpon>quarantinereport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\reportgen.aspx.cs">
       <DependentUpon>reportgen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -321,6 +328,7 @@
     <Content Include="DAILYHEALTHPROFILE\dhppage3.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpreport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpsignature.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\quarantinereport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\reportgen.aspx" />
     <Content Include="DAILYHEALTHPROFILE\RPTpage.aspx" />
     <Content Include="DAILYHEALTHPROFILE\scripts\sign.js" />

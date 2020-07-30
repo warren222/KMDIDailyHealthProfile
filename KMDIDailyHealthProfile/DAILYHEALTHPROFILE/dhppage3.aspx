@@ -295,10 +295,55 @@
         </div>
     </asp:Panel>
     <br />
+     <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+            <ContentTemplate>
+    <asp:Panel ID="Panel6" runat="server" ScrollBars="Auto">
+        <h3><strong>Quarantine period</strong></h3>
+
+        <asp:Button ID="Button6" runat="server" CssClass="btn btn-success" Width="200" Text="Start quarantine" OnClick="LinkButton3_Click" />
+        <asp:GridView ID="GridView3" AutoGenerateColumns="false" CssClass=" table" runat="server" OnRowCommand="GridView3_RowCommand">
+            <Columns>
+                <asp:TemplateField HeaderText="Employee">
+                    <ItemTemplate>
+
+                        <asp:Label ID="lblidquarantine" runat="server" Visible="false" Text='<%# Bind("ID") %>'></asp:Label>
+                        <asp:Label ID="lblfullnamequarantine" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="DATE STARTED">
+                    <ItemTemplate>
+                        <asp:Label ID="lblsdate" runat="server" Text='<%# Bind("SDATE") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="DATE ENDED">
+                    <ItemTemplate>
+                        <asp:Label ID="lbledate" runat="server" Text='<%# Bind("EDATE") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="DAYS">
+                    <ItemTemplate>
+                        <asp:Label ID="lblday" runat="server" Text='<%# Bind("DAY") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+
+                        <asp:LinkButton ID="btnquarantine" Visible='<%# Eval("EDATE").ToString() == "" ? true : false %>' CommandName="myselect" runat="server" CssClass="btn btn-danger">End quarantine</asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <RowStyle Wrap="false" />
+            <HeaderStyle Wrap="false" />
+        </asp:GridView>
+
+    </asp:Panel>
+                   </ContentTemplate>
+        </asp:UpdatePanel>
+    <br />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="success" CssClass="alert alert-success" runat="server" />
-            <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="save page 3" OnClick="Button2_Click" />
+            <asp:Button ID="Button2" CssClass="btn btn-primary" Width="200" runat="server" Text="save page 3" OnClick="Button2_Click" />
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

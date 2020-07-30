@@ -17,7 +17,7 @@
         <asp:TextBox ID="tboxusername" CssClass="form-control" runat="server"></asp:TextBox><br />
         New Password<asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="tboxpassword" ForeColor="Red" runat="server" ValidationGroup="val1" ErrorMessage="new password is required">*</asp:RequiredFieldValidator><br />
         <asp:TextBox ID="tboxpassword" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox><br />
-        Password<asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="tboxoldpassord" ForeColor="Red" runat="server" ValidationGroup="val1" ErrorMessage="password is required">*</asp:RequiredFieldValidator><br />
+        Old Password<asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="tboxoldpassord" ForeColor="Red" runat="server" ValidationGroup="val1" ErrorMessage="password is required">*</asp:RequiredFieldValidator><br />
         <asp:TextBox ID="tboxoldpassord" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox><br />
         <asp:Button ID="Button1" runat="server" Text="save changes" ValidationGroup="val1" CssClass="btn btn-primary" OnClick="Button1_Click" />
     </div>

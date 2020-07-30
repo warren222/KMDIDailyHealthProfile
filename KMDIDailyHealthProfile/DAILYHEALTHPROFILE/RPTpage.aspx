@@ -155,6 +155,20 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
             <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+
+    <div class="well">
+           <asp:CheckBox ID="cbox" runat="server" Text="Alter (DATE TEST IS CONDUCTED)" /> 
+        <div class="input-group">
+            <div class="input-group-addon">
+             select date
+            </div>
+            <asp:TextBox ID="tboxdate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+            <div class=" input-group-btn">
+                <asp:LinkButton ID="LinkButton3" CssClass="btn btn-primary" runat="server" OnClick="LinkButton3_Click">refresh</asp:LinkButton>
+            </div>
+        </div>
+    </div>
+
     <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
         <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPT.rdlc">
             <DataSources>

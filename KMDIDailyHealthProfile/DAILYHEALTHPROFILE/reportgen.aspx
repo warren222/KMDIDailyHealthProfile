@@ -228,6 +228,18 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:Panel ID="Panel2" runat="server" ScrollBars="Auto">
+                        <div class="well">
+                                  <asp:CheckBox ID="cbox" runat="server" Text="Alter (DATE TEST IS CONDUCTED)" /> 
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                     select date
+                                </div>
+                                <asp:TextBox ID="tboxdateah" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                                <div class=" input-group-btn">
+                                    <asp:LinkButton ID="LinkButton6" CssClass="btn btn-primary" runat="server" OnClick="LinkButton6_Click">refresh</asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
                         <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
                             <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPT.rdlc">
                                 <DataSources>

@@ -28,6 +28,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                     getdatatb1();
                     getdatatb2();
+                    getquarantinedata();
                     loaddhpage3();
                     access();
                 }
@@ -150,7 +151,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         {
                             temp = "0";
                         }
-                     
+
 
                         sqlcmd.Parameters.AddWithValue("@EMPNO", empno);
                         sqlcmd.Parameters.AddWithValue("@DHPID", dhpid);
@@ -201,7 +202,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
-                        if(acct == "Admin")
+                        if (acct == "Admin")
                         {
                             GridView1.Columns[0].Visible = true;
                         }
@@ -217,10 +218,42 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 errorrmessage(ex.Message.ToString());
             }
         }
-
+        private void getquarantinedata()
+        {
+            try
+            {
+                DataTable tb = new DataTable();
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcon.Open();
+                        sqlcmd.CommandText = "QUARANTINEstp";
+                        sqlcmd.CommandType = CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@EMPNO", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        GridView3.DataSource = tb;
+                        GridView3.DataBind();
+                        if (GridView3.Rows.Count >= 1)
+                        {
+                            Button6.Visible = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
+
             if (e.CommandName == "myedit")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
@@ -257,10 +290,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 GridViewRow row = GridView1.Rows[rowindex];
                 deletefunctio(((Label)row.FindControl("lblid")).Text);
             }
-          
+
         }
-      
-      
+
+
 
         private void deletefunctio(string id)
         {
@@ -386,7 +419,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 ((TextBox)row.FindControl("tboxeditdosage")).Visible = true;
                 ((TextBox)row.FindControl("tboxeditpurpose")).Visible = true;
             }
-           else if (e.CommandName == "mycancel")
+            else if (e.CommandName == "mycancel")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView2.Rows[rowindex];
@@ -455,10 +488,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         private void updatetbl2(string id, string medicine, string timeadministered, string dosage, string purpose)
         {
-          try
+            try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str =            "update dhpreliefadministration set " +
+                string str = "update dhpreliefadministration set " +
                                         "MEDICINE = @MEDICINE,							  " +
                                         "TIMEADMINISTERED = @TIMEADMINISTERED,					  " +
                                         "DOSAGE = @DOSAGE,							  " +
@@ -478,7 +511,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 CustomValidator err = new CustomValidator();
                 err.ValidationGroup = "medval";
@@ -499,8 +532,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
 
         protected void Button5_Click(object sender, EventArgs e)
-        {           
-            Panel3.Visible =false;
+        {
+            Panel3.Visible = false;
             Button3.Visible = true;
         }
 
@@ -542,7 +575,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 CustomValidator err = new CustomValidator();
                 err.ValidationGroup = "medval";
@@ -616,7 +649,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         {
                             while (rd.Read())
                             {
-                                tboxpersonnel.Text=rd["personnel"].ToString();
+                                tboxpersonnel.Text = rd["personnel"].ToString();
                                 tboxdatecollected.Text = rd["datecollected"].ToString();
                             }
                         }
@@ -727,6 +760,79 @@ namespace webaftersales.DAILYHEALTHPROFILE
             else if (Session["pagesender"].ToString() == "reportgen")
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/reportgen.aspx");
+            }
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = "declare @dhpdate as date = (select case when isdate(rdate)=1 then cast(rdate as date) else rdate end from [DHRtbl] where id = @dhpid) " +
+                    "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from quarantinetbl)" +
+                    " insert into quarantinetbl (id,empno,fullname,sdate,edate)values(@id,@empno,@fullname,@dhpdate,'')";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@fullname", lblname.Text);
+                        sqlcmd.ExecuteNonQuery();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                getquarantinedata();
+            }
+        }
+
+        protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myselect")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView3.Rows[rowindex];
+            
+                endquarantine(((Label)row.FindControl("lblidquarantine")).Text);
+            }
+        }
+
+        private void endquarantine(string id)
+        {
+            try
+            {
+
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " declare @dhpdate as date = (select case when isdate(rdate)=1 then cast(rdate as date) else rdate end from [DHRtbl] where id = @dhpid) " +
+                    " update quarantinetbl set edate=@dhpdate where id=@id";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                getquarantinedata();
             }
         }
     }
