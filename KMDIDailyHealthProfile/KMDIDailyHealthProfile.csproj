@@ -419,6 +419,7 @@
   <ItemGroup>
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPT.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc" />
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

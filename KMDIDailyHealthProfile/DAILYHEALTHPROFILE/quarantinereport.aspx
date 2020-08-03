@@ -13,5 +13,14 @@
     <div class="well">
         <h3><strong>Quarantine reports</strong></h3>
     </div>
-    <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800" runat="server"></rsweb:ReportViewer>
+
+    <asp:SqlDataSource ID="SqlDataSource1" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="QUARANTINERPTstp" SelectCommandType="StoredProcedure" runat="server"></asp:SqlDataSource>
+
+    <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+        <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc">
+            <DataSources>
+                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+            </DataSources>
+        </LocalReport>
+    </rsweb:ReportViewer>
 </asp:Content>

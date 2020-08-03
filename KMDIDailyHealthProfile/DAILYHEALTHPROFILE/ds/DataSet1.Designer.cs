@@ -32,6 +32,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         private DHPPAGE2DataTable tableDHPPAGE2;
         
+        private QUARANTINETTBDataTable tableQUARANTINETTB;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -71,6 +73,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 }
                 if ((ds.Tables["DHPPAGE2"] != null)) {
                     base.Tables.Add(new DHPPAGE2DataTable(ds.Tables["DHPPAGE2"]));
+                }
+                if ((ds.Tables["QUARANTINETTB"] != null)) {
+                    base.Tables.Add(new QUARANTINETTBDataTable(ds.Tables["QUARANTINETTB"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -127,6 +132,16 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         public DHPPAGE2DataTable DHPPAGE2 {
             get {
                 return this.tableDHPPAGE2;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public QUARANTINETTBDataTable QUARANTINETTB {
+            get {
+                return this.tableQUARANTINETTB;
             }
         }
         
@@ -209,6 +224,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 if ((ds.Tables["DHPPAGE2"] != null)) {
                     base.Tables.Add(new DHPPAGE2DataTable(ds.Tables["DHPPAGE2"]));
                 }
+                if ((ds.Tables["QUARANTINETTB"] != null)) {
+                    base.Tables.Add(new QUARANTINETTBDataTable(ds.Tables["QUARANTINETTB"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -266,6 +284,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                     this.tableDHPPAGE2.InitVars();
                 }
             }
+            this.tableQUARANTINETTB = ((QUARANTINETTBDataTable)(base.Tables["QUARANTINETTB"]));
+            if ((initTable == true)) {
+                if ((this.tableQUARANTINETTB != null)) {
+                    this.tableQUARANTINETTB.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -284,6 +308,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             base.Tables.Add(this.tableDHPtravelhistory);
             this.tableDHPPAGE2 = new DHPPAGE2DataTable();
             base.Tables.Add(this.tableDHPPAGE2);
+            this.tableQUARANTINETTB = new QUARANTINETTBDataTable();
+            base.Tables.Add(this.tableQUARANTINETTB);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -307,6 +333,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeDHPPAGE2() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeQUARANTINETTB() {
             return false;
         }
         
@@ -376,6 +408,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DHPPAGE2RowChangeEventHandler(object sender, DHPPAGE2RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void QUARANTINETTBRowChangeEventHandler(object sender, QUARANTINETTBRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2647,6 +2682,351 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DHPPAGE2DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class QUARANTINETTBDataTable : global::System.Data.TypedTableBase<QUARANTINETTBRow> {
+            
+            private global::System.Data.DataColumn columnEMPNO;
+            
+            private global::System.Data.DataColumn columnFULLNAME;
+            
+            private global::System.Data.DataColumn columnBIRTHDAY;
+            
+            private global::System.Data.DataColumn columnAGE;
+            
+            private global::System.Data.DataColumn columnDEPARTMENT;
+            
+            private global::System.Data.DataColumn columnSDATE;
+            
+            private global::System.Data.DataColumn columnEDATE;
+            
+            private global::System.Data.DataColumn columnDAYS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public QUARANTINETTBDataTable() {
+                this.TableName = "QUARANTINETTB";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal QUARANTINETTBDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected QUARANTINETTBDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EMPNOColumn {
+                get {
+                    return this.columnEMPNO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FULLNAMEColumn {
+                get {
+                    return this.columnFULLNAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BIRTHDAYColumn {
+                get {
+                    return this.columnBIRTHDAY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AGEColumn {
+                get {
+                    return this.columnAGE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DEPARTMENTColumn {
+                get {
+                    return this.columnDEPARTMENT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SDATEColumn {
+                get {
+                    return this.columnSDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EDATEColumn {
+                get {
+                    return this.columnEDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DAYSColumn {
+                get {
+                    return this.columnDAYS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public QUARANTINETTBRow this[int index] {
+                get {
+                    return ((QUARANTINETTBRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event QUARANTINETTBRowChangeEventHandler QUARANTINETTBRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event QUARANTINETTBRowChangeEventHandler QUARANTINETTBRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event QUARANTINETTBRowChangeEventHandler QUARANTINETTBRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event QUARANTINETTBRowChangeEventHandler QUARANTINETTBRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddQUARANTINETTBRow(QUARANTINETTBRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public QUARANTINETTBRow AddQUARANTINETTBRow(string EMPNO, string FULLNAME, string BIRTHDAY, string AGE, string DEPARTMENT, string SDATE, string EDATE, string DAYS) {
+                QUARANTINETTBRow rowQUARANTINETTBRow = ((QUARANTINETTBRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        EMPNO,
+                        FULLNAME,
+                        BIRTHDAY,
+                        AGE,
+                        DEPARTMENT,
+                        SDATE,
+                        EDATE,
+                        DAYS};
+                rowQUARANTINETTBRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowQUARANTINETTBRow);
+                return rowQUARANTINETTBRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                QUARANTINETTBDataTable cln = ((QUARANTINETTBDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new QUARANTINETTBDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnEMPNO = base.Columns["EMPNO"];
+                this.columnFULLNAME = base.Columns["FULLNAME"];
+                this.columnBIRTHDAY = base.Columns["BIRTHDAY"];
+                this.columnAGE = base.Columns["AGE"];
+                this.columnDEPARTMENT = base.Columns["DEPARTMENT"];
+                this.columnSDATE = base.Columns["SDATE"];
+                this.columnEDATE = base.Columns["EDATE"];
+                this.columnDAYS = base.Columns["DAYS"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnEMPNO = new global::System.Data.DataColumn("EMPNO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMPNO);
+                this.columnFULLNAME = new global::System.Data.DataColumn("FULLNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFULLNAME);
+                this.columnBIRTHDAY = new global::System.Data.DataColumn("BIRTHDAY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBIRTHDAY);
+                this.columnAGE = new global::System.Data.DataColumn("AGE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAGE);
+                this.columnDEPARTMENT = new global::System.Data.DataColumn("DEPARTMENT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDEPARTMENT);
+                this.columnSDATE = new global::System.Data.DataColumn("SDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSDATE);
+                this.columnEDATE = new global::System.Data.DataColumn("EDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEDATE);
+                this.columnDAYS = new global::System.Data.DataColumn("DAYS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDAYS);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public QUARANTINETTBRow NewQUARANTINETTBRow() {
+                return ((QUARANTINETTBRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new QUARANTINETTBRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(QUARANTINETTBRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.QUARANTINETTBRowChanged != null)) {
+                    this.QUARANTINETTBRowChanged(this, new QUARANTINETTBRowChangeEvent(((QUARANTINETTBRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.QUARANTINETTBRowChanging != null)) {
+                    this.QUARANTINETTBRowChanging(this, new QUARANTINETTBRowChangeEvent(((QUARANTINETTBRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.QUARANTINETTBRowDeleted != null)) {
+                    this.QUARANTINETTBRowDeleted(this, new QUARANTINETTBRowChangeEvent(((QUARANTINETTBRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.QUARANTINETTBRowDeleting != null)) {
+                    this.QUARANTINETTBRowDeleting(this, new QUARANTINETTBRowChangeEvent(((QUARANTINETTBRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveQUARANTINETTBRow(QUARANTINETTBRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "QUARANTINETTBDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5352,6 +5732,245 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class QUARANTINETTBRow : global::System.Data.DataRow {
+            
+            private QUARANTINETTBDataTable tableQUARANTINETTB;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal QUARANTINETTBRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableQUARANTINETTB = ((QUARANTINETTBDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EMPNO {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.EMPNOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EMPNO\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.EMPNOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FULLNAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.FULLNAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FULLNAME\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.FULLNAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string BIRTHDAY {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.BIRTHDAYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BIRTHDAY\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.BIRTHDAYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AGE {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.AGEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AGE\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.AGEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DEPARTMENT {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.DEPARTMENTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DEPARTMENT\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.DEPARTMENTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.SDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SDATE\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.SDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.EDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EDATE\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.EDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DAYS {
+                get {
+                    try {
+                        return ((string)(this[this.tableQUARANTINETTB.DAYSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DAYS\' in table \'QUARANTINETTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableQUARANTINETTB.DAYSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEMPNONull() {
+                return this.IsNull(this.tableQUARANTINETTB.EMPNOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEMPNONull() {
+                this[this.tableQUARANTINETTB.EMPNOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFULLNAMENull() {
+                return this.IsNull(this.tableQUARANTINETTB.FULLNAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFULLNAMENull() {
+                this[this.tableQUARANTINETTB.FULLNAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBIRTHDAYNull() {
+                return this.IsNull(this.tableQUARANTINETTB.BIRTHDAYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBIRTHDAYNull() {
+                this[this.tableQUARANTINETTB.BIRTHDAYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAGENull() {
+                return this.IsNull(this.tableQUARANTINETTB.AGEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAGENull() {
+                this[this.tableQUARANTINETTB.AGEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDEPARTMENTNull() {
+                return this.IsNull(this.tableQUARANTINETTB.DEPARTMENTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDEPARTMENTNull() {
+                this[this.tableQUARANTINETTB.DEPARTMENTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSDATENull() {
+                return this.IsNull(this.tableQUARANTINETTB.SDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSDATENull() {
+                this[this.tableQUARANTINETTB.SDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEDATENull() {
+                return this.IsNull(this.tableQUARANTINETTB.EDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEDATENull() {
+                this[this.tableQUARANTINETTB.EDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDAYSNull() {
+                return this.IsNull(this.tableQUARANTINETTB.DAYSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDAYSNull() {
+                this[this.tableQUARANTINETTB.DAYSColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -5473,6 +6092,40 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DHPPAGE2Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class QUARANTINETTBRowChangeEvent : global::System.EventArgs {
+            
+            private QUARANTINETTBRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public QUARANTINETTBRowChangeEvent(QUARANTINETTBRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public QUARANTINETTBRow Row {
                 get {
                     return this.eventRow;
                 }
