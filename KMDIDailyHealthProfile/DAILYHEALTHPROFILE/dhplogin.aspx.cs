@@ -46,7 +46,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    SqlCommand sqlcmd = new SqlCommand("select EMPNO,SURNAME+', '+FIRSTNAME+' '+MI AS FULLNAME,BIRTHDAY,USERACCT,USERNAME from EMPTBL where USERNAME = @empno and PASSWORD = @Password", sqlcon);
+                    SqlCommand sqlcmd = new SqlCommand("select EMPNO,SURNAME+', '+FIRSTNAME+' '+MI AS FULLNAME,BIRTHDAY,USERACCT,USERNAME,DEPARTMENT from EMPTBL where USERNAME = @empno and PASSWORD = @Password", sqlcon);
                     sqlcmd.Parameters.AddWithValue("@empno", tboxempno.Text);
                     sqlcmd.Parameters.AddWithValue("@Password", tboxpassword.Text);
                     SqlDataReader rd = sqlcmd.ExecuteReader();
@@ -61,7 +61,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                             Session["dhp_BIRTHDAY"] = rd[2].ToString();
                             Session["dhp_USERACCT"] = rd[3].ToString();
                             Session["dhp_USERNAME"] = rd[4].ToString();
-
+                            Session["dhp_DEPARTMENT"] = rd[5].ToString();
                             if (CheckBox1.Checked)
                             {
                                 Response.Cookies["DHPusername"].Expires = DateTime.Now.AddDays(30);

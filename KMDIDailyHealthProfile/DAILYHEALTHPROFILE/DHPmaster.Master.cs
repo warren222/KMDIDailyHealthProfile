@@ -20,11 +20,23 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 LinkButton3.Visible = false;
             }
+            if (Session["dhp_USERACCT"].ToString() == "Admin" || Session["dhp_DEPARTMENT"].ToString() == "Management")
+            {
+                LinkButton4.Visible = true;
+            }
+            else
+            {
+                LinkButton4.Visible = false;
+            }
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session.Abandon();
             Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
+        }
+        protected void lll(object sender, EventArgs e)
+        {
+           
         }
     }
 }

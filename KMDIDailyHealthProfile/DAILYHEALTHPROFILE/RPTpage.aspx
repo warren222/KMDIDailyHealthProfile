@@ -103,6 +103,7 @@ ADDRESS,
 surname+', '+firstname+' '+mi as FULLNAME,
 CAST(DATEDIFF(DD,CAST(BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE FROM [EMPTBL] as a WHERE ([EMPNO] = @EMPNO)">
         <SelectParameters>
+        
             <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
