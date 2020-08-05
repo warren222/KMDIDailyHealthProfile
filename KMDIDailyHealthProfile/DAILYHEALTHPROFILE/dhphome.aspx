@@ -43,7 +43,49 @@
             </div>
         </div>
         <asp:ValidationSummary ValidationGroup="val1" CssClass="alert alert-danger" ID="ValidationSummary1" runat="server" />
+        <asp:Panel ID="Panel1" runat="server">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Backtrack form
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    DATE
+                                </div>
+                                <asp:TextBox ID="TBOXinputdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
 
+                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TBOXinputdate" ErrorMessage="date is required" ValidationGroup="val2" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    Name
+                                </div>
+                                <asp:DropDownList ID="DDLemployee" CssClass="form-control" runat="server"></asp:DropDownList>
+                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="DDLemployee" ErrorMessage="name of employee is required" ValidationGroup="val2" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <asp:LinkButton ID="LinkButton8" CssClass="btn btn-primary" runat="server" ValidationGroup="val2" OnClick="LinkButton8_Click">add</asp:LinkButton>
+                        </div>
+                        <div class="col-sm-11">
+                            <asp:ValidationSummary ID="ValidationSummary2" ValidationGroup="val2" CssClass="alert alert-danger" runat="server" />
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                </div>
+            </div>
+        </asp:Panel>
         <asp:GridView ID="GridView1" AutoGenerateColumns="false" GridLines="None" runat="server" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
                 <asp:TemplateField>

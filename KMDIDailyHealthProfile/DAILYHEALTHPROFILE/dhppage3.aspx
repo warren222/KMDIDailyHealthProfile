@@ -329,6 +329,7 @@
                     <ItemTemplate>
 
                         <asp:LinkButton ID="btnquarantine" Visible='<%# Eval("EDATE").ToString() == "" ? true : false %>' CommandName="myselect" runat="server" CssClass="btn btn-danger">End quarantine</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton3" OnClientClick="return confirm('delete this record?')" CommandName="mydelete" CssClass="btn btn-danger" runat="server">delete</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

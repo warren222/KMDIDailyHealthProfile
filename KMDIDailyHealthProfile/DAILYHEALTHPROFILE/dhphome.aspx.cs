@@ -19,7 +19,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
                 if (!IsPostBack)
                 {
-              
+
                     if (Session["dhpsearchkey"] != null)
                     {
                         tboxsearchkey.Text = Session["dhpsearchkey"].ToString();
@@ -35,12 +35,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     if (acct == "Admin")
                     {
                         LinkButton2.Visible = true;
+                        Panel1.Visible = true;
                     }
                     else
                     {
                         LinkButton2.Visible = false;
+                        Panel1.Visible = false;
                     }
-                        getdata();
+                    getdata();
+                    loademployee();
                 }
 
             }
@@ -63,24 +66,50 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 return Session["dhp_USERACCT"].ToString();
             }
         }
+        private void loademployee()
+        {
+            try
+            {
+                DataTable tb = new DataTable();
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
 
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand("SELECT surname+', '+firstname+' '+mi as FULLNAME,EMPNO FROM EMPTBL WHERE [USERSTATUS] = 'Active' order by surname asc", sqlcon))
+                    {
+                        sqlcon.Open();
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        DDLemployee.DataSource = tb;
+                        DDLemployee.DataTextField = "FULLNAME";
+                        DDLemployee.DataValueField = "EMPNO";
+                        DDLemployee.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
         private void getdata()
         {
             try
             {
                 DataTable tb = new DataTable();
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            
+
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
-                    using (SqlCommand sqlcmd =sqlcon.CreateCommand())
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
                         string stat = "no";
                         if (cboxstatus.Checked)
                         {
                             stat = "yes";
                         }
-                      
+
                         sqlcon.Open();
                         sqlcmd.CommandText = "DHPstp";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
@@ -94,18 +123,18 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
-                        lblcountrow.Text = tb.Rows.Count.ToString() +" result(s) found";
+                        lblcountrow.Text = tb.Rows.Count.ToString() + " result(s) found";
                         Session["dhpsearchkey"] = tboxsearchkey.Text;
                         Session["dhpdatekey"] = tboxdate.Text;
                         Session["dhpcbox"] = cboxstatus.Checked;
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorrmessage(ex.Message.ToString());
             }
-        } 
+        }
 
         private void errorrmessage(string message)
         {
@@ -122,19 +151,19 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 string find = "select * from dhrtbl where empno=@empno and rdate=@rdate";
                 bool exist = false;
-                
+
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhrtbl)" +
                              " insert into dhrtbl (id,empno,rdate,rtime)values(@id,@empno,@rdate,@rtime)";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                    using (SqlCommand sqlcmd = new SqlCommand(find,sqlcon))
+                    using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
                     {
-                       
+
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         sqlcmd.Parameters.AddWithValue("@rdate", DateTime.Now.ToString("MM-dd-yyyy"));
-                    
+
                         using (SqlDataReader rd = sqlcmd.ExecuteReader())
                         {
                             if (rd.HasRows)
@@ -146,7 +175,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 exist = false;
                             }
                         }
-                       
+
                     }
                     if (exist)
                     {
@@ -156,7 +185,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                         {
-                          
+
                             sqlcmd.Parameters.AddWithValue("@empno", empno);
                             sqlcmd.Parameters.AddWithValue("@rdate", DateTime.Now.ToString("MM-dd-yyyy"));
                             sqlcmd.Parameters.AddWithValue("@rtime", DateTime.Now.ToString("hh:mm:ss tt"));
@@ -179,7 +208,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-         
+
             if (e.CommandName == "page1")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
@@ -244,12 +273,82 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Session["dhpdatekey"] = tboxdate.Text;
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhpreport.aspx");
             }
-         
+
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void LinkButton8_Click(object sender, EventArgs e)
+        {
+            tboxdate.Text = TBOXinputdate.Text;
+            tboxsearchkey.Text = DDLemployee.Text.ToString();
+            try
+            {
+                string find = "select * from dhrtbl where empno=@empno and rdate=@rdate";
+                bool exist = false;
+
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhrtbl)" +
+                             " insert into dhrtbl (id,empno,rdate,rtime)values(@id,@empno,@rdate,@rtime)";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
+                    {
+
+                        sqlcmd.Parameters.AddWithValue("@empno", DDLemployee.Text.ToString());
+                        sqlcmd.Parameters.AddWithValue("@rdate", Convert.ToDateTime(TBOXinputdate.Text).ToString("MM-dd-yyyy"));
+
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            if (rd.HasRows)
+                            {
+                                exist = true;
+                            }
+                            else
+                            {
+                                exist = false;
+                            }
+                        }
+
+                    }
+                    if (exist)
+                    {
+                        CustomValidator err = new CustomValidator();
+                        err.ValidationGroup = "val2";
+                        err.IsValid = false;
+                        err.ErrorMessage = "One report per day only, DHP already exist!";
+                        Page.Validators.Add(err);
+                    }
+                    else
+                    {
+                        using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                        {
+
+                            sqlcmd.Parameters.AddWithValue("@empno", DDLemployee.Text.ToString());
+                            sqlcmd.Parameters.AddWithValue("@rdate", Convert.ToDateTime(TBOXinputdate.Text).ToString("MM-dd-yyyy"));
+                            sqlcmd.Parameters.AddWithValue("@rtime", DateTime.Now.ToString("hh:mm:ss tt"));
+                            sqlcmd.ExecuteNonQuery();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "val2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                getdata();
+            }
         }
     }
 }

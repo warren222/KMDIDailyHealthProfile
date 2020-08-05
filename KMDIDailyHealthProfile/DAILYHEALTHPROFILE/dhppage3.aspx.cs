@@ -243,6 +243,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         {
                             Button6.Visible = false;
                         }
+                        else
+                        {
+                            Button6.Visible = true;
+                        }
                     }
                 }
             }
@@ -804,6 +808,40 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 GridViewRow row = GridView3.Rows[rowindex];
             
                 endquarantine(((Label)row.FindControl("lblidquarantine")).Text);
+            }
+            if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView3.Rows[rowindex];
+
+                deletequarantine(((Label)row.FindControl("lblidquarantine")).Text);
+            }
+        }
+
+        private void deletequarantine(string id)
+        {
+            try
+            {
+
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " delete from quarantinetbl where id=@id";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                getquarantinedata();
             }
         }
 
