@@ -313,11 +313,13 @@
                 <asp:TemplateField HeaderText="DATE STARTED">
                     <ItemTemplate>
                         <asp:Label ID="lblsdate" runat="server" Text='<%# Bind("SDATE") %>'></asp:Label>
+                        <asp:TextBox ID="tboxsdate"  Visible="false" TextMode="Date" CssClass="form-control"  Text='<%# Bind("SDATE") %>' runat="server"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="DATE ENDED">
                     <ItemTemplate>
                         <asp:Label ID="lbledate" runat="server" Text='<%# Bind("EDATE") %>'></asp:Label>
+                            <asp:TextBox ID="tboxedate" Visible="false" TextMode="Date" CssClass="form-control"  Text='<%# Bind("EDATE") %>' runat="server"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="DAYS">
@@ -328,8 +330,13 @@
                 <asp:TemplateField>
                     <ItemTemplate>
 
+                        <asp:LinkButton ID="btnsave" Visible="false" CommandName="btnsave" runat="server" CssClass="btn btn-success">save</asp:LinkButton>
+                            <asp:LinkButton ID="btncancel" Visible="false" CommandName="btncancel" runat="server" CssClass="btn btn-default">cancel</asp:LinkButton>
+
+
                         <asp:LinkButton ID="btnquarantine" Visible='<%# Eval("EDATE").ToString() == "" ? true : false %>' CommandName="myselect" runat="server" CssClass="btn btn-danger">End quarantine</asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton3" OnClientClick="return confirm('delete this record?')" CommandName="mydelete" CssClass="btn btn-danger" runat="server">delete</asp:LinkButton>
+                        <asp:LinkButton ID="btnedit" CommandName="myedit" runat="server" CssClass="btn btn-success">Edit</asp:LinkButton>
+                        <asp:LinkButton ID="btndelete" OnClientClick="return confirm('delete this record?')" CommandName="mydelete" CssClass="btn btn-warning" runat="server">delete</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

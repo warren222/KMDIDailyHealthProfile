@@ -224,7 +224,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 DataTable tb = new DataTable();
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            
+
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
@@ -806,15 +806,86 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView3.Rows[rowindex];
-            
+
                 endquarantine(((Label)row.FindControl("lblidquarantine")).Text);
             }
-            if (e.CommandName == "mydelete")
+            else if (e.CommandName == "mydelete")
             {
                 int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
                 GridViewRow row = GridView3.Rows[rowindex];
 
                 deletequarantine(((Label)row.FindControl("lblidquarantine")).Text);
+            }
+            else if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView3.Rows[rowindex];
+
+                ((Label)row.FindControl("lblsdate")).Visible = false;
+                ((Label)row.FindControl("lbledate")).Visible = false;
+
+                ((LinkButton)row.FindControl("btnedit")).Visible = false;
+                ((LinkButton)row.FindControl("btndelete")).Visible = false;
+
+                ((TextBox)row.FindControl("tboxsdate")).Visible = true;
+                ((TextBox)row.FindControl("tboxedate")).Visible = true;
+
+                ((LinkButton)row.FindControl("btncancel")).Visible = true;
+                ((LinkButton)row.FindControl("btnsave")).Visible = true;
+            }
+            else if (e.CommandName == "btncancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView3.Rows[rowindex];
+
+                ((Label)row.FindControl("lblsdate")).Visible = true;
+                ((Label)row.FindControl("lbledate")).Visible = true;
+
+                ((LinkButton)row.FindControl("btnedit")).Visible = true;
+                ((LinkButton)row.FindControl("btndelete")).Visible = true;
+
+                ((TextBox)row.FindControl("tboxsdate")).Visible = false;
+                ((TextBox)row.FindControl("tboxedate")).Visible = false;
+
+                ((LinkButton)row.FindControl("btncancel")).Visible = false;
+                ((LinkButton)row.FindControl("btnsave")).Visible = false;
+            }
+            else if (e.CommandName == "btnsave")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView3.Rows[rowindex];
+
+               updatequarantine(((Label)row.FindControl("lblidquarantine")).Text,((TextBox)row.FindControl("tboxsdate")).Text,
+                ((TextBox)row.FindControl("tboxedate")).Text);
+            }
+        }
+
+        private void updatequarantine(string id, string sdate, string edate)
+        {
+            try
+            {
+
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                string str = " update quarantinetbl set sdate=@sdate,edate=@edate where id=@id";
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@sdate", sdate);
+                        sqlcmd.Parameters.AddWithValue("@edate", edate);
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+            finally
+            {
+                getquarantinedata();
             }
         }
 
