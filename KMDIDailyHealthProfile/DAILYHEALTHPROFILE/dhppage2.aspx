@@ -255,7 +255,7 @@
                 <asp:CheckBox ID="cboxrecocallin" Text="Call in for medical Attention and / or endorsement to hospital specify:" runat="server" /><asp:TextBox ID="tboxrecocallin" CssClass="form-control" runat="server"></asp:TextBox><br />
                 <asp:CheckBox ID="cboxrecosendhome" Text="Send home" runat="server" /><br />
                 <asp:CheckBox ID="cboxrecoother" Text="Others:" runat="server" /><asp:TextBox ID="tboxrecoother" CssClass="form-control" runat="server"></asp:TextBox><br />
-                Patient Name:<asp:LinkButton ID="LinkButton8" runat="server" OnClick="LinkButton8_Click">Sign here...</asp:LinkButton>
+                Patient Name:<asp:LinkButton Visible="false" ID="LinkButton8" runat="server" OnClick="LinkButton8_Click">Sign here...</asp:LinkButton>
                 <asp:Panel ID="pnlpatientreco" runat="server"></asp:Panel>
                 <asp:TextBox ID="tboxrecopatient" CssClass="form-control" placeholder="Patient Name" runat="server"></asp:TextBox><br />
             </blockquote>
