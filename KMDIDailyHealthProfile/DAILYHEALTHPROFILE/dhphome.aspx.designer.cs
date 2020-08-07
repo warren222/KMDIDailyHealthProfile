@@ -13,6 +13,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
     public partial class dhphome {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// LinkButton1 control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,24 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// HyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// TBOXinputdate control.
         /// </summary>
         /// <remarks>
@@ -137,6 +164,15 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+        
+        /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
         /// GridView1 control.

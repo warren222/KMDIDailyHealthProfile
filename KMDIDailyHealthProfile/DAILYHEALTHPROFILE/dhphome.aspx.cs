@@ -35,11 +35,19 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     if (acct == "Admin")
                     {
                         LinkButton2.Visible = true;
-                        Panel1.Visible = true;
+
                     }
                     else
                     {
                         LinkButton2.Visible = false;
+
+                    }
+                    if (empno == "1604-016" || empno== "2003-002" || empno== "1611-004" || empno== "1604-017" || empno== "2007-001" || empno== "1006-004")
+                    {
+                        Panel1.Visible = true;
+                    }
+                    else
+                    {
                         Panel1.Visible = false;
                     }
                     getdata();
@@ -285,6 +293,19 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             tboxdate.Text = TBOXinputdate.Text;
             tboxsearchkey.Text = DDLemployee.Text.ToString();
+            if(Convert.ToDateTime(TBOXinputdate.Text)> DateTime.Now)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "val2";
+                err.IsValid = false;
+                err.ErrorMessage = "date should not exceed the current date!";
+                Page.Validators.Add(err);
+            }
+
+            if (IsValid)
+            {
+
+         
             try
             {
                 string find = "select * from dhrtbl where empno=@empno and rdate=@rdate";
@@ -348,6 +369,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             finally
             {
                 getdata();
+            }
             }
         }
     }
