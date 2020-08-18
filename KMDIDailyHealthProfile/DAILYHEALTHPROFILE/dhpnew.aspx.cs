@@ -27,6 +27,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                     getdata();
                     gettravelhistory();
+                    loadtestresult();
                     //if (acct == "Admin")
                     //{
                     //    tboxCOM.Enabled = true;
@@ -83,6 +84,36 @@ namespace webaftersales.DAILYHEALTHPROFILE
             err.ErrorMessage = message;
             Page.Validators.Add(err);
 
+        }
+        private void loadtestresult()
+        {
+            try
+            {
+                string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2] where empno = @empno order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    DataTable tb = new DataTable();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        GridView4.DataSource = tb;
+                        GridView4.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "addonval";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
         }
         private void getbodytempdata()
         {
@@ -834,6 +865,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
             GridView1.PageIndex = e.NewPageIndex;
             getbodytempdata();
         }
+        protected void GridView4_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView4.PageIndex = e.NewPageIndex;
+            loadtestresult();
+        }
         private void loadsymptoms()
         {
             try
@@ -1106,7 +1142,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhptravelhistory)" +
-                    "declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
+                    " declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
                     " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)"+
                       " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
                       " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) "+

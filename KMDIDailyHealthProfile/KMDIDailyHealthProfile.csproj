@@ -203,6 +203,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAILYHEALTHPROFILE\da\Emp.cs" />
+    <Compile Include="DAILYHEALTHPROFILE\da\testresult.cs" />
     <Compile Include="DAILYHEALTHPROFILE\dhpchangepass.aspx.cs">
       <DependentUpon>dhpchangepass.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -299,6 +301,20 @@
     <Compile Include="DAILYHEALTHPROFILE\RPTpage.aspx.designer.cs">
       <DependentUpon>RPTpage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\testresultsummary.aspx.cs">
+      <DependentUpon>testresultsummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\testresultsummary.aspx.designer.cs">
+      <DependentUpon>testresultsummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\testresultsummaryreport.aspx.cs">
+      <DependentUpon>testresultsummaryreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\testresultsummaryreport.aspx.designer.cs">
+      <DependentUpon>testresultsummaryreport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\thirdparty\PRTreportthird.aspx.cs">
       <DependentUpon>PRTreportthird.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -332,6 +348,8 @@
     <Content Include="DAILYHEALTHPROFILE\reportgen.aspx" />
     <Content Include="DAILYHEALTHPROFILE\RPTpage.aspx" />
     <Content Include="DAILYHEALTHPROFILE\scripts\sign.js" />
+    <Content Include="DAILYHEALTHPROFILE\testresultsummary.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\testresultsummaryreport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\thirdparty\PRTreportthird.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -420,6 +438,7 @@
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPT.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc" />
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\testresultRDLC.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

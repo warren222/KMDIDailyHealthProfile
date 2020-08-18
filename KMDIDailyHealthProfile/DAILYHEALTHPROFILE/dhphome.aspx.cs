@@ -41,15 +41,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     {
                         LinkButton2.Visible = false;
 
-                    }
-                    if (empno == "1604-016" || empno== "2003-002" || empno== "1611-004" || empno== "1604-017" || empno== "2007-001" || empno== "1006-004")
-                    {
-                        Panel1.Visible = true;
-                    }
-                    else
-                    {
-                        Panel1.Visible = false;
-                    }
+                    }  
+                    Panel1.Visible = panelaccess();
                     getdata();
                     loademployee();
                 }
@@ -60,6 +53,33 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
             }
         }
+        bool panelaccess()
+        {
+            bool x = false;      
+            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            using (SqlConnection sqlcon = new SqlConnection(cs))
+            {
+                using (SqlCommand sqlcmd = new SqlCommand("SELECT * from backtractaccesstb where empno = @empno", sqlcon))
+                {
+                    sqlcon.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    sqlcmd.Parameters.AddWithValue("@empno", empno);
+                    using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                    {
+                        if (rd.HasRows)
+                        {
+                            x = true;
+                        }
+                        else
+                        {
+                            x = false;
+                        }
+                    }
+                }
+            }
+            return x;
+        }
+
         private string empno
         {
             get
@@ -293,7 +313,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             tboxdate.Text = TBOXinputdate.Text;
             tboxsearchkey.Text = DDLemployee.Text.ToString();
-            if(Convert.ToDateTime(TBOXinputdate.Text)> DateTime.Now)
+            if (Convert.ToDateTime(TBOXinputdate.Text) > DateTime.Now)
             {
                 CustomValidator err = new CustomValidator();
                 err.ValidationGroup = "val2";
@@ -305,71 +325,71 @@ namespace webaftersales.DAILYHEALTHPROFILE
             if (IsValid)
             {
 
-         
-            try
-            {
-                string find = "select * from dhrtbl where empno=@empno and rdate=@rdate";
-                bool exist = false;
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhrtbl)" +
-                             " insert into dhrtbl (id,empno,rdate,rtime)values(@id,@empno,@rdate,@rtime)";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                try
                 {
-                    sqlcon.Open();
-                    using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
-                    {
+                    string find = "select * from dhrtbl where empno=@empno and rdate=@rdate";
+                    bool exist = false;
 
-                        sqlcmd.Parameters.AddWithValue("@empno", DDLemployee.Text.ToString());
-                        sqlcmd.Parameters.AddWithValue("@rdate", Convert.ToDateTime(TBOXinputdate.Text).ToString("MM-dd-yyyy"));
-
-                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
-                        {
-                            if (rd.HasRows)
-                            {
-                                exist = true;
-                            }
-                            else
-                            {
-                                exist = false;
-                            }
-                        }
-
-                    }
-                    if (exist)
+                    string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                    string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhrtbl)" +
+                                 " insert into dhrtbl (id,empno,rdate,rtime)values(@id,@empno,@rdate,@rtime)";
+                    using (SqlConnection sqlcon = new SqlConnection(cs))
                     {
-                        CustomValidator err = new CustomValidator();
-                        err.ValidationGroup = "val2";
-                        err.IsValid = false;
-                        err.ErrorMessage = "One report per day only, DHP already exist!";
-                        Page.Validators.Add(err);
-                    }
-                    else
-                    {
-                        using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                        sqlcon.Open();
+                        using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
                         {
 
                             sqlcmd.Parameters.AddWithValue("@empno", DDLemployee.Text.ToString());
                             sqlcmd.Parameters.AddWithValue("@rdate", Convert.ToDateTime(TBOXinputdate.Text).ToString("MM-dd-yyyy"));
-                            sqlcmd.Parameters.AddWithValue("@rtime", DateTime.Now.ToString("hh:mm:ss tt"));
-                            sqlcmd.ExecuteNonQuery();
-                        }
-                    }
 
+                            using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                            {
+                                if (rd.HasRows)
+                                {
+                                    exist = true;
+                                }
+                                else
+                                {
+                                    exist = false;
+                                }
+                            }
+
+                        }
+                        if (exist)
+                        {
+                            CustomValidator err = new CustomValidator();
+                            err.ValidationGroup = "val2";
+                            err.IsValid = false;
+                            err.ErrorMessage = "One report per day only, DHP already exist!";
+                            Page.Validators.Add(err);
+                        }
+                        else
+                        {
+                            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                            {
+
+                                sqlcmd.Parameters.AddWithValue("@empno", DDLemployee.Text.ToString());
+                                sqlcmd.Parameters.AddWithValue("@rdate", Convert.ToDateTime(TBOXinputdate.Text).ToString("MM-dd-yyyy"));
+                                sqlcmd.Parameters.AddWithValue("@rtime", DateTime.Now.ToString("hh:mm:ss tt"));
+                                sqlcmd.ExecuteNonQuery();
+                            }
+                        }
+
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                CustomValidator err = new CustomValidator();
-                err.ValidationGroup = "val2";
-                err.IsValid = false;
-                err.ErrorMessage = ex.Message.ToString();
-                Page.Validators.Add(err);
-            }
-            finally
-            {
-                getdata();
-            }
+                catch (Exception ex)
+                {
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "val2";
+                    err.IsValid = false;
+                    err.ErrorMessage = ex.Message.ToString();
+                    Page.Validators.Add(err);
+                }
+                finally
+                {
+                    getdata();
+                }
             }
         }
     }

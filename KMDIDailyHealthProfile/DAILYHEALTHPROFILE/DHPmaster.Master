@@ -38,6 +38,9 @@
                         <li>
                             <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/quarantinereport.aspx" OnClick="lll" >Quarantine Report</asp:LinkButton>
                         </li>
+                            <li>
+                            <asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/testresultsummary.aspx" OnClick="lll" >TRS</asp:LinkButton>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li></li>
