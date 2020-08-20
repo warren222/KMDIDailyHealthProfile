@@ -29,15 +29,15 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <div class="panel panel-primary">
+                                <div class="panel panel-success">
                                     <div class="panel-heading">
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("EMPNO") %>'></asp:Label>
                                     </div>
                                     <div class="panel-body">
-                                        <asp:Label ID="Label2" runat="server" Font-Size="XX-Large" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                                        <asp:Label ID="Label2" runat="server" Font-Size="X-Large" Text='<%# Bind("FULLNAME") %>'></asp:Label>
                                         <br />
                                         <br />
-                                        <asp:GridView ID="GridView2" GridLines="Horizontal" CssClass="table table-striped" DataSource='<%# Bind("testresultsummary") %>' runat="server" AutoGenerateColumns="False">
+                                        <asp:GridView ID="GridView2" GridLines="Horizontal" CssClass="table table-bordered" DataSource='<%# Bind("testresultsummary") %>' runat="server" AutoGenerateColumns="False">
                                             <Columns>
                                                 <asp:TemplateField HeaderText="DATE TEST DONE" HeaderStyle-CssClass="text-muted">
                                                     <ItemTemplate>

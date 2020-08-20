@@ -203,6 +203,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAILYHEALTHPROFILE\backtrackaccess.aspx.cs">
+      <DependentUpon>backtrackaccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\backtrackaccess.aspx.designer.cs">
+      <DependentUpon>backtrackaccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\da\Emp.cs" />
     <Compile Include="DAILYHEALTHPROFILE\da\testresult.cs" />
     <Compile Include="DAILYHEALTHPROFILE\dhpchangepass.aspx.cs">
@@ -334,6 +341,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DAILYHEALTHPROFILE\backtrackaccess.aspx" />
     <Content Include="DAILYHEALTHPROFILE\css\gridcss.css" />
     <Content Include="DAILYHEALTHPROFILE\dhpchangepass.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpfullimage.aspx" />

@@ -23,9 +23,8 @@
         <asp:DropDownList ID="dpdepartment" CssClass="form-control" runat="server">
             <asp:ListItem Value="Accounting" Selected="True">Accounting</asp:ListItem>
             <asp:ListItem Value="Admin">Admin</asp:ListItem>
-            <asp:ListItem Value="Delivery">Delivery</asp:ListItem>
+            <asp:ListItem Value="Delivery & Installation">Delivery & Installation</asp:ListItem>
             <asp:ListItem Value="Human Resource">Human Resource</asp:ListItem>
-            <asp:ListItem Value="Logistics">Logistics</asp:ListItem>
             <asp:ListItem Value="Management">Management</asp:ListItem>
             <asp:ListItem Value="Marketing">Marketing</asp:ListItem>
             <asp:ListItem Value="POSE">POSE</asp:ListItem>
@@ -47,6 +46,7 @@ a.FULLNAME,
 case when isdate(b.BIRTHDAY)=1 then format(cast(b.BIRTHDAY as date),'MMM dd, yyyy') else b.BIRTHDAY end as BIRTHDAY,
 CAST(DATEDIFF(DD,CAST(b.BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE,
 b.DEPARTMENT,
+b.DEPTID,
 case when isdate(a.SDATE)=1 then format(cast(a.SDATE as date),'MMM dd, yyyy') else a.SDATE end as SDATE,
 case when isdate(a.EDATE)=1 then format(cast(a.EDATE as date),'MMM dd, yyyy') else a.EDATE end as EDATE,
 DATEDIFF(day,sdate,case when edate='' then getdate() else edate end) AS [DAYS]
@@ -56,8 +56,7 @@ left join
 EMPTBL as b
 on a.empno = b.empno) as tb
 
-select * from #my_tb where department like case when isnull(@department,'')='' then department else '%'+@department+'%' end
-        and edate = case when @rb = '1' then '' else edate end"
+select * from #my_tb where DEPTID = @department and edate = case when @rb = '1' then '' else edate end"
         runat="server">
         <SelectParameters>
             <asp:SessionParameter Name="department" SessionField="mydepartment" DefaultValue="delivery" Type="String" />

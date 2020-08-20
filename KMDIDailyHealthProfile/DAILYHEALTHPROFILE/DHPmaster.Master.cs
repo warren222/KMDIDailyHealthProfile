@@ -12,21 +12,25 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void Page_Load(object sender, EventArgs e)
         {
             username.Text = Session["dhp_USERNAME"].ToString() + " ";
-            if (Session["dhp_USERACCT"].ToString() == "Admin")
+            if (Session["dhp_USERACCT"].ToString() == "Admin" || Session["dhp_DEPARTMENT"].ToString() == "Management")
             {
+                LinkButton5.Visible = true;
+                LinkButton4.Visible = true;
                 LinkButton3.Visible = true;
             }
             else
             {
+                LinkButton5.Visible = false;
+                LinkButton4.Visible = false;
                 LinkButton3.Visible = false;
             }
-            if (Session["dhp_USERACCT"].ToString() == "Admin" || Session["dhp_DEPARTMENT"].ToString() == "Management")
+            if (Session["dhp_EMPNO"].ToString() == "1604-016" || Session["dhp_EMPNO"].ToString() == "1611-004")
             {
-                LinkButton4.Visible = true;
+                LinkButton6.Visible = true;
             }
             else
             {
-                LinkButton4.Visible = false;
+                LinkButton6.Visible = false;
             }
         }
         protected void LinkButton1_Click(object sender, EventArgs e)

@@ -594,7 +594,7 @@
                 <div class="panel-body">
                     <asp:UpdatePanel ID="UpdatePanel6" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView4" runat="server" CssClass="table table-striped" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView4_PageIndexChanging">
+                            <asp:GridView ID="GridView4" runat="server" CssClass="table table-bordered" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView4_PageIndexChanging">
                                 <Columns>
                                     <asp:TemplateField HeaderText="DATE TEST DONE">
                                         <ItemTemplate>

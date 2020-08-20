@@ -15,6 +15,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             if (!IsPostBack)
             {
+                //Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+                //ConnectionStringsSection sec = (ConnectionStringsSection)config.GetSection("connectionStrings");
+                //sec.ConnectionStrings["DefaultConnection"].ConnectionString = "Set the connection string here";
+                //config.Save();
                 if (Request.Cookies["DHPusername"] != null && Request.Cookies["DHPpassword"] != null)
                 {
                     tboxempno.Text = Request.Cookies["DHPusername"].Value;

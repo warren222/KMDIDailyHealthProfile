@@ -30,7 +30,7 @@
 	  ,b.SURNAME+', '+b.FIRSTNAME+' '+MI AS FULLNAME
   FROM [DHPPAGE2] as a left join emptbl as b
   on a.empno = b.empno
-        WHERE SURNAME LIKE '%'+@PATIENTNAME+'%' or firstname like '%'+@PATIENTNAME+'%' or TESTRESULT like '%'+@PATIENTNAME+'%'">
+        WHERE SURNAME LIKE '%'+@PATIENTNAME+'%' or firstname like '%'+@PATIENTNAME+'%'">
         <SelectParameters>
             <asp:SessionParameter Name="PATIENTNAME" SessionField="testresultsearchkey" Type="String" />
         </SelectParameters>
