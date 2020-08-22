@@ -28,6 +28,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     getdata();
                     gettravelhistory();
                     loadtestresult();
+                    loadquarantine();
                     //if (acct == "Admin")
                     //{
                     //    tboxCOM.Enabled = true;
@@ -85,6 +86,39 @@ namespace webaftersales.DAILYHEALTHPROFILE
             Page.Validators.Add(err);
 
         }
+        private void loadquarantine()
+        {
+            try
+            {
+                string str = " select case when isdate(a.SDATE)=1 then format(cast(a.SDATE as date),'MMM dd, yyyy') else a.SDATE end as SDATE, " +
+                                "case when isdate(a.EDATE) = 1 then format(cast(a.EDATE as date), 'MMM dd, yyyy') else a.EDATE end as EDATE, " +
+                                "DATEDIFF(day, sdate,case when edate = '' then getdate() else edate end) AS[DAYS] from [quarantinetbl] as a where empno = @empno";
+                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                using (SqlConnection sqlcon = new SqlConnection(cs))
+                {
+                    sqlcon.Open();
+                    DataTable tb = new DataTable();
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        GridView5.DataSource = tb;
+                        GridView5.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                    CustomValidator err = new CustomValidator();
+                    err.ValidationGroup = "addonval";
+                    err.IsValid = false;
+                    err.ErrorMessage = ex.Message.ToString();
+                    Page.Validators.Add(err);
+                }
+            }
+            
         private void loadtestresult()
         {
             try
@@ -205,7 +239,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxDBDO.Text = rd["DBDO"].ToString();
                                 tboxDBET.Text = rd["DBET"].ToString();
                                 tboxDBRE.Text = rd["DBRE"].ToString();
-                             
+
                                 VOEXyes.Checked = getbol(rd["VOEX"].ToString());
                                 VOEXno.Checked = getbol(rd["VOEXno"].ToString());
                                 tboxVODO.Text = rd["VODO"].ToString();
@@ -244,137 +278,137 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private string historystr(string actionmade)
         {
-         
-                string insertstr = " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from ASNWERSHEETtbl_history) " +
-                                  "insert into ASNWERSHEETtbl_history " +
-                                   "(ID ,	" +
-                                       "ACTIONMADE,	" +
-                                         "EMPNOEDITEDBY,	" +
-                                           "DATEALTERED,	" +
-                                   "EMPNO,	" +
-                                   "DHPID,	" +
-                                   "DCEX ,	" +
-                                   "DCEXno ,	" +
-                                   "DCDO ,	" +
-                                   "DCET ,	" +
-                                   "DCRE ,	" +
-                                   "FEEX ,	" +
-                                   "FEEXno ,	" +
-                                   "FEDO ,	" +
-                                   "FEET ,	" +
-                                   "FERE ,	" +
-                                   "MPEX ,	" +
-                                   "MPEXno ,	" +
-                                   "MPDO ,	" +
-                                   "MPET ,	" +
-                                   "MPRE ,	" +
-                                   "WEEX ,	" +
-                                   "WEEXno ,	" +
-                                   "WEDO ,	" +
-                                   "WEET ,	" +
-                                   "WERE ,	" +
-                                   "DSEX ,	" +
-                                   "DSEXno ,	" +
-                                   "DSDO ,	" +
-                                   "DSET ,	" +
-                                   "DSRE ,	" +
-                                   "DTEX ,	" +
-                                   "DTEXno ,	" +
-                                   "DTDO ,	" +
-                                   "DTET ,	" +
-                                   "DTRE ,	" +
-                                   "DIEX ,	" +
-                                   "DIEXno ,	" +
-                                   "DIDO ,	" +
-                                   "DIET ,	" +
-                                   "DIRE ,	" +
-                                   "DBEX ,	" +
-                                   "DBEXno ,	" +
-                                   "DBDO ,	" +
-                                   "DBET ,	" +
-                                   "DBRE ,	" +
-                                   "VOEX ,	" +
-                                   "VOEXno ,	" +
-                                   "VODO ,	" +
-                                   "VOET ,	" +
-                                   "VORE ,	" +
-                                   "COEX ,	" +
-                                   "COEXno ,	" +
-                                   "CODO ,	" +
-                                   "COET ,	" +
-                                   "CORE ,	" +
-                                   "OSEX ,	" +
-                                   "OSEXno ,	" +
-                                   "OSDO ,	" +
-                                   "OSET ,	" +
-                                   "OSRE ,	" +
-                                   " OS) " +
-                                   "values	" +
-                                   "(@idpp ,	" +
-                                       "'"+actionmade+"',	" +
-                                         "@editedby,	" +
-                                           "getdate(),	" +
-                                   "@empno," +
-                                   "@dhpid," +
-                                   "@DCEX ," +
-                                   "@DCEXno ," +
-                                   "@DCDO ," +
-                                   "@DCET ," +
-                                   "@DCRE ," +
-                                   "@FEEX ," +
-                                   "@FEEXno ," +
-                                   "@FEDO ," +
-                                   "@FEET ," +
-                                   "@FERE ," +
-                                   "@MPEX ," +
-                                   "@MPEXno ," +
-                                   "@MPDO ," +
-                                   "@MPET ," +
-                                   "@MPRE ," +
-                                   "@WEEX ," +
-                                   "@WEEXno ," +
-                                   "@WEDO ," +
-                                   "@WEET ," +
-                                   "@WERE ," +
-                                   "@DSEX ," +
-                                   "@DSEXno ," +
-                                   "@DSDO ," +
-                                   "@DSET ," +
-                                   "@DSRE ," +
-                                   "@DTEX ," +
-                                   "@DTEXno ," +
-                                   "@DTDO ," +
-                                   "@DTET ," +
-                                   "@DTRE ," +
-                                   "@DIEX ," +
-                                   "@DIEXno ," +
-                                   "@DIDO ," +
-                                   "@DIET ," +
-                                   "@DIRE ," +
-                                   "@DBEX ," +
-                                   "@DBEXno ," +
-                                   "@DBDO ," +
-                                   "@DBET ," +
-                                   "@DBRE ," +
-                                   "@VOEX ," +
-                                   "@VOEXno ," +
-                                   "@VODO ," +
-                                   "@VOET ," +
-                                   "@VORE ," +
-                                   "@COEX ," +
-                                   "@COEXno ," +
-                                   "@CODO ," +
-                                   "@COET ," +
-                                   "@CORE ," +
-                                   "@OSEX ," +
-                                   "@OSEXno ," +
-                                   "@OSDO ," +
-                                   "@OSET ," +
-                                   "@OSRE , " +
-                                   " @OS) ";
-                return insertstr;
-            
-          
+
+            string insertstr = " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from ASNWERSHEETtbl_history) " +
+                              "insert into ASNWERSHEETtbl_history " +
+                               "(ID ,	" +
+                                   "ACTIONMADE,	" +
+                                     "EMPNOEDITEDBY,	" +
+                                       "DATEALTERED,	" +
+                               "EMPNO,	" +
+                               "DHPID,	" +
+                               "DCEX ,	" +
+                               "DCEXno ,	" +
+                               "DCDO ,	" +
+                               "DCET ,	" +
+                               "DCRE ,	" +
+                               "FEEX ,	" +
+                               "FEEXno ,	" +
+                               "FEDO ,	" +
+                               "FEET ,	" +
+                               "FERE ,	" +
+                               "MPEX ,	" +
+                               "MPEXno ,	" +
+                               "MPDO ,	" +
+                               "MPET ,	" +
+                               "MPRE ,	" +
+                               "WEEX ,	" +
+                               "WEEXno ,	" +
+                               "WEDO ,	" +
+                               "WEET ,	" +
+                               "WERE ,	" +
+                               "DSEX ,	" +
+                               "DSEXno ,	" +
+                               "DSDO ,	" +
+                               "DSET ,	" +
+                               "DSRE ,	" +
+                               "DTEX ,	" +
+                               "DTEXno ,	" +
+                               "DTDO ,	" +
+                               "DTET ,	" +
+                               "DTRE ,	" +
+                               "DIEX ,	" +
+                               "DIEXno ,	" +
+                               "DIDO ,	" +
+                               "DIET ,	" +
+                               "DIRE ,	" +
+                               "DBEX ,	" +
+                               "DBEXno ,	" +
+                               "DBDO ,	" +
+                               "DBET ,	" +
+                               "DBRE ,	" +
+                               "VOEX ,	" +
+                               "VOEXno ,	" +
+                               "VODO ,	" +
+                               "VOET ,	" +
+                               "VORE ,	" +
+                               "COEX ,	" +
+                               "COEXno ,	" +
+                               "CODO ,	" +
+                               "COET ,	" +
+                               "CORE ,	" +
+                               "OSEX ,	" +
+                               "OSEXno ,	" +
+                               "OSDO ,	" +
+                               "OSET ,	" +
+                               "OSRE ,	" +
+                               " OS) " +
+                               "values	" +
+                               "(@idpp ,	" +
+                                   "'" + actionmade + "',	" +
+                                     "@editedby,	" +
+                                       "getdate(),	" +
+                               "@empno," +
+                               "@dhpid," +
+                               "@DCEX ," +
+                               "@DCEXno ," +
+                               "@DCDO ," +
+                               "@DCET ," +
+                               "@DCRE ," +
+                               "@FEEX ," +
+                               "@FEEXno ," +
+                               "@FEDO ," +
+                               "@FEET ," +
+                               "@FERE ," +
+                               "@MPEX ," +
+                               "@MPEXno ," +
+                               "@MPDO ," +
+                               "@MPET ," +
+                               "@MPRE ," +
+                               "@WEEX ," +
+                               "@WEEXno ," +
+                               "@WEDO ," +
+                               "@WEET ," +
+                               "@WERE ," +
+                               "@DSEX ," +
+                               "@DSEXno ," +
+                               "@DSDO ," +
+                               "@DSET ," +
+                               "@DSRE ," +
+                               "@DTEX ," +
+                               "@DTEXno ," +
+                               "@DTDO ," +
+                               "@DTET ," +
+                               "@DTRE ," +
+                               "@DIEX ," +
+                               "@DIEXno ," +
+                               "@DIDO ," +
+                               "@DIET ," +
+                               "@DIRE ," +
+                               "@DBEX ," +
+                               "@DBEXno ," +
+                               "@DBDO ," +
+                               "@DBET ," +
+                               "@DBRE ," +
+                               "@VOEX ," +
+                               "@VOEXno ," +
+                               "@VODO ," +
+                               "@VOET ," +
+                               "@VORE ," +
+                               "@COEX ," +
+                               "@COEXno ," +
+                               "@CODO ," +
+                               "@COET ," +
+                               "@CORE ," +
+                               "@OSEX ," +
+                               "@OSEXno ," +
+                               "@OSDO ," +
+                               "@OSET ," +
+                               "@OSRE , " +
+                               " @OS) ";
+            return insertstr;
+
+
         }
         private void insertanswersheet()
         {
@@ -504,7 +538,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     "@OSDO ," +
                                     "@OSET ," +
                                     "@OSRE , " +
-                                    " @OS) "+
+                                    " @OS) " +
                                     historystr("Insert");
                 string updatestr = " update ASNWERSHEETtbl set " +
                                     " DCEX = @DCEX , " +
@@ -563,7 +597,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                     " OSET = @OSET , " +
                                     " OSRE = @OSRE ,  " +
                                     " OS = @OS  " +
-                                    " where EMPNO=@empno and DHPID=@dhpid "+
+                                    " where EMPNO=@empno and DHPID=@dhpid " +
                                           historystr("Update");
 
 
@@ -698,14 +732,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp)" +
-                    " insert into dhp_bodytemp (id,empno,dhpid,ACTUALTIMETAKEN,timeofday,TEMPREADING)values(@id,@empno,@dhpid,@att,@timeofday,@tr)"+
+                    " insert into dhp_bodytemp (id,empno,dhpid,ACTUALTIMETAKEN,timeofday,TEMPREADING)values(@id,@empno,@dhpid,@att,@timeofday,@tr)" +
                     " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
                     " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED,TIMEOFDAY,ACTUALTIMETAKEN,TEMPREADING) values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@timeofday,@att,@tr)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                 
+
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
@@ -789,14 +823,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string str = " delete from dhp_bodytemp where id = @id"+
+                string str = " delete from dhp_bodytemp where id = @id" +
                         " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
                     " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED) values(@idpp,@id,@empno,@dhpid,'Delete',@editedby,getdate())";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-                  
+
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
@@ -825,14 +859,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string str = " update dhp_bodytemp set ACTUALTIMETAKEN=@att,timeofday=@timeofday,TEMPREADING=@tr where id = @id"+
+                string str = " update dhp_bodytemp set ACTUALTIMETAKEN=@att,timeofday=@timeofday,TEMPREADING=@tr where id = @id" +
                    " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
                     " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED,TIMEOFDAY,ACTUALTIMETAKEN,TEMPREADING) values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@timeofday,@att,@tr)";
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-               
+
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
@@ -887,10 +921,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(tb);
-                        
+
                         GridView2.DataSource = tb;
                         GridView2.DataBind();
-                
+
                     }
                 }
             }
@@ -910,7 +944,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom) " +
                                  " insert into DHP_symptom (ID,EMPNO,DHPID,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS) " +
                                  "values " +
-                                 "(@id, @empno, @dhpid, @SYMPTOM, @DATEOFONSET, @TIMEOFONSET, @REMARKS)"+
+                                 "(@id, @empno, @dhpid, @SYMPTOM, @DATEOFONSET, @TIMEOFONSET, @REMARKS)" +
 " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom_history)				" +
 " insert into DHP_symptom_history 																			" +
 " (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS)		" +
@@ -991,7 +1025,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string str = "delete from DHP_symptom where id  = @id"+
+                string str = "delete from DHP_symptom where id  = @id" +
                        " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom_history)				" +
 " insert into DHP_symptom_history 																			" +
 " (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED)		" +
@@ -1001,7 +1035,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
-               
+
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
                         sqlcmd.Parameters.AddWithValue("@id", id);
@@ -1030,7 +1064,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string str = "update DHP_symptom set SYMPTOM= @SYMPTOM,DATEOFONSET= @DATEOFONSET, TIMEOFONSET=@TIMEOFONSET, REMARKS=@REMARKS where id = @id"+
+                string str = "update DHP_symptom set SYMPTOM= @SYMPTOM,DATEOFONSET= @DATEOFONSET, TIMEOFONSET=@TIMEOFONSET, REMARKS=@REMARKS where id = @id" +
                     " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHP_symptom_history)				" +
 " insert into DHP_symptom_history 																			" +
 " (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS)		" +
@@ -1088,7 +1122,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void DIEXyes_CheckedChanged(object sender, EventArgs e)
         {
-            if(DIEXyes.Checked==true || VOEXyes.Checked == true)
+            if (DIEXyes.Checked == true || VOEXyes.Checked == true)
             {
                 DIEPNL.Visible = true;
             }
@@ -1121,7 +1155,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView3.DataSource = tb;
                         GridView3.DataBind();
-                      
+
 
                     }
                 }
@@ -1143,9 +1177,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhptravelhistory)" +
                     " declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
-                    " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)"+
+                    " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)" +
                       " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
-                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) "+
+                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) " +
                       " values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@sorting,@travelhistory)";
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
@@ -1270,7 +1304,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " delete from dhptravelhistory where id = @id"+
+                string str = " delete from dhptravelhistory where id = @id" +
                               " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
                       " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED) " +
                       " values(@idpp,@id,@empno,@dhpid,'Delete',@editedby,getdate())";
@@ -1307,7 +1341,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id"+
+                string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id" +
                        " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
                       " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) " +
                       " values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@sorting,@travelhistory)";
@@ -1351,7 +1385,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            if(Session["pagesender"].ToString()== "dhphome"){
+            if (Session["pagesender"].ToString() == "dhphome")
+            {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhphome.aspx");
             }
             else if (Session["pagesender"].ToString() == "reportgen")
