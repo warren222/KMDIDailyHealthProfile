@@ -17,7 +17,7 @@
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" SelectCommand="
+     <asp:SqlDataSource ID="SqlDataSource1" runat="server" SelectCommand="
         SELECT 
         [ID]
       ,[EMPNO]
@@ -90,7 +90,7 @@
                 <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
         SelectCommand="SELECT SURNAME,
 FIRSTNAME,
 MI,
@@ -108,7 +108,7 @@ CAST(DATEDIFF(DD,CAST(BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE FROM [E
         </SelectParameters>
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
         SelectCommand="
 
  SELECT 
@@ -127,7 +127,6 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server"
-        ConnectionString="<%$ ConnectionStrings:sqlcon %>"
         SelectCommand="
 
  SELECT 

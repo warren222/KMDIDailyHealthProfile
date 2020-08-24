@@ -29,8 +29,19 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void refreshreport()
         {
+            SqlDataSource1.ConnectionString = sqlconstr;
+            SqlDataSource2.ConnectionString = sqlconstr;
+            SqlDataSource3.ConnectionString = sqlconstr;
+            SqlDataSource4.ConnectionString = sqlconstr;
             ReportViewer1.LocalReport.EnableExternalImages = true;
             string filepath = "~/Uploads/DHPuploads/page2/signature/patient/" + empno + dhpid + "/";
             string filepath2 = "~/Uploads/DHPuploads/page2/signature/physician/" + empno + dhpid + "/";

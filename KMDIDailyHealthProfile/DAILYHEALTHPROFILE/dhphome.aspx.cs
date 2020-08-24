@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KMDIDailyHealthProfile.DAILYHEALTHPROFILE;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -53,11 +54,18 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         bool panelaccess()
         {
             bool x = false;      
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 using (SqlCommand sqlcmd = new SqlCommand("SELECT * from backtractaccesstb where empno = @empno", sqlcon))
                 {
@@ -99,9 +107,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 DataTable tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand("SELECT surname+', '+firstname+' '+mi as FULLNAME,EMPNO FROM EMPTBL WHERE [USERSTATUS] = 'Active' order by surname asc", sqlcon))
                     {
@@ -126,9 +133,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 DataTable tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
@@ -180,10 +187,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string find = "select * from dhrtbl where empno=@empno and rdate=@rdate";
                 bool exist = false;
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhrtbl)" +
                              " insert into dhrtbl (id,empno,rdate,rtime)values(@id,@empno,@rdate,@rtime)";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
@@ -331,10 +338,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     string find = "select * from dhrtbl where empno=@empno and rdate=@rdate";
                     bool exist = false;
 
-                    string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                    
                     string str = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhrtbl)" +
                                  " insert into dhrtbl (id,empno,rdate,rtime)values(@id,@empno,@rdate,@rtime)";
-                    using (SqlConnection sqlcon = new SqlConnection(cs))
+                    using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                     {
                         sqlcon.Open();
                         using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))

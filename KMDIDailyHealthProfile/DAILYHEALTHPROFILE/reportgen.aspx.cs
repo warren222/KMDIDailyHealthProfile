@@ -59,6 +59,13 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void errorrmessage(string message)
         {
             CustomValidator err = new CustomValidator();
@@ -86,7 +93,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             try
             {
                 GridView1.SelectedIndex = -1;
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "    select * into #tbl from(SELECT 																	 " +
 "	a.ID,																															 " +
 "	a.EMPNO,																														 " +
@@ -126,7 +133,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
 "	from #tbl where [status] = case when @status='no' then [status] else @status end												 " +
 "	order by cast(RDATE as date) desc, cast(RTIME as datetime) desc																	 ";
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))

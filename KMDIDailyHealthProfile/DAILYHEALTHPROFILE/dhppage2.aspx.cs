@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KMDIDailyHealthProfile.DAILYHEALTHPROFILE;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -60,6 +61,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
             else
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void access()
@@ -136,9 +144,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         //{
         //    try
         //    {
-        //        string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+        //       
         //        string str = " select travelhistory from dhptravelhistory where empno=@empno and dhpid=@dhpid order by sorting asc";
-        //        using (SqlConnection sqlcon = new SqlConnection(cs))
+        //        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
         //        {
         //            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
         //            {
@@ -241,9 +249,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT,COMMENT,RECOFITTOWORK from dhppage2 where empno =@empno and dhpid=@dhpid";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -342,7 +350,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     f = "fit to work";
                 }
              
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string find = "select * from dhppage2 where empno=@empno and dhpid=@dhpid";
                 bool exist = false;
                 string insertstr = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhppage2)" +
@@ -367,7 +375,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 " RECOFITTOWORK=@fittowork,				   " +
                                  " comment=@comment				   " +
                                 " where EMPNO=@empno and DHPID=@dhpid  ";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -496,9 +504,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         //{
         //    try
         //    {
-        //        string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+        //       
         //        string str = "select * from dhptravelhistory where empno=@empno and dhpid=@dhpid order by sorting asc";
-        //        using (SqlConnection sqlcon = new SqlConnection(cs))
+        //        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
         //        {
         //            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
         //            {
@@ -537,11 +545,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
         //{
         //    try
         //    {
-        //        string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+        //       
         //        string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhptravelhistory)" +
         //            "declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
         //            " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)";
-        //        using (SqlConnection sqlcon = new SqlConnection(cs))
+        //        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
         //        {
         //            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
         //            {
@@ -622,9 +630,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         //{
         //    try
         //    {
-        //        string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+        //       
         //        string str = " delete from dhptravelhistory where id = @id";
-        //        using (SqlConnection sqlcon = new SqlConnection(cs))
+        //        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
         //        {
         //            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
         //            {
@@ -653,9 +661,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         //{
         //    try
         //    {
-        //        string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+        //       
         //        string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id";
-        //        using (SqlConnection sqlcon = new SqlConnection(cs))
+        //        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
         //        {
         //            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
         //            {
@@ -748,9 +756,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = "delete from personsinteract where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -778,9 +786,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = "update personsinteract set fullname=@fullname where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -815,9 +823,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = " select * from personsinteract where dhpid=@dhpid and empno=@empno";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -847,10 +855,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+               
                 string str = "declare @id as integer  =  (select isnull(max(isnull(id,0)),0)+1 from personsinteract)" +
                     " insert into personsinteract (id,empno,dhpid,fullname)values(@id,@empno,@dhpid,@fullname)";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

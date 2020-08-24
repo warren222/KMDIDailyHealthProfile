@@ -15,8 +15,9 @@
             <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" PostBackUrl="~/DAILYHEALTHPROFILE/dhphome.aspx" runat="server">back</asp:LinkButton>
         </div>
     </div>
+    <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         SelectCommand="
 
 select * into #tbl from (select empno,rdate,id from dhrtbl where rdate = case when ISDATE(@RDATE)=1 THEN CAST(@RDATE AS DATE) ELSE @RDATE END) as tbl

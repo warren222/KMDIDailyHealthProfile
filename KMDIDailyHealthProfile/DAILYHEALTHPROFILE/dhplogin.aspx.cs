@@ -1,9 +1,11 @@
-﻿using System;
+﻿using KMDIDailyHealthProfile.DAILYHEALTHPROFILE;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,6 +17,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             if (!IsPostBack)
             {
+
+             
                 //Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
                 //ConnectionStringsSection sec = (ConnectionStringsSection)config.GetSection("connectionStrings");
                 //sec.ConnectionStrings["DefaultConnection"].ConnectionString = "Set the connection string here";
@@ -42,11 +46,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void Button1_Click(object sender, EventArgs e)
         {
             try
-            {
-
-
-
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+            {        
+                if (server1.Checked)
+                {
+                    ConnectionString.getConnectionString("server1");
+                }
+                else
+                {
+                   ConnectionString.getConnectionString("server2");
+                }
+                string cs = ConnectionString.sqlconstr();
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();

@@ -16,12 +16,20 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
 
                 if (!IsPostBack)
                 {
-
+                    SqlDataSource1.ConnectionString = sqlconstr;
+                    ReportViewer1.LocalReport.Refresh();
                 }
             }
             else
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void errorrmessage(string message)

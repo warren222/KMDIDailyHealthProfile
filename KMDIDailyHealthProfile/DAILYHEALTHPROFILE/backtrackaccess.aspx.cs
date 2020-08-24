@@ -37,14 +37,21 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void loadddldata()
         {
             try
             {
            
                 string str = "select EMPNO,surname+', '+firstname+' '+mi as FULLNAME from emptbl where not empno in (select empno from backtractaccesstb) order by surname asc,firstname asc, mi asc";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = new SqlCommand(str, sqlcon);
@@ -65,8 +72,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             {
                 DataTable tb = new DataTable();
                 string str = "select a.EMPNO,surname+', '+firstname+' '+mi as FULLNAME from backtractaccesstb as a left join emptbl as b on a.empno = b.empno";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = new SqlCommand(str, sqlcon);
@@ -106,8 +113,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             {
                 DataTable tb = new DataTable();
                 string str = "delete from backtractaccesstb where empno = @empno";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = new SqlCommand(str, sqlcon);
@@ -131,8 +138,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             {
                 bool x = false;
                 string str = "select * from backtractaccesstb where empno = @empno";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     SqlCommand sqlcmd = new SqlCommand(str, sqlcon);

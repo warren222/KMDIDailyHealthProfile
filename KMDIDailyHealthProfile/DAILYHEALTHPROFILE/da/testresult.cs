@@ -21,13 +21,13 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.da
     }
     public class gettestresult
     {
-        public static List<testresult> testresult(string empno)
+        public static List<testresult> testresult(string empno,string cs)
         {
             List<testresult> li = new List<testresult>();
             try
             {
                 string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2] where empno = @empno order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+          
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KMDIDailyHealthProfile.DAILYHEALTHPROFILE;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -41,7 +42,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 return Session["dhp_USERNAME"].ToString();
             }
         }
-
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
 
 
         private void errorrmessage(string message)
@@ -79,8 +86,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 {
                     try
                     {
-                        string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                        using (SqlConnection sqlcon = new SqlConnection(cs))
+                        
+                        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                         {
                             sqlcon.Open();
                             SqlCommand sqlcmd = new SqlCommand("update EMPTBL set password = '" + tboxpassword.Text + "',username='" + tboxusername.Text + "' where empno = '" + empno + "'", sqlcon);
@@ -103,8 +110,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             bool hasrow;
 
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 sqlcon.Open();
                 SqlCommand sqlcmd = new SqlCommand("select * from emptbl where username = '" + username + "' and password = '" + tboxoldpassord.Text + "'", sqlcon);
@@ -125,8 +132,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             bool hasrow;
 
-            string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-            using (SqlConnection sqlcon = new SqlConnection(cs))
+            
+            using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
             {
                 sqlcon.Open();
                 SqlCommand sqlcmd = new SqlCommand("select * from emptbl where username = '" + tboxusername.Text + "' and not empno =  '" + empno + "'", sqlcon);

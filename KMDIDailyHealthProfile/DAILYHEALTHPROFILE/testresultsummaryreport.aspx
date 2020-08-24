@@ -15,7 +15,7 @@
     </div>
     <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlcon %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"  
         SelectCommand="
         SELECT [ID]
       ,a.[EMPNO]

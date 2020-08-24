@@ -29,11 +29,18 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             }
 
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
         private void loadata()
         {
             try
             {
-                GridView1.DataSource = da.employees.getemployees(tboxsearchkey.Text);
+                GridView1.DataSource = da.employees.getemployees(tboxsearchkey.Text, sqlconstr);
                 GridView1.DataBind();
                 Session["testresultsearchkey"] = tboxsearchkey.Text;
             }

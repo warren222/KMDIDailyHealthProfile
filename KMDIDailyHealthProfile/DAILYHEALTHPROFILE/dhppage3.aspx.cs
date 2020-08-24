@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KMDIDailyHealthProfile.DAILYHEALTHPROFILE;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -37,6 +38,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
             else
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void signaturepath()
@@ -117,7 +125,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "declare @ID as integer = (select isnull(max(isnull(id,0)),0)+1 from dhpisolationmonitoring)  " +
                                 "insert into dhpisolationmonitoring  " +
                                 "(ID,								 " +
@@ -141,7 +149,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 "@STOMACHACHE,						 " +
                                 "@VOMITINGEPISODE,					 " +
                                 "@BOWELMOVEMENT)					 ";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -188,9 +196,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 DataTable tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "select * from dhpisolationmonitoring where empno=@EMPNO AND DHPID=@DHPID";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -223,9 +231,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 DataTable tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
@@ -303,10 +311,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "delete from dhpisolationmonitoring " +
                                 "where id=@ID";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -330,7 +338,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "update dhpisolationmonitoring set " +
                                 "TIMERECORD=@TIMERECORD,						 " +
                                 "BODYTEMP=@BODYTEMP,							 " +
@@ -340,7 +348,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 "VOMITINGEPISODE=@VOMITINGEPISODE,					 " +
                                 "BOWELMOVEMENT=@BOWELMOVEMENT						 " +
                                 "where id=@ID";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -463,10 +471,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "delete from dhpreliefadministration where ID=@ID ";
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -494,14 +502,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "update dhpreliefadministration set " +
                                         "MEDICINE = @MEDICINE,							  " +
                                         "TIMEADMINISTERED = @TIMEADMINISTERED,					  " +
                                         "DOSAGE = @DOSAGE,							  " +
                                         "PURPOSE = @PURPOSE	where ID=@ID		";
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -545,7 +553,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "declare @ID as integer = (select isnull(max(isnull(id,0)),0)+1 from dhpreliefadministration) " +
                                         "insert into dhpreliefadministration  " +
                                         "(ID,								  " +
@@ -564,7 +572,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                         "@DOSAGE,							  " +
                                         "@PURPOSE)							  ";
 
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -598,9 +606,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 DataTable tb = new DataTable();
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "select * from dhpreliefadministration where empno=@EMPNO AND DHPID=@DHPID";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -639,8 +647,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string str = "select personnel,datecollected from dhppage3 where empno=@empno and dhpid=@dhpid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -669,7 +677,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string find = "select * from dhppage3 where empno=@empno and dhpid=@dhpid";
                 bool exist = false;
                 string insertstr = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhppage3)" +
@@ -679,7 +687,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string updatestr = " update dhppage3 set				   " +
                                 " personnel=@personnel,		   " +
                                 " datecollected=@datecollected";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -773,11 +781,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "declare @dhpdate as date = (select case when isdate(rdate)=1 then cast(rdate as date) else rdate end from [DHRtbl] where id = @dhpid) " +
                     "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from quarantinetbl)" +
                     " insert into quarantinetbl (id,empno,fullname,sdate,edate)values(@id,@empno,@fullname,@dhpdate,'')";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -865,9 +873,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " update quarantinetbl set sdate=@sdate,edate=@edate where id=@id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -894,9 +902,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " delete from quarantinetbl where id=@id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -921,10 +929,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " declare @dhpdate as date = (select case when isdate(rdate)=1 then cast(rdate as date) else rdate end from [DHRtbl] where id = @dhpid) " +
                     " update quarantinetbl set edate=@dhpdate where id=@id";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

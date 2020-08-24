@@ -210,6 +210,7 @@
     <Compile Include="DAILYHEALTHPROFILE\backtrackaccess.aspx.designer.cs">
       <DependentUpon>backtrackaccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\ConnectionString.cs" />
     <Compile Include="DAILYHEALTHPROFILE\da\Emp.cs" />
     <Compile Include="DAILYHEALTHPROFILE\da\testresult.cs" />
     <Compile Include="DAILYHEALTHPROFILE\dhpchangepass.aspx.cs">

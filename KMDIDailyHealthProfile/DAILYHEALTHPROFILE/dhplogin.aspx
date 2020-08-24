@@ -21,11 +21,17 @@
             <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
         </div>
         <div class="container">
-
+        
             <div class="row">
                 <div class="col-sm-12">
                     <h3><strong class="text-info text-center">DAILY HEALTH PROFILE</strong> </h3>
-                 
+                    <div class="well">
+
+                   
+                    <strong>Choose data source</strong> <br />
+            <asp:RadioButton ID="server1" GroupName="con" Text="Server 1" runat="server" Checked="True" />&nbsp;&nbsp;
+                    <asp:RadioButton ID="server2" Text="Server 2"  GroupName="con" runat="server" />
+                         </div>
                     <div class="alert alert-warning"><strong class="text-info">Note!&nbsp;</strong><span class="text-info">Pweding palitan ang Username at Password,</span>
                <span class="text-success">mag log-in <span class="glyphicon glyphicon-arrow-right"></span> i click ang menu icon <span class="glyphicon glyphicon-arrow-right"></span> i click ang username <span class="glyphicon glyphicon-arrow-right"></span> change password.</span>    
                     </div>

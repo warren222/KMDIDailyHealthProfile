@@ -11,25 +11,28 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.da
     {
         public string EMPNO { set; get; }
         public string FULLNAME { set; get; }
+        public string constr { set; get; }
         public List<testresult> testresultsummary
         {
             get
             {
-                return gettestresult.testresult(this.EMPNO);
+                return gettestresult.testresult(this.EMPNO,this.constr );
             }
         }
     }
+
     public class employees
     {
-        public static List<Emp> getemployees(string key)
+        public static List<Emp> getemployees(string key,string cs)
         {
 
             List<Emp> li = new List<Emp>();
             try
             {
+              
                 string str = " select * into #tbl from (select distinct [EMPNO] as EMPNO from [DHPPAGE2]) as tbl " +
                              " select a.EMPNO,b.SURNAME+', '+b.FIRSTNAME+' '+MI AS FULLNAME from #tbl as a left join emptbl as b ON a.EMPNO = b.EMPNO WHERE SURNAME LIKE @key or firstname like @key";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+     
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
@@ -44,6 +47,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.da
                                 Emp tr = new Emp();
                                 tr.EMPNO = dr["EMPNO"].ToString();
                                 tr.FULLNAME = dr["FULLNAME"].ToString();
+                                tr.constr = cs;
                                 li.Add(tr);
                             }
                         }

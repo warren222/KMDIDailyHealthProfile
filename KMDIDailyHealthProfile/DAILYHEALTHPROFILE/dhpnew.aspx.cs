@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KMDIDailyHealthProfile.DAILYHEALTHPROFILE;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -56,6 +57,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
             }
         }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
+            }
+        }
+
         private string empno
         {
             get
@@ -93,8 +102,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string str = " select case when isdate(a.SDATE)=1 then format(cast(a.SDATE as date),'MMM dd, yyyy') else a.SDATE end as SDATE, " +
                                 "case when isdate(a.EDATE) = 1 then format(cast(a.EDATE as date), 'MMM dd, yyyy') else a.EDATE end as EDATE, " +
                                 "DATEDIFF(day, sdate,case when edate = '' then getdate() else edate end) AS[DAYS] from [quarantinetbl] as a where empno = @empno";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     DataTable tb = new DataTable();
@@ -124,8 +133,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2] where empno = @empno order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     DataTable tb = new DataTable();
@@ -154,8 +163,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string str = " select * from dhp_bodytemp where empno = @empno and dhpid=@dhpid order by cast(ACTUALTIMETAKEN as time) asc";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     DataTable tb = new DataTable();
@@ -186,8 +195,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string str = " select * from asnwersheettbl where empno = @empno and dhpid=@dhpid";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -601,8 +610,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                           historystr("Update");
 
 
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     using (SqlCommand sqlcmd = new SqlCommand(find, sqlcon))
@@ -735,8 +744,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     " insert into dhp_bodytemp (id,empno,dhpid,ACTUALTIMETAKEN,timeofday,TEMPREADING)values(@id,@empno,@dhpid,@att,@timeofday,@tr)" +
                     " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
                     " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED,TIMEOFDAY,ACTUALTIMETAKEN,TEMPREADING) values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@timeofday,@att,@tr)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -826,8 +835,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string str = " delete from dhp_bodytemp where id = @id" +
                         " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
                     " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED) values(@idpp,@id,@empno,@dhpid,'Delete',@editedby,getdate())";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -862,8 +871,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 string str = " update dhp_bodytemp set ACTUALTIMETAKEN=@att,timeofday=@timeofday,TEMPREADING=@tr where id = @id" +
                    " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from dhp_bodytemp_history) " +
                     " insert into dhp_bodytemp_history (ID,ITEMID,empno,dhpid,actionmade,EMPNOEDITEDBY,DATEALTERED,TIMEOFDAY,ACTUALTIMETAKEN,TEMPREADING) values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@timeofday,@att,@tr)";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -909,8 +918,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string str = "SELECT * FROM DHP_symptom WHERE DHPID=@dhpid and empno=@empno";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     DataTable tb = new DataTable();
@@ -950,8 +959,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
 " (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS)		" +
 " values																									" +
 " (@idpp,@id, @empno, @dhpid,'Insert',@editedby,getdate(),@SYMPTOM, @DATEOFONSET, @TIMEOFONSET, @REMARKS)	";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     DataTable tb = new DataTable();
@@ -1031,8 +1040,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
 " (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED)		" +
 " values																									" +
 " (@idpp,@id, @empno, @dhpid,'Delete',@editedby,getdate())	";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
 
@@ -1070,8 +1079,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
 " (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SYMPTOM,DATEOFONSET,TIMEOFONSET,REMARKS)		" +
 " values																									" +
 " (@idpp,@id, @empno, @dhpid,'Update',@editedby,getdate(),@SYMPTOM, @DATEOFONSET, @TIMEOFONSET, @REMARKS)	";
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();
                     DataTable tb = new DataTable();
@@ -1140,9 +1149,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "select * from dhptravelhistory where empno=@empno and dhpid=@dhpid order by sorting asc";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -1174,14 +1183,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhptravelhistory)" +
                     " declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
                     " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)" +
                       " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
                       " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) " +
                       " values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@sorting,@travelhistory)";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -1212,9 +1221,9 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " select travelhistory from dhptravelhistory where empno=@empno and dhpid=@dhpid order by sorting asc";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -1303,12 +1312,12 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " delete from dhptravelhistory where id = @id" +
                               " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
                       " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED) " +
                       " values(@idpp,@id,@empno,@dhpid,'Delete',@editedby,getdate())";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {
@@ -1340,12 +1349,12 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString.ToString();
+                
                 string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id" +
                        " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
                       " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) " +
                       " values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@sorting,@travelhistory)";
-                using (SqlConnection sqlcon = new SqlConnection(cs))
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
                     {

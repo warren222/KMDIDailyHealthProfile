@@ -25,6 +25,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
         }
         private void loadparameter()
         {
+            SqlDataSource1.ConnectionString = sqlconstr;
             ReportParameter param1 = new ReportParameter("department", dpdepartment.Text);
             ReportViewer1.LocalReport.SetParameters(param1);
             ReportViewer1.LocalReport.Refresh();
@@ -38,6 +39,13 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             else
             {
                 Session["rb"] = "0";
+            }
+        }
+        private string sqlconstr
+        {
+            get
+            {
+                return ConnectionString.sqlconstr();
             }
         }
         private void errorrmessage(string message)

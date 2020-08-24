@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" ConnectionString="<%$ ConnectionStrings:sqlcon %>"
+    <asp:SqlDataSource ID="SqlDataSource1" 
         SelectCommand="
         select * into #my_tb from( 
 select 
