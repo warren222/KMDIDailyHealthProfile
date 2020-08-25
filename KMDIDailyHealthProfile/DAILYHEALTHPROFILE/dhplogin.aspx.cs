@@ -18,7 +18,20 @@ namespace webaftersales.DAILYHEALTHPROFILE
             if (!IsPostBack)
             {
 
-             
+
+                int port = HttpContext.Current.Request.Url.Port;
+                switch (port)
+                {
+                    case 8083:
+                        server1.Checked = true;
+                        break;
+                    case 8082:
+                        server2.Checked = true;
+                        break;
+                    default:
+                        server1.Checked = true;
+                        break;
+                }
                 //Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
                 //ConnectionStringsSection sec = (ConnectionStringsSection)config.GetSection("connectionStrings");
                 //sec.ConnectionStrings["DefaultConnection"].ConnectionString = "Set the connection string here";
@@ -46,14 +59,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void Button1_Click(object sender, EventArgs e)
         {
             try
-            {        
+            {
                 if (server1.Checked)
                 {
                     ConnectionString.getConnectionString("server1");
                 }
                 else
                 {
-                   ConnectionString.getConnectionString("server2");
+                    ConnectionString.getConnectionString("server2");
                 }
                 string cs = ConnectionString.sqlconstr();
                 using (SqlConnection sqlcon = new SqlConnection(cs))

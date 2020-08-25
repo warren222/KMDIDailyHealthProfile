@@ -46,6 +46,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     Panel1.Visible = panelaccess();
                     getdata();
                     loademployee();
+                    if (sqlconstr.Contains("121.58.229.248"))
+                    {
+                        lblserver.Text = "Server 1";
+                    }
+                    else
+                    {
+                        lblserver.Text = "Server 2";
+                    }
                 }
 
             }

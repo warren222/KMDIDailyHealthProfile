@@ -15,8 +15,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
             switch (server)
             {
                 case "server1":
-                    connectionstring = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;
-                    
+                    connectionstring = ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString;   
                     break;
                 case "server2":
                     connectionstring = ConfigurationManager.ConnectionStrings["sqlcon2"].ConnectionString;

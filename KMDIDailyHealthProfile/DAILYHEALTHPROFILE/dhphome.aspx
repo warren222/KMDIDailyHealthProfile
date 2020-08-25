@@ -213,5 +213,7 @@
         <br />
         <strong>
             <asp:Label CssClass="text-muted" ID="lblcountrow" runat="server" Text="Label"></asp:Label></strong>
+        <br /><br />
+        <asp:Label ID="lblserver" CssClass="text-success" runat="server" Text="Label"></asp:Label>
     </div>
 </asp:Content>

@@ -26,7 +26,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.da
             List<testresult> li = new List<testresult>();
             try
             {
-                string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2] where empno = @empno order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
+                string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2]"+
+                    " where empno = @empno and datetestdone <> '' order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
           
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
