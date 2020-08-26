@@ -250,7 +250,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                
-                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT,COMMENT,RECOFITTOWORK from dhppage2 where empno =@empno and dhpid=@dhpid";
+                string str = " select ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,RECOENDO,RECOCALLIN,RECOSENDHOME,RECOOTHER,RECOPATIENT,COMMENT,RECOFITTOWORK,ANTIGENDATE,ANTIGENTIME,ANTIGENSERIAL,ANTIGENRESULT from dhppage2 where empno =@empno and dhpid=@dhpid";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -259,6 +259,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         string testresult = "";
+                        string testresultantigen = "";
                         string sendhome = "";
                         string fittowork = "";
                         using (SqlDataReader rd = sqlcmd.ExecuteReader())
@@ -281,6 +282,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 tboxlicense.Text = rd["LICENSENO"].ToString();
                                 tboxCOM.Text = rd["COMMENT"].ToString();
                                 fittowork = rd["RECOFITTOWORK"].ToString();
+                                TBOXantigendate.Text = rd["ANTIGENDATE"].ToString();
+                                TBOXantigentime.Text = rd["ANTIGENTIME"].ToString();
+                                TBOXantigenserialno.Text = rd["ANTIGENSERIAL"].ToString();
+                                testresultantigen = rd["ANTIGENRESULT"].ToString();
                             }
                         }
 
@@ -291,7 +296,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 cboxTESTRESULT.Items[i].Selected = true;
                             }
                         }
-
+                        for (int i = 0; i < cboxantigen.Items.Count; i++)
+                        {
+                            if (testresultantigen.Contains(cboxantigen.Items[i].Value.ToString()))
+                            {
+                                cboxantigen.Items[i].Selected = true;
+                            }
+                        }
                         if (tboxrecoendo.Text != "")
                         {
                             cboxrecoendo.Checked = true;
@@ -330,11 +341,19 @@ namespace webaftersales.DAILYHEALTHPROFILE
             try
             {
                 string testresult = "";
+                string testresultantigen = "";
                 foreach (ListItem li in cboxTESTRESULT.Items)
                 {
                     if (li.Selected)
                     {
                         testresult += " *" + li.Value.ToString();
+                    }
+                }
+                foreach (ListItem li in cboxantigen.Items)
+                {
+                    if (li.Selected)
+                    {
+                        testresultantigen += " *" + li.Value.ToString();
                     }
                 }
                 string sendhome = "";
@@ -355,8 +374,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 bool exist = false;
                 string insertstr = " declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhppage2)" +
                                 " insert into dhppage2" +
-                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,recoendo,recocallin,recosendhome,recoother,recopatient,comment,RECOFITTOWORK)" +
-                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@timetest,@serialno,@testresult,@patientname,@administeredby,@physician,@licenseno,@recoendo,@recocallin,@recosendhome,@recoother,@patientreco,@comment,@fittowork)";
+                                " (ID,EMPNO,DHPID,EXPOSURETOVIRUS,DATETESTDONE,TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY,PHYSICIAN,LICENSENO,recoendo,recocallin,recosendhome,recoother,recopatient,comment,RECOFITTOWORK,ANTIGENDATE,ANTIGENTIME,ANTIGENSERIAL,ANTIGENRESULT)" +
+                                " values(@id,@empno,@dhpid,@exposuretovirus,@datetestdone,@timetest,@serialno,@testresult,@patientname,@administeredby,@physician,@licenseno,@recoendo,@recocallin,@recosendhome,@recoother,@patientreco,@comment,@fittowork,@antigendate,@antigentime,@antigenserial,@antigenresult)";
                 string updatestr = " update dhppage2 set				   " +
                                 " EXPOSURETOVIRUS=@exposuretovirus,	   " +
                                 " DATETESTDONE=@datetestdone,		   " +
@@ -373,6 +392,10 @@ namespace webaftersales.DAILYHEALTHPROFILE
                                 " recoother=@recoother,				   " +
                                 " recopatient=@patientreco,				   " +
                                 " RECOFITTOWORK=@fittowork,				   " +
+                                  " antigendate=@antigendate,				   " +
+                                    " antigentime=@antigentime,				   " +
+                                      " antigenserial=@antigenserial,				   " +
+                                        " antigenresult=@antigenresult,				   " +
                                  " comment=@comment				   " +
                                 " where EMPNO=@empno and DHPID=@dhpid  ";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
@@ -401,21 +424,25 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(updatestr, sqlcon))
                         {
-                            setparam(sqlcmd, testresult, sendhome, f);
+                            setparam(sqlcmd, testresult, testresultantigen, sendhome, f);
                         }
                     }
                     else
                     {
                         using (SqlCommand sqlcmd = new SqlCommand(insertstr, sqlcon))
                         {
-                            setparam(sqlcmd, testresult, sendhome, f);
+                            setparam(sqlcmd, testresult, testresultantigen, sendhome, f);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                errorrmessage(ex.Message.ToString());
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "val2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.ToString();
+                Page.Validators.Add(err);
             }
             finally
             {
@@ -426,7 +453,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 Page.Validators.Add(err);
             }
         }
-        private void setparam(SqlCommand sqlcmd, string testresult, string sendhome, string fittowork)
+        private void setparam(SqlCommand sqlcmd, string testresult,string antigentestresult, string sendhome, string fittowork)
         {
             sqlcmd.Parameters.AddWithValue("@empno", empno);
             sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
@@ -446,6 +473,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@patientreco", tboxrecopatient.Text);
             sqlcmd.Parameters.AddWithValue("@comment", tboxCOM.Text);
             sqlcmd.Parameters.AddWithValue("@fittowork", fittowork);
+
+            sqlcmd.Parameters.AddWithValue("@antigendate", TBOXantigendate.Text);
+            sqlcmd.Parameters.AddWithValue("@antigentime", TBOXantigentime.Text);
+            sqlcmd.Parameters.AddWithValue("@antigenserial", TBOXantigenserialno.Text);
+            sqlcmd.Parameters.AddWithValue("@antigenresult",antigentestresult );
             sqlcmd.ExecuteNonQuery();
         }
 

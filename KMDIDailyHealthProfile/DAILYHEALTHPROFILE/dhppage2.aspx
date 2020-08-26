@@ -56,7 +56,7 @@
     <asp:ValidationSummary ID="ValidationSummary4" CssClass="alert alert-danger" ValidationGroup="mainval" runat="server" />
     <h4>(To be used when a sudden feeling/sensation or symptom is exhibited during working hours – before and during isolation as the case may be)</h4>
     <h3><strong>CONCISE CLINICAL HISTORY</strong></h3>
-  <%--  <strong>Travel History/Record:</strong>&nbsp;<label class="text-success">(please indicate previous day’s sequence of movement)</label>
+    <%--  <strong>Travel History/Record:</strong>&nbsp;<label class="text-success">(please indicate previous day’s sequence of movement)</label>
     <br />
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
@@ -217,6 +217,40 @@
                     </blockquote>
                 </div>
             </asp:Panel>
+            <asp:Panel ID="Panel3" runat="server">
+                <h4><strong>Antigen</strong></h4>
+                <table>
+                    <tr>
+                        <td>DATE OF TEST DONE
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TBOXantigendate" TextMode="Date" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time of Test
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TBOXantigentime" TextMode="Time" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Test Kit Serial Number
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TBOXantigenserialno" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                </table>
+                    <div class="container">
+                    <blockquote>
+                        <asp:CheckBoxList ID="cboxantigen" runat="server">
+                            <asp:ListItem Value="SARS-COV-2 ANTIGEN NOT PRESENT">SARS-COV-2 ANTIGEN NOT PRESENT</asp:ListItem>
+                            <asp:ListItem Value="SARS-COV-2 ANTIGEN PRESENT">SARS-COV-2 ANTIGEN PRESENT</asp:ListItem>
+                        </asp:CheckBoxList>
+                    </blockquote>
+                </div>
+            </asp:Panel>
             Patient Name:<asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Sign here...</asp:LinkButton>
             <asp:TextBox ID="tboxpatientname" CssClass="form-control" placeholder="Patient Name" runat="server"></asp:TextBox><br />
             <asp:Panel ID="Panel1" runat="server"></asp:Panel>
@@ -262,14 +296,14 @@
         </div>
     </asp:Panel>
 
-       <div class="text-center">
-            <strong>NOTE/OBSERVATIONS</strong>
-            <br />
-            <small class="text-info">(Nurse’s comments)</small><br />
-            <asp:TextBox ID="tboxCOM" runat="server" TextMode="MultiLine" Rows="10" CssClass="form-control"></asp:TextBox>
-
-        </div>
+    <div class="text-center">
+        <strong>NOTE/OBSERVATIONS</strong>
         <br />
+        <small class="text-info">(Nurse’s comments)</small><br />
+        <asp:TextBox ID="tboxCOM" runat="server" TextMode="MultiLine" Rows="10" CssClass="form-control"></asp:TextBox>
+
+    </div>
+    <br />
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -279,6 +313,6 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-    
+
 
 </asp:Content>

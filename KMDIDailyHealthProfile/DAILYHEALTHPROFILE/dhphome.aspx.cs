@@ -67,6 +67,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             get
             {
                 return ConnectionString.sqlconstr();
+              
             }
         }
         bool panelaccess()
