@@ -148,6 +148,10 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
       ,[RECOOTHER]
       ,[RECOPATIENT]
       ,[RECOFITTOWORK]
+        ,ANTIGENDATE
+        ,ANTIGENTIME
+        ,ANTIGENSERIAL
+        ,ANTIGENRESULT
   FROM [DHPPAGE2] where empno = @EMPNO and DHPID=@DHPID">
 
         <SelectParameters>

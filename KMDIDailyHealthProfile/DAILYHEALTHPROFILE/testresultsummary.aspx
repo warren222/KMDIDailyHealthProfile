@@ -39,6 +39,11 @@
                                         <br />
                                         <asp:GridView ID="GridView2" GridLines="Horizontal" CssClass="table table-bordered" DataSource='<%# Bind("testresultsummary") %>' runat="server" AutoGenerateColumns="False">
                                             <Columns>
+                                                <asp:TemplateField HeaderText="TEST" HeaderStyle-CssClass="text-muted">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lbltest" runat="server" Text='<%# Bind("TEST") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="DATE TEST DONE" HeaderStyle-CssClass="text-muted">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lbldatetestdone" runat="server" Text='<%# Bind("DATETESTDONE") %>'></asp:Label>
@@ -74,7 +79,7 @@
                                                 </div>
                                             </EmptyDataTemplate>
                                             <EditRowStyle BorderStyle="None" BorderWidth="0px" />
-                                          
+
                                         </asp:GridView>
                                     </div>
                                     <div class="panel-footer">

@@ -10,6 +10,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.da
     public class testresult
     {
         public string ID { set; get; }
+        public string TEST { set; get; }
         public string EMPNO { set; get; }
         public string  DHPID { set; get; }
         public string DATETESTDONE { set; get; }
@@ -26,22 +27,26 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.da
             List<testresult> li = new List<testresult>();
             try
             {
-                string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2]"+
-                    " where empno = @empno and datetestdone <> '' order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
+                //string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2]" +
+                //    " where empno = @empno and datetestdone <> '' order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
           
                 using (SqlConnection sqlcon = new SqlConnection(cs))
                 {
                     sqlcon.Open();
                
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
                     {
+                        sqlcmd.CommandText = "testresultsummary";
+                        sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         using (SqlDataReader dr = sqlcmd.ExecuteReader())
                         {
                             while (dr.Read())
                             {
                                 testresult tr = new testresult();
+                           
                                 tr.ID = dr["ID"].ToString();
+                                tr.TEST = dr["TEST"].ToString();
                                 tr.EMPNO = dr["EMPNO"].ToString();
                                 tr.DHPID = dr["DHPID"].ToString();
                                 tr.DATETESTDONE = dr["DATETESTDONE"].ToString();
@@ -57,7 +62,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.da
             }
             catch (Exception ex)
             {
-              
+             
             }
             return li;
         }

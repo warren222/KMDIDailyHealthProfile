@@ -2264,6 +2264,14 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             private global::System.Data.DataColumn columnFULLNAME;
             
+            private global::System.Data.DataColumn columnANTIGENDATE;
+            
+            private global::System.Data.DataColumn columnANTIGENTIME;
+            
+            private global::System.Data.DataColumn columnANTIGENSERIAL;
+            
+            private global::System.Data.DataColumn columnANTIGENRESULT;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DHPPAGE2DataTable() {
@@ -2451,6 +2459,38 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ANTIGENDATEColumn {
+                get {
+                    return this.columnANTIGENDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ANTIGENTIMEColumn {
+                get {
+                    return this.columnANTIGENTIME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ANTIGENSERIALColumn {
+                get {
+                    return this.columnANTIGENSERIAL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ANTIGENRESULTColumn {
+                get {
+                    return this.columnANTIGENRESULT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2505,7 +2545,11 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         string RECOPATIENT, 
                         string LICENSENO, 
                         string RECOFITTOWORK, 
-                        string FULLNAME) {
+                        string FULLNAME, 
+                        string ANTIGENDATE, 
+                        string ANTIGENTIME, 
+                        string ANTIGENSERIAL, 
+                        string ANTIGENRESULT) {
                 DHPPAGE2Row rowDHPPAGE2Row = ((DHPPAGE2Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -2526,7 +2570,11 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                         RECOPATIENT,
                         LICENSENO,
                         RECOFITTOWORK,
-                        FULLNAME};
+                        FULLNAME,
+                        ANTIGENDATE,
+                        ANTIGENTIME,
+                        ANTIGENSERIAL,
+                        ANTIGENRESULT};
                 rowDHPPAGE2Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDHPPAGE2Row);
                 return rowDHPPAGE2Row;
@@ -2568,6 +2616,10 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 this.columnLICENSENO = base.Columns["LICENSENO"];
                 this.columnRECOFITTOWORK = base.Columns["RECOFITTOWORK"];
                 this.columnFULLNAME = base.Columns["FULLNAME"];
+                this.columnANTIGENDATE = base.Columns["ANTIGENDATE"];
+                this.columnANTIGENTIME = base.Columns["ANTIGENTIME"];
+                this.columnANTIGENSERIAL = base.Columns["ANTIGENSERIAL"];
+                this.columnANTIGENRESULT = base.Columns["ANTIGENRESULT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2611,6 +2663,14 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 base.Columns.Add(this.columnRECOFITTOWORK);
                 this.columnFULLNAME = new global::System.Data.DataColumn("FULLNAME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFULLNAME);
+                this.columnANTIGENDATE = new global::System.Data.DataColumn("ANTIGENDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnANTIGENDATE);
+                this.columnANTIGENTIME = new global::System.Data.DataColumn("ANTIGENTIME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnANTIGENTIME);
+                this.columnANTIGENSERIAL = new global::System.Data.DataColumn("ANTIGENSERIAL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnANTIGENSERIAL);
+                this.columnANTIGENRESULT = new global::System.Data.DataColumn("ANTIGENRESULT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnANTIGENRESULT);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5547,6 +5607,70 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ANTIGENDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.ANTIGENDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ANTIGENDATE\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.ANTIGENDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ANTIGENTIME {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.ANTIGENTIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ANTIGENTIME\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.ANTIGENTIMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ANTIGENSERIAL {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.ANTIGENSERIALColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ANTIGENSERIAL\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.ANTIGENSERIALColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ANTIGENRESULT {
+                get {
+                    try {
+                        return ((string)(this[this.tableDHPPAGE2.ANTIGENRESULTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ANTIGENRESULT\' in table \'DHPPAGE2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDHPPAGE2.ANTIGENRESULTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIDNull() {
                 return this.IsNull(this.tableDHPPAGE2.IDColumn);
             }
@@ -5771,6 +5895,54 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFULLNAMENull() {
                 this[this.tableDHPPAGE2.FULLNAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsANTIGENDATENull() {
+                return this.IsNull(this.tableDHPPAGE2.ANTIGENDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetANTIGENDATENull() {
+                this[this.tableDHPPAGE2.ANTIGENDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsANTIGENTIMENull() {
+                return this.IsNull(this.tableDHPPAGE2.ANTIGENTIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetANTIGENTIMENull() {
+                this[this.tableDHPPAGE2.ANTIGENTIMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsANTIGENSERIALNull() {
+                return this.IsNull(this.tableDHPPAGE2.ANTIGENSERIALColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetANTIGENSERIALNull() {
+                this[this.tableDHPPAGE2.ANTIGENSERIALColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsANTIGENRESULTNull() {
+                return this.IsNull(this.tableDHPPAGE2.ANTIGENRESULTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetANTIGENRESULTNull() {
+                this[this.tableDHPPAGE2.ANTIGENRESULTColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -132,8 +132,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
         {
             try
             {
-                string str = " select [ID],[EMPNO],[DHPID],format(cast([DATETESTDONE] as date),'MMMM-dd-yyyy') as DATETESTDONE,[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2] where empno = @empno and datetestdone <> '' order by cast([DATETESTDONE] as date) desc, cast([TIMETEST] as time) asc";
-                
+                string str = " SELECT TEST,ID,EMPNO,CASE WHEN ISDATE(DATETESTDONE)=1 THEN FORMAT(CAST(DATETESTDONE AS DATE),'MMMM-dd-yyyy') ELSE DATETESTDONE END AS DATETESTDONE, " +
+" CASE WHEN ISDATE(TIMETEST)=1 THEN FORMAT(CAST(TIMETEST AS datetime),'hh:mm tt') ELSE TIMETEST END AS TIMETEST,SERIALNO,TESTRESULT,PATIENTNAME,ADMINISTEREDBY " +
+" FROM ( " +
+" select 'RAPID TEST' as test,[ID],[EMPNO],[DHPID],[DATETESTDONE],[TIMETEST],[SERIALNO],[TESTRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2] where empno = @empno and datetestdone <> '' " +
+" UNION ALL " +
+" select 'ANTIGEN TEST',      [ID],[EMPNO],[DHPID],antigendate,[ANTIGENTIME],[ANTIGENSERIAL],[ANTIGENRESULT],[PATIENTNAME],[ADMINISTEREDBY] from [DHPPAGE2] where empno = @empno and ANTIGENDATE <> '' " +
+" ) AS TB " +
+" order by case when isdate(datetestdone)=1 then cast([DATETESTDONE] as date) else datetestdone end desc, " +
+" CASE WHEN ISDATE(TIMETEST)=1 THEN cast(TIMETEST AS datetime) ELSE TIMETEST END desc ";
+
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     sqlcon.Open();

@@ -592,48 +592,53 @@
             </div>
             <div id="collapse1" class="panel-collapse collapse">
                 <div class="panel-body">
-                        <h3 class="text-info">My Test Results</h3>
+                    <h3 class="text-info">My Test Results</h3>
                     <asp:Panel ID="Panel3" runat="server" ScrollBars="Auto">
-                                <asp:GridView ID="GridView4" runat="server" CssClass="table table-bordered" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView4_PageIndexChanging">
-                                    <Columns>
-                                        <asp:TemplateField HeaderText="DATE TEST DONE">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbldatetestdone" runat="server" Text='<%# Bind("DATETESTDONE") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="TIME TEST">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbltimetest" runat="server" Text='<%# Bind("TIMETEST") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="SERIAL#">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lblserialno" runat="server" Text='<%# Bind("SERIALNO") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="TEST RESULTS">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbltestresult" runat="server" Text='<%# Bind("TESTRESULT") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="ADMINISTERED BY">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbladministeredby" runat="server" Text='<%# Bind("ADMINISTEREDBY") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <HeaderStyle Wrap="False" />
-                                    <RowStyle Wrap="False" />
-                                    <EmptyDataTemplate>
-                                        <div class="alert alert-info">
-                                            <h3><strong>Empty Table!</strong>
-                                            </h3>
-                                        </div>
-                                    </EmptyDataTemplate>
-                                    <EditRowStyle BorderStyle="None" BorderWidth="0px" />
-                                    <PagerSettings PageButtonCount="8" />
-                                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-                                </asp:GridView>
+                        <asp:GridView ID="GridView4" runat="server" CssClass="table table-bordered" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView4_PageIndexChanging">
+                            <Columns>
+                                <asp:TemplateField HeaderText="TEST">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbltest" runat="server" Text='<%# Bind("TEST") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="DATE TEST DONE">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbldatetestdone" runat="server" Text='<%# Bind("DATETESTDONE") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="TIME TEST">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbltimetest" runat="server" Text='<%# Bind("TIMETEST") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="SERIAL#">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblserialno" runat="server" Text='<%# Bind("SERIALNO") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="TEST RESULTS">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbltestresult" runat="server" Text='<%# Bind("TESTRESULT") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="ADMINISTERED BY">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbladministeredby" runat="server" Text='<%# Bind("ADMINISTEREDBY") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <HeaderStyle Wrap="False" />
+                            <RowStyle Wrap="False" />
+                            <EmptyDataTemplate>
+                                <div class="alert alert-info">
+                                    <h3><strong>Empty Table!</strong>
+                                    </h3>
+                                </div>
+                            </EmptyDataTemplate>
+                            <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                            <PagerSettings PageButtonCount="8" />
+                            <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                        </asp:GridView>
                     </asp:Panel>
                     <br />
                     <h3 class="text-info">My Quarantine records</h3>
@@ -645,12 +650,12 @@
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("SDATE") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                  <asp:TemplateField HeaderText="Finished">
+                                <asp:TemplateField HeaderText="Finished">
                                     <ItemTemplate>
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("EDATE") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                  <asp:TemplateField HeaderText="Day(s)">
+                                <asp:TemplateField HeaderText="Day(s)">
                                     <ItemTemplate>
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("DAYS") %>'></asp:Label>
                                     </ItemTemplate>
