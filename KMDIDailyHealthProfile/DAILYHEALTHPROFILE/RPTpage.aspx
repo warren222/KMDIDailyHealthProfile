@@ -134,7 +134,7 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
       ,[EMPNO]
       ,[DHPID]
       ,[EXPOSURETOVIRUS]
-      ,[DATETESTDONE]
+      ,case when isdate([DATETESTDONE])=1 then format(cast(DATETESTDONE as date),'MMM-dd-yyyy') else DATETESTDONE end as DATETESTDONE 
       ,[TIMETEST]
       ,[SERIALNO]
       ,[TESTRESULT]
@@ -148,7 +148,7 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
       ,[RECOOTHER]
       ,[RECOPATIENT]
       ,[RECOFITTOWORK]
-        ,ANTIGENDATE
+        ,case when isdate([ANTIGENDATE])=1 then format(cast(ANTIGENDATE as date),'MMM-dd-yyyy') else ANTIGENDATE end as ANTIGENDATE 
         ,ANTIGENTIME
         ,ANTIGENSERIAL
         ,ANTIGENRESULT

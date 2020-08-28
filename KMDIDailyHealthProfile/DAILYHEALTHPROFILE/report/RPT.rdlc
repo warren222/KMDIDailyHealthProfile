@@ -3667,7 +3667,6 @@
                     <Value>This is to certify that a rapid test / antigen test, with results indicated above, was conducted on patient whose signature follows herewith in adherence to the Safety Protocol requirement of the village/admin.</Value>
                     <Style>
                       <FontStyle>Italic</FontStyle>
-                      <FontSize>9pt</FontSize>
                       <FontWeight>Normal</FontWeight>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>
@@ -3679,8 +3678,63 @@
             </Paragraphs>
             <rd:DefaultName>Textbox94</rd:DefaultName>
             <Left>0.10603in</Left>
-            <Height>0.36458in</Height>
+            <Height>0.32291in</Height>
             <Width>7.75189in</Width>
+            <Visibility>
+              <Hidden>=iif(First(Fields!RECOENDO.Value, "DataSet4") = "",  FALSE, TRUE)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox95">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>DISCLAIMER:</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>*The company leaves with the employee the discretion to approach his/her LGU to report his/her condition as agreed herewith.</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox94</rd:DefaultName>
+            <Top>0.82021cm</Top>
+            <Left>0.10999in</Left>
+            <Height>0.32291in</Height>
+            <Width>7.75189in</Width>
+            <ZIndex>1</ZIndex>
+            <Visibility>
+              <Hidden>=iif(First(Fields!RECOENDO.Value, "DataSet4") = "",  true, false)</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3695,7 +3749,7 @@
         <KeepTogether>true</KeepTogether>
         <Top>6.8175in</Top>
         <Left>0.0125in</Left>
-        <Height>0.36458in</Height>
+        <Height>0.64583in</Height>
         <Width>7.97186in</Width>
         <ZIndex>20</ZIndex>
         <Style>
@@ -4049,7 +4103,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>8.08in</Top>
+        <Top>8.38in</Top>
         <Left>0.26305in</Left>
         <Height>0.15625in</Height>
         <Width>3.39135in</Width>
@@ -4068,7 +4122,7 @@
         <Source>External</Source>
         <Value>=Parameters!patientsignature.Value</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>7.19389in</Top>
+        <Top>7.49389in</Top>
         <Left>0.84638in</Left>
         <Height>0.85417in</Height>
         <Width>1.39584in</Width>
@@ -4097,7 +4151,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>8.08in</Top>
+        <Top>8.38in</Top>
         <Left>4.40625in</Left>
         <Height>0.15625in</Height>
         <Width>2.95311in</Width>
@@ -4116,7 +4170,7 @@
         <Source>Embedded</Source>
         <Value>physician</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>7.19389in</Top>
+        <Top>7.49389in</Top>
         <Left>4.86458in</Left>
         <Height>0.85417in</Height>
         <Width>1.39584in</Width>
@@ -4145,7 +4199,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>8.23625in</Top>
+        <Top>8.53625in</Top>
         <Left>4.40625in</Left>
         <Height>0.15625in</Height>
         <Width>2.95311in</Width>
@@ -4185,7 +4239,7 @@
         </Style>
       </Line>
     </ReportItems>
-    <Height>8.3925in</Height>
+    <Height>8.6925in</Height>
     <Style />
   </Body>
   <Width>7.98593in</Width>
