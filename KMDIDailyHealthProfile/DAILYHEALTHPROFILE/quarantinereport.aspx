@@ -49,7 +49,7 @@ b.DEPARTMENT,
 b.DEPTID,
 case when isdate(a.SDATE)=1 then format(cast(a.SDATE as date),'MMM dd, yyyy') else a.SDATE end as SDATE,
 case when isdate(a.EDATE)=1 then format(cast(a.EDATE as date),'MMM dd, yyyy') else a.EDATE end as EDATE,
-DATEDIFF(day,sdate,case when edate='' then getdate() else edate end) AS [DAYS]
+DATEDIFF(day,sdate,case when edate='' then getdate() else edate end)+1 AS [DAYS]
 from 
 quarantinetbl as a
 left join

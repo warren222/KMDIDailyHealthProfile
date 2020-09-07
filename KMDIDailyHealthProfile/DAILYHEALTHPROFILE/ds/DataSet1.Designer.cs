@@ -34,6 +34,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         private QUARANTINETTBDataTable tableQUARANTINETTB;
         
+        private CONTACTTRACINGTBLDataTable tableCONTACTTRACINGTBL;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -76,6 +78,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 }
                 if ((ds.Tables["QUARANTINETTB"] != null)) {
                     base.Tables.Add(new QUARANTINETTBDataTable(ds.Tables["QUARANTINETTB"]));
+                }
+                if ((ds.Tables["CONTACTTRACINGTBL"] != null)) {
+                    base.Tables.Add(new CONTACTTRACINGTBLDataTable(ds.Tables["CONTACTTRACINGTBL"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -142,6 +147,16 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         public QUARANTINETTBDataTable QUARANTINETTB {
             get {
                 return this.tableQUARANTINETTB;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CONTACTTRACINGTBLDataTable CONTACTTRACINGTBL {
+            get {
+                return this.tableCONTACTTRACINGTBL;
             }
         }
         
@@ -227,6 +242,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 if ((ds.Tables["QUARANTINETTB"] != null)) {
                     base.Tables.Add(new QUARANTINETTBDataTable(ds.Tables["QUARANTINETTB"]));
                 }
+                if ((ds.Tables["CONTACTTRACINGTBL"] != null)) {
+                    base.Tables.Add(new CONTACTTRACINGTBLDataTable(ds.Tables["CONTACTTRACINGTBL"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -290,6 +308,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                     this.tableQUARANTINETTB.InitVars();
                 }
             }
+            this.tableCONTACTTRACINGTBL = ((CONTACTTRACINGTBLDataTable)(base.Tables["CONTACTTRACINGTBL"]));
+            if ((initTable == true)) {
+                if ((this.tableCONTACTTRACINGTBL != null)) {
+                    this.tableCONTACTTRACINGTBL.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +334,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             base.Tables.Add(this.tableDHPPAGE2);
             this.tableQUARANTINETTB = new QUARANTINETTBDataTable();
             base.Tables.Add(this.tableQUARANTINETTB);
+            this.tableCONTACTTRACINGTBL = new CONTACTTRACINGTBLDataTable();
+            base.Tables.Add(this.tableCONTACTTRACINGTBL);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,6 +365,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeQUARANTINETTB() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeCONTACTTRACINGTBL() {
             return false;
         }
         
@@ -411,6 +443,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void QUARANTINETTBRowChangeEventHandler(object sender, QUARANTINETTBRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void CONTACTTRACINGTBLRowChangeEventHandler(object sender, CONTACTTRACINGTBLRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3102,6 +3137,295 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "QUARANTINETTBDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CONTACTTRACINGTBLDataTable : global::System.Data.TypedTableBase<CONTACTTRACINGTBLRow> {
+            
+            private global::System.Data.DataColumn columnPATIENT;
+            
+            private global::System.Data.DataColumn columnFULLNAME;
+            
+            private global::System.Data.DataColumn columnDATED;
+            
+            private global::System.Data.DataColumn columnREMARKS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CONTACTTRACINGTBLDataTable() {
+                this.TableName = "CONTACTTRACINGTBL";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CONTACTTRACINGTBLDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected CONTACTTRACINGTBLDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PATIENTColumn {
+                get {
+                    return this.columnPATIENT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FULLNAMEColumn {
+                get {
+                    return this.columnFULLNAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DATEDColumn {
+                get {
+                    return this.columnDATED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn REMARKSColumn {
+                get {
+                    return this.columnREMARKS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CONTACTTRACINGTBLRow this[int index] {
+                get {
+                    return ((CONTACTTRACINGTBLRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CONTACTTRACINGTBLRowChangeEventHandler CONTACTTRACINGTBLRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CONTACTTRACINGTBLRowChangeEventHandler CONTACTTRACINGTBLRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CONTACTTRACINGTBLRowChangeEventHandler CONTACTTRACINGTBLRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CONTACTTRACINGTBLRowChangeEventHandler CONTACTTRACINGTBLRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddCONTACTTRACINGTBLRow(CONTACTTRACINGTBLRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CONTACTTRACINGTBLRow AddCONTACTTRACINGTBLRow(string PATIENT, string FULLNAME, string DATED, string REMARKS) {
+                CONTACTTRACINGTBLRow rowCONTACTTRACINGTBLRow = ((CONTACTTRACINGTBLRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        PATIENT,
+                        FULLNAME,
+                        DATED,
+                        REMARKS};
+                rowCONTACTTRACINGTBLRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCONTACTTRACINGTBLRow);
+                return rowCONTACTTRACINGTBLRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CONTACTTRACINGTBLDataTable cln = ((CONTACTTRACINGTBLDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CONTACTTRACINGTBLDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnPATIENT = base.Columns["PATIENT"];
+                this.columnFULLNAME = base.Columns["FULLNAME"];
+                this.columnDATED = base.Columns["DATED"];
+                this.columnREMARKS = base.Columns["REMARKS"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnPATIENT = new global::System.Data.DataColumn("PATIENT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPATIENT);
+                this.columnFULLNAME = new global::System.Data.DataColumn("FULLNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFULLNAME);
+                this.columnDATED = new global::System.Data.DataColumn("DATED", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDATED);
+                this.columnREMARKS = new global::System.Data.DataColumn("REMARKS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnREMARKS);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CONTACTTRACINGTBLRow NewCONTACTTRACINGTBLRow() {
+                return ((CONTACTTRACINGTBLRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CONTACTTRACINGTBLRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CONTACTTRACINGTBLRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CONTACTTRACINGTBLRowChanged != null)) {
+                    this.CONTACTTRACINGTBLRowChanged(this, new CONTACTTRACINGTBLRowChangeEvent(((CONTACTTRACINGTBLRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CONTACTTRACINGTBLRowChanging != null)) {
+                    this.CONTACTTRACINGTBLRowChanging(this, new CONTACTTRACINGTBLRowChangeEvent(((CONTACTTRACINGTBLRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CONTACTTRACINGTBLRowDeleted != null)) {
+                    this.CONTACTTRACINGTBLRowDeleted(this, new CONTACTTRACINGTBLRowChangeEvent(((CONTACTTRACINGTBLRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CONTACTTRACINGTBLRowDeleting != null)) {
+                    this.CONTACTTRACINGTBLRowDeleting(this, new CONTACTTRACINGTBLRowChangeEvent(((CONTACTTRACINGTBLRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveCONTACTTRACINGTBLRow(CONTACTTRACINGTBLRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CONTACTTRACINGTBLDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -6186,6 +6510,133 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CONTACTTRACINGTBLRow : global::System.Data.DataRow {
+            
+            private CONTACTTRACINGTBLDataTable tableCONTACTTRACINGTBL;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CONTACTTRACINGTBLRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCONTACTTRACINGTBL = ((CONTACTTRACINGTBLDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PATIENT {
+                get {
+                    try {
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.PATIENTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PATIENT\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTACTTRACINGTBL.PATIENTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FULLNAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.FULLNAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FULLNAME\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTACTTRACINGTBL.FULLNAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DATED {
+                get {
+                    try {
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.DATEDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DATED\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTACTTRACINGTBL.DATEDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string REMARKS {
+                get {
+                    try {
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.REMARKSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'REMARKS\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTACTTRACINGTBL.REMARKSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPATIENTNull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.PATIENTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPATIENTNull() {
+                this[this.tableCONTACTTRACINGTBL.PATIENTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFULLNAMENull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.FULLNAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFULLNAMENull() {
+                this[this.tableCONTACTTRACINGTBL.FULLNAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDATEDNull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.DATEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDATEDNull() {
+                this[this.tableCONTACTTRACINGTBL.DATEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsREMARKSNull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.REMARKSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetREMARKSNull() {
+                this[this.tableCONTACTTRACINGTBL.REMARKSColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -6341,6 +6792,40 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QUARANTINETTBRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class CONTACTTRACINGTBLRowChangeEvent : global::System.EventArgs {
+            
+            private CONTACTTRACINGTBLRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CONTACTTRACINGTBLRowChangeEvent(CONTACTTRACINGTBLRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CONTACTTRACINGTBLRow Row {
                 get {
                     return this.eventRow;
                 }

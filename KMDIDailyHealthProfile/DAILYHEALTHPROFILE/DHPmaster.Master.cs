@@ -36,7 +36,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("~/DAILYHEALTHPROFILE/dhplogin.aspx");
+            Response.Redirect("http://dhp.kennethandmock.com");
         }
         protected void lll(object sender, EventArgs e)
         {

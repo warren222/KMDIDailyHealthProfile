@@ -46,7 +46,7 @@
                         <br />
                         <asp:TextBox ID="tboxpassword" Height="40" placeholder="password" CssClass="form-control" TextMode="Password" runat="server" OnTextChanged="tboxpassword_TextChanged"></asp:TextBox><br />
                         <div class="checkbox">
-                            <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" Checked="True" />
+                            <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember me" />
                         </div>
                         <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Login" OnClick="Button1_Click" />
                         <asp:ValidationSummary CssClass="alert alert-danger" ValidationGroup="val1" ID="ValidationSummary1" runat="server" />

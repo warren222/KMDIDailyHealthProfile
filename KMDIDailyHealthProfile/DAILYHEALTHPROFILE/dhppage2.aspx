@@ -139,6 +139,10 @@
                 <blockquote>
                     Full name:<br />
                     <asp:TextBox ID="tboxfullname" placeholder="Full name" CssClass="form-control" runat="server"></asp:TextBox><br />
+                      Date:<br />
+                    <asp:TextBox ID="tboxdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
+                      Remarks:<br />
+                    <asp:TextBox ID="tboxremarks" CssClass="form-control" runat="server"></asp:TextBox><br />
                     <asp:Button ID="Button2" CssClass="btn btn-primary" ValidationGroup="g2" runat="server" Text="add" OnClick="Button2_Click" />
                 </blockquote>
                 <asp:ValidationSummary ID="ValidationSummary5" CssClass="alert alert-danger" ValidationGroup="g2" runat="server" />
@@ -159,6 +163,18 @@
                             <asp:Label ID="lblidg2" runat="server" Text='<%# Bind("ID") %>' Visible="false"></asp:Label>
                             <asp:Label ID="lblfullnameg2" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
                             <asp:TextBox ID="tboxfullnameg2" Visible="false" CssClass="form-control" Text='<%# Bind("FULLNAME") %>' runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Date">
+                        <ItemTemplate>
+                            <asp:Label ID="lbldated" runat="server" Text='<%# Bind("DATED") %>'></asp:Label>
+                            <asp:TextBox ID="tboxdateedit" TextMode="Date" CssClass="form-control" Text='<%# Bind("DATED") %>' Visible="false" runat="server"></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                      <asp:TemplateField HeaderText="Remarks">
+                        <ItemTemplate>
+                            <asp:Label ID="lblremarks" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label>
+                            <asp:TextBox ID="tboxremarksedit" Text='<%# Bind("REMARKS") %>' CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

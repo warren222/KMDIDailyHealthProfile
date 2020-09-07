@@ -103,6 +103,24 @@ namespace webaftersales.DAILYHEALTHPROFILE {
         protected global::System.Web.UI.WebControls.TextBox tboxfullname;
         
         /// <summary>
+        /// tboxdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxdate;
+        
+        /// <summary>
+        /// tboxremarks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxremarks;
+        
+        /// <summary>
         /// Button2 control.
         /// </summary>
         /// <remarks>

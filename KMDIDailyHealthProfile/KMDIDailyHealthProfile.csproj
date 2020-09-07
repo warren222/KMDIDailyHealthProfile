@@ -211,6 +211,20 @@
       <DependentUpon>backtrackaccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAILYHEALTHPROFILE\ConnectionString.cs" />
+    <Compile Include="DAILYHEALTHPROFILE\contacttracing.aspx.cs">
+      <DependentUpon>contacttracing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\contacttracing.aspx.designer.cs">
+      <DependentUpon>contacttracing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\contacttracingreport.aspx.cs">
+      <DependentUpon>contacttracingreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\contacttracingreport.aspx.designer.cs">
+      <DependentUpon>contacttracingreport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\da\Emp.cs" />
     <Compile Include="DAILYHEALTHPROFILE\da\testresult.cs" />
     <Compile Include="DAILYHEALTHPROFILE\dhpchangepass.aspx.cs">
@@ -343,6 +357,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="DAILYHEALTHPROFILE\backtrackaccess.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\contacttracing.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\contacttracingreport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\css\gridcss.css" />
     <Content Include="DAILYHEALTHPROFILE\dhpchangepass.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpfullimage.aspx" />
@@ -445,6 +461,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPT.rdlc" />
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTcontacttracing.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\testresultRDLC.rdlc" />

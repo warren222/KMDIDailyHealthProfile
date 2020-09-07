@@ -750,7 +750,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 ((LinkButton)row.FindControl("btneditg2")).Visible = false;
                 ((LinkButton)row.FindControl("btndeleteg2")).Visible = false;
                 ((Label)row.FindControl("lblfullnameg2")).Visible = false;
+                ((Label)row.FindControl("lbldated")).Visible = false;
+                ((Label)row.FindControl("lblremarks")).Visible = false;
 
+                ((TextBox)row.FindControl("tboxdateedit")).Visible = true;
+                ((TextBox)row.FindControl("tboxremarksedit")).Visible = true;
                 ((TextBox)row.FindControl("tboxfullnameg2")).Visible = true;
                 ((LinkButton)row.FindControl("btnupdateg2")).Visible = true;
                 ((LinkButton)row.FindControl("btncancelg2")).Visible = true;
@@ -762,7 +766,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 ((LinkButton)row.FindControl("btneditg2")).Visible = true;
                 ((LinkButton)row.FindControl("btndeleteg2")).Visible = true;
                 ((Label)row.FindControl("lblfullnameg2")).Visible = true;
+                ((Label)row.FindControl("lbldated")).Visible = true;
+                ((Label)row.FindControl("lblremarks")).Visible = true;
 
+                ((TextBox)row.FindControl("tboxdateedit")).Visible = false;
+                ((TextBox)row.FindControl("tboxremarksedit")).Visible = false;
                 ((TextBox)row.FindControl("tboxfullnameg2")).Visible = false;
                 ((LinkButton)row.FindControl("btnupdateg2")).Visible = false;
                 ((LinkButton)row.FindControl("btncancelg2")).Visible = false;
@@ -773,7 +781,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 GridViewRow row = GridView2.Rows[rowindex];
 
                 updatepersonsinteract(((Label)row.FindControl("lblidg2")).Text,
-             ((TextBox)row.FindControl("tboxfullnameg2")).Text);
+             ((TextBox)row.FindControl("tboxfullnameg2")).Text,((TextBox)row.FindControl("tboxdateedit")).Text,
+                ((TextBox)row.FindControl("tboxremarksedit")).Text);
             }
             else if (e.CommandName == "mydelete")
             {
@@ -814,12 +823,12 @@ namespace webaftersales.DAILYHEALTHPROFILE
             }
         }
 
-        private void updatepersonsinteract(string id, string fullname)
+        private void updatepersonsinteract(string id, string fullname,string date,string remarks)
         {
             try
             {
                
-                string str = "update personsinteract set fullname=@fullname where id = @id";
+                string str = "update personsinteract set fullname=@fullname,dated=@dated,remarks=@remarks where id = @id";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -827,6 +836,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcon.Open();
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@fullname", fullname);
+                        sqlcmd.Parameters.AddWithValue("@dated", date);
+                        sqlcmd.Parameters.AddWithValue("@remarks", remarks);
                         sqlcmd.ExecuteNonQuery();
                     }
                 }
@@ -889,7 +900,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                
                 string str = "declare @id as integer  =  (select isnull(max(isnull(id,0)),0)+1 from personsinteract)" +
-                    " insert into personsinteract (id,empno,dhpid,fullname)values(@id,@empno,@dhpid,@fullname)";
+                    " insert into personsinteract (id,empno,dhpid,fullname,dated,remarks)values(@id,@empno,@dhpid,@fullname,@dated,@remarks)";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -897,6 +908,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcon.Open();
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@dated", tboxdate.Text);
+                        sqlcmd.Parameters.AddWithValue("@remarks", tboxremarks.Text);
                         sqlcmd.Parameters.AddWithValue("@fullname", tboxfullname.Text);
                         sqlcmd.ExecuteNonQuery();
                     }

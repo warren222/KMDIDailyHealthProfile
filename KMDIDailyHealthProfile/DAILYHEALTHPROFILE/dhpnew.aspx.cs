@@ -101,7 +101,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 string str = " select case when isdate(a.SDATE)=1 then format(cast(a.SDATE as date),'MMM dd, yyyy') else a.SDATE end as SDATE, " +
                                 "case when isdate(a.EDATE) = 1 then format(cast(a.EDATE as date), 'MMM dd, yyyy') else a.EDATE end as EDATE, " +
-                                "DATEDIFF(day, sdate,case when edate = '' then getdate() else edate end) AS[DAYS] from [quarantinetbl] as a where empno = @empno";
+                                "DATEDIFF(day, sdate,case when edate = '' then getdate() else edate end)+1 AS[DAYS] from [quarantinetbl] as a where empno = @empno";
                 
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {

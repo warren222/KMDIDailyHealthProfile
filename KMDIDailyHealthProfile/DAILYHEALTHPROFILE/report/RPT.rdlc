@@ -3465,7 +3465,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!DATETESTDONE.Value, "DataSet4")+ iif((First(Fields!DATETESTDONE.Value, "DataSet4") &lt;&gt;"") and (First(Fields!ANTIGENDATE.Value, "DataSet4")) &lt;&gt;""," / ","") +First(Fields!ANTIGENDATE.Value, "DataSet4")</Value>
+                <Value>=iif(Parameters!cboxvalue.Value="1",Parameters!dateconducted.Value,First(Fields!DATETESTDONE.Value, "DataSet4")+ iif((First(Fields!DATETESTDONE.Value, "DataSet4") &lt;&gt;"") and (First(Fields!ANTIGENDATE.Value, "DataSet4")) &lt;&gt;""," / ","") +First(Fields!ANTIGENDATE.Value, "DataSet4"))</Value>
                 <Style>
                   <FontWeight>Heavy</FontWeight>
                 </Style>
