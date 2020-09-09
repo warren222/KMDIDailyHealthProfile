@@ -15,46 +15,7 @@
     </div>
     <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="val1" CssClass="alert alert-danger" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"  
-        SelectCommand="
-     SELECT TEST,ID,EMPNO,DHPID,CASE WHEN ISDATE(DATETESTDONE)=1 THEN FORMAT(CAST(DATETESTDONE AS DATE),'MMMM-dd-yyyy') ELSE DATETESTDONE END AS DATETESTDONE
-,CASE WHEN ISDATE(TIMETEST)=1 THEN FORMAT(CAST(TIMETEST AS datetime),'hh:mm tt') ELSE TIMETEST END AS TIMETEST
-,SERIALNO,TESTRESULT,ADMINISTEREDBY,[PHYSICIAN],[LICENSENO],FULLNAME
- FROM ( SELECT 'RAPID TEST' AS TEST,[ID]
-      ,a.[EMPNO]
-      ,[DHPID]
-      ,[DATETESTDONE]
-      ,[TIMETEST]
-      ,[SERIALNO]
-      ,[TESTRESULT]
-      ,[ADMINISTEREDBY]
-      ,[PHYSICIAN]
-      ,[LICENSENO]
-	  ,b.SURNAME+', '+b.FIRSTNAME+' '+MI AS FULLNAME
-       FROM [DHPPAGE2] as a left join emptbl as b
-       on a.empno = b.empno
-        WHERE datetestdone <> '' AND (SURNAME LIKE '%'+@PATIENTNAME+'%' or firstname like '%'+@PATIENTNAME+'%')
-		UNION ALL
-	   SELECT 'ANTIGEN TEST',[ID]
-      ,a.[EMPNO]
-      ,[DHPID]
-      ,ANTIGENDATE
-      ,ANTIGENTIME
-      ,ANTIGENSERIAL
-      ,ANTIGENRESULT
-      ,[ADMINISTEREDBY]
-      ,[PHYSICIAN]
-      ,[LICENSENO]
-	  ,b.SURNAME+', '+b.FIRSTNAME+' '+MI AS FULLNAME
-       FROM [DHPPAGE2] as a left join emptbl as b
-       on a.empno = b.empno
-        WHERE ANTIGENDATE <> '' AND (SURNAME LIKE '%'+@PATIENTNAME+'%' or firstname like '%'+@PATIENTNAME+'%')
-		) AS TB 
-		order by case when isdate(datetestdone)=1 then cast([DATETESTDONE] as date) else datetestdone end desc, 
-        CASE WHEN ISDATE(TIMETEST)=1 THEN cast(TIMETEST AS datetime) ELSE TIMETEST END desc ">
-        <SelectParameters>
-            <asp:SessionParameter Name="PATIENTNAME" SessionField="testresultsearchkey" Type="String" />
-        </SelectParameters>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server">
     </asp:SqlDataSource>
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="800px" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
         <LocalReport ReportPath="DAILYHEALTHPROFILE\report\testresultRDLC.rdlc">

@@ -13,8 +13,9 @@
                
             <asp:TextBox ID="tboxsearchkey" placeholder="Search names" CssClass="form-control" runat="server"></asp:TextBox>
             <div class="input-group-btn">
-                 <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click"><span class="glyphicon glyphicon-print"></span></asp:LinkButton>
+          
                 <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
+                       <asp:LinkButton ID="LinkButton1" CssClass="btn btn-default" runat="server" OnClick="LinkButton1_Click">report</asp:LinkButton>
             </div>
         </div>
     </div>
@@ -27,7 +28,7 @@
                 <asp:Panel ID="Panel2" runat="server" ScrollBars="Auto">
 
 
-                    <asp:GridView ID="GridView1" AutoGenerateColumns="false" AllowPaging="true" CssClass="table table-bordered" runat="server" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="2">
+                    <asp:GridView ID="GridView1" AutoGenerateColumns="false" AllowPaging="true" CssClass="table table-bordered" runat="server" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="25">
                         <Columns>
                             <asp:TemplateField HeaderText="PATIENT">
                                 <ItemTemplate>

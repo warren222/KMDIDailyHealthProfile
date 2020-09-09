@@ -17,12 +17,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 LinkButton5.Visible = true;
                 LinkButton4.Visible = true;
                 LinkButton3.Visible = true;
+                LinkButton7.Visible = true;
             }
             else
             {
                 LinkButton5.Visible = false;
                 LinkButton4.Visible = false;
                 LinkButton3.Visible = false;
+                LinkButton7.Visible = false;
             }
             if (Session["dhp_EMPNO"].ToString() == "1604-016" || Session["dhp_EMPNO"].ToString() == "1611-004")
             {
