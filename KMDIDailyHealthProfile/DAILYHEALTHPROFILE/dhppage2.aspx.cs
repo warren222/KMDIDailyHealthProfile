@@ -36,7 +36,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                   
                     getdata();
                     //gettravelhistory();
-                    getpersoninteract();
+                
                     access();
 
                     if (tboxpatientname.Text == "")
@@ -741,193 +741,14 @@ namespace webaftersales.DAILYHEALTHPROFILE
             Response.Redirect("~/DAILYHEALTHPROFILE/dhpsignature.aspx");
         }
 
-        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "myedit")
-            {
-                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-                GridViewRow row = GridView2.Rows[rowindex];
-                ((LinkButton)row.FindControl("btneditg2")).Visible = false;
-                ((LinkButton)row.FindControl("btndeleteg2")).Visible = false;
-                ((Label)row.FindControl("lblfullnameg2")).Visible = false;
-                ((Label)row.FindControl("lbldated")).Visible = false;
-                ((Label)row.FindControl("lblremarks")).Visible = false;
+      
+    
 
-                ((TextBox)row.FindControl("tboxdateedit")).Visible = true;
-                ((TextBox)row.FindControl("tboxremarksedit")).Visible = true;
-                ((TextBox)row.FindControl("tboxfullnameg2")).Visible = true;
-                ((LinkButton)row.FindControl("btnupdateg2")).Visible = true;
-                ((LinkButton)row.FindControl("btncancelg2")).Visible = true;
-            }
-            else if (e.CommandName == "mycancel")
-            {
-                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-                GridViewRow row = GridView2.Rows[rowindex];
-                ((LinkButton)row.FindControl("btneditg2")).Visible = true;
-                ((LinkButton)row.FindControl("btndeleteg2")).Visible = true;
-                ((Label)row.FindControl("lblfullnameg2")).Visible = true;
-                ((Label)row.FindControl("lbldated")).Visible = true;
-                ((Label)row.FindControl("lblremarks")).Visible = true;
+    
 
-                ((TextBox)row.FindControl("tboxdateedit")).Visible = false;
-                ((TextBox)row.FindControl("tboxremarksedit")).Visible = false;
-                ((TextBox)row.FindControl("tboxfullnameg2")).Visible = false;
-                ((LinkButton)row.FindControl("btnupdateg2")).Visible = false;
-                ((LinkButton)row.FindControl("btncancelg2")).Visible = false;
-            }
-            else if (e.CommandName == "myupdate")
-            {
-                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-                GridViewRow row = GridView2.Rows[rowindex];
+     
 
-                updatepersonsinteract(((Label)row.FindControl("lblidg2")).Text,
-             ((TextBox)row.FindControl("tboxfullnameg2")).Text,((TextBox)row.FindControl("tboxdateedit")).Text,
-                ((TextBox)row.FindControl("tboxremarksedit")).Text);
-            }
-            else if (e.CommandName == "mydelete")
-            {
-                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-                GridViewRow row = GridView2.Rows[rowindex];
-
-                deletepersonsinteract(((Label)row.FindControl("lblidg2")).Text);
-            }
-        }
-
-        private void deletepersonsinteract(string id)
-        {
-            try
-            {
-               
-                string str = "delete from personsinteract where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
-                    {
-                        sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@id", id);
-                        sqlcmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                CustomValidator err = new CustomValidator();
-                err.ValidationGroup = "g2";
-                err.IsValid = false;
-                err.ErrorMessage = ex.Message.ToString();
-                Page.Validators.Add(err);
-            }
-            finally
-            {
-                getpersoninteract();
-            }
-        }
-
-        private void updatepersonsinteract(string id, string fullname,string date,string remarks)
-        {
-            try
-            {
-               
-                string str = "update personsinteract set fullname=@fullname,dated=@dated,remarks=@remarks where id = @id";
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
-                    {
-                        sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@id", id);
-                        sqlcmd.Parameters.AddWithValue("@fullname", fullname);
-                        sqlcmd.Parameters.AddWithValue("@dated", date);
-                        sqlcmd.Parameters.AddWithValue("@remarks", remarks);
-                        sqlcmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                CustomValidator err = new CustomValidator();
-                err.ValidationGroup = "g2";
-                err.IsValid = false;
-                err.ErrorMessage = ex.Message.ToString();
-                Page.Validators.Add(err);
-            }
-            finally
-            {
-                getpersoninteract();
-            }
-        }
-
-        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView2.PageIndex = e.NewPageIndex;
-            getpersoninteract();
-        }
-
-        private void getpersoninteract()
-        {
-            try
-            {
-               
-                string str = " select * from personsinteract where dhpid=@dhpid and empno=@empno";
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
-                    {
-                        sqlcon.Open();
-                        DataTable tb = new DataTable();
-                        sqlcmd.Parameters.AddWithValue("@empno", empno);
-                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
-                        SqlDataAdapter da = new SqlDataAdapter();
-                        da.SelectCommand = sqlcmd;
-                        da.Fill(tb);
-                        GridView2.DataSource = tb;
-                        GridView2.DataBind();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                CustomValidator err = new CustomValidator();
-                err.ValidationGroup = "g2";
-                err.IsValid = false;
-                err.ErrorMessage = ex.Message.ToString();
-                Page.Validators.Add(err);
-            }
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               
-                string str = "declare @id as integer  =  (select isnull(max(isnull(id,0)),0)+1 from personsinteract)" +
-                    " insert into personsinteract (id,empno,dhpid,fullname,dated,remarks)values(@id,@empno,@dhpid,@fullname,@dated,@remarks)";
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                {
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
-                    {
-                        sqlcon.Open();
-                        sqlcmd.Parameters.AddWithValue("@empno", empno);
-                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
-                        sqlcmd.Parameters.AddWithValue("@dated", tboxdate.Text);
-                        sqlcmd.Parameters.AddWithValue("@remarks", tboxremarks.Text);
-                        sqlcmd.Parameters.AddWithValue("@fullname", tboxfullname.Text);
-                        sqlcmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                CustomValidator err = new CustomValidator();
-                err.ValidationGroup = "g2";
-                err.IsValid = false;
-                err.ErrorMessage = ex.Message.ToString();
-                Page.Validators.Add(err);
-            }
-            finally
-            {
-                getpersoninteract();
-            }
-        }
+     
 
         protected void LinkButton8_Click(object sender, EventArgs e)
         {

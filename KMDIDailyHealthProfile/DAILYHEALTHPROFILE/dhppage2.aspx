@@ -132,64 +132,7 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>--%>
-    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-        <ContentTemplate>
-            <h3><strong class="text-info">Mga taong nakasama/nakasalamuha</strong></h3>
-            <div class="container">
-                <blockquote>
-                    Full name:<br />
-                    <asp:TextBox ID="tboxfullname" placeholder="Full name" CssClass="form-control" runat="server"></asp:TextBox><br />
-                      Date:<br />
-                    <asp:TextBox ID="tboxdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
-                      Remarks:<br />
-                    <asp:TextBox ID="tboxremarks" CssClass="form-control" runat="server"></asp:TextBox><br />
-                    <asp:Button ID="Button2" CssClass="btn btn-primary" ValidationGroup="g2" runat="server" Text="add" OnClick="Button2_Click" />
-                </blockquote>
-                <asp:ValidationSummary ID="ValidationSummary5" CssClass="alert alert-danger" ValidationGroup="g2" runat="server" />
-            </div>
-            <br />
-            <asp:GridView ID="GridView2" runat="server" CssClass="table" AllowPaging="True" AutoGenerateColumns="False" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowCommand="GridView2_RowCommand">
-                <Columns>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:LinkButton ID="btneditg2" CommandName="myedit" runat="server">Edit</asp:LinkButton>
-                            <asp:LinkButton ID="btndeleteg2" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
-                            <asp:LinkButton ID="btnupdateg2" Visible="false" CommandName="myupdate" runat="server">Update</asp:LinkButton>
-                            <asp:LinkButton ID="btncancelg2" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Full name">
-                        <ItemTemplate>
-                            <asp:Label ID="lblidg2" runat="server" Text='<%# Bind("ID") %>' Visible="false"></asp:Label>
-                            <asp:Label ID="lblfullnameg2" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
-                            <asp:TextBox ID="tboxfullnameg2" Visible="false" CssClass="form-control" Text='<%# Bind("FULLNAME") %>' runat="server"></asp:TextBox>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Date">
-                        <ItemTemplate>
-                            <asp:Label ID="lbldated" runat="server" Text='<%# Bind("DATED") %>'></asp:Label>
-                            <asp:TextBox ID="tboxdateedit" TextMode="Date" CssClass="form-control" Text='<%# Bind("DATED") %>' Visible="false" runat="server"></asp:TextBox>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                      <asp:TemplateField HeaderText="Remarks">
-                        <ItemTemplate>
-                            <asp:Label ID="lblremarks" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label>
-                            <asp:TextBox ID="tboxremarksedit" Text='<%# Bind("REMARKS") %>' CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-                <EmptyDataTemplate>
-                    <div class="alert alert-info">
-                        <h3><strong>Travel History is Empty!</strong>
-                        </h3>
-                    </div>
-                </EmptyDataTemplate>
-                <EditRowStyle BorderStyle="None" BorderWidth="0px" />
-                <PagerSettings PageButtonCount="8" />
-                <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-            </asp:GridView>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+  
     <br />
     <strong>Possible Exposure to Virus:</strong>&nbsp;<label class="text-success">(Please record possible incident where the patient/ employee could’ve contracted the virus)</label>
     <asp:TextBox ID="tboxexposuretovirus" CssClass="form-control" TextMode="MultiLine" Rows="10" runat="server"></asp:TextBox>

@@ -25,11 +25,13 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblname.Text = Session["dhpname"].ToString();
                     lblempno.Text = Session["dhpempno"].ToString();
                     lblage.Text = Session["dhpage"].ToString();
-                    lblbirthday.Text = Session["dhpbirthday"].ToString();
+                    lblbirthday.Text =Session["dhpbirthday"].ToString();
                     getdata();
                     gettravelhistory();
                     loadtestresult();
                     loadquarantine();
+                    getdhpdate();
+                    getpersoninteract();
                     //if (acct == "Admin")
                     //{
                     //    tboxCOM.Enabled = true;
@@ -85,6 +87,32 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 return Session["dhp_USERACCT"].ToString();
             }
+        }
+        private void getdhpdate()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlmd = new SqlCommand("select format(cast(rdate as date),'yyyy-MM-dd') from dhrtbl where id = @dhpid", sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        using (SqlDataReader rd= sqlmd.ExecuteReader())
+                        {
+                            while (rd.Read())
+                            {
+                                tboxinputdt.Text = rd[0].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                errorrmessage(ex.ToString());
+            }
+
         }
         private void errorrmessage(string message)
         {
@@ -1187,17 +1215,17 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 gettravelsummary();
             }
         }
-        private void inserttravelhistory(string travelhistory)
+        private void inserttravelhistory(string travelhistory,string dt, string tm)
         {
             try
             {
                 
                 string str = "declare @id as integer = (select isnull(max(isnull(id,0)),0)+1 from dhptravelhistory)" +
                     " declare @sorting as integer = (select count(isnull(id,0))+1 from dhptravelhistory where empno=@empno and dhpid=@dhpid)" +
-                    " insert into dhptravelhistory (id,empno,dhpid,sorting,travelhistory)values(@id,@empno,@dhpid,@sorting,@travelhistory)" +
+                    " insert into dhptravelhistory (id,empno,dhpid,sorting,dt,tm,travelhistory)values(@id,@empno,@dhpid,@sorting,@dt,@tm,@travelhistory)" +
                       " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
-                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) " +
-                      " values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@sorting,@travelhistory)";
+                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,dt,tm,TRAVELHISTORY) " +
+                      " values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@sorting,@dt,@tm,@travelhistory)";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -1207,6 +1235,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
                         sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
                         sqlcmd.Parameters.AddWithValue("@travelhistory", travelhistory);
+                        sqlcmd.Parameters.AddWithValue("@tm", tm);
+                        sqlcmd.Parameters.AddWithValue("@dt", dt);
                         sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
                         sqlcmd.ExecuteNonQuery();
                     }
@@ -1279,11 +1309,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 ((LinkButton)row.FindControl("btnedit")).Visible = false;
                 ((LinkButton)row.FindControl("btndelete")).Visible = false;
                 ((Label)row.FindControl("lblsorting")).Visible = false;
+                ((Label)row.FindControl("lbldt")).Visible = false;
+                ((Label)row.FindControl("lbltm")).Visible = false;
                 ((Label)row.FindControl("lbltravelhistory")).Visible = false;
 
+                ((TextBox)row.FindControl("tboxdt")).Visible = true;
+                ((TextBox)row.FindControl("tboxtm")).Visible = true;
                 ((LinkButton)row.FindControl("btnupdate")).Visible = true;
                 ((LinkButton)row.FindControl("btncancel")).Visible = true;
                 ((TextBox)row.FindControl("tboxsorting")).Visible = true;
+
                 ((TextBox)row.FindControl("tboxtravelhistory")).Visible = true;
             }
             else if (e.CommandName == "myupdate")
@@ -1292,6 +1327,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 GridViewRow row = GridView3.Rows[rowindex];
                 updatetravelhistory(((Label)row.FindControl("lblid")).Text,
                         ((TextBox)row.FindControl("tboxsorting")).Text,
+                             ((TextBox)row.FindControl("tboxdt")).Text,
+                                  ((TextBox)row.FindControl("tboxtm")).Text,
                 ((TextBox)row.FindControl("tboxtravelhistory")).Text);
             }
             else if (e.CommandName == "mycancel")
@@ -1301,11 +1338,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 ((LinkButton)row.FindControl("btnedit")).Visible = true;
                 ((LinkButton)row.FindControl("btndelete")).Visible = true;
                 ((Label)row.FindControl("lblsorting")).Visible = true;
+                ((Label)row.FindControl("lbldt")).Visible = true;
+                ((Label)row.FindControl("lbltm")).Visible = true;
                 ((Label)row.FindControl("lbltravelhistory")).Visible = true;
 
                 ((LinkButton)row.FindControl("btnupdate")).Visible = false;
                 ((LinkButton)row.FindControl("btncancel")).Visible = false;
                 ((TextBox)row.FindControl("tboxsorting")).Visible = false;
+                ((TextBox)row.FindControl("tboxdt")).Visible = false;
+                ((TextBox)row.FindControl("tboxtm")).Visible = false;
                 ((TextBox)row.FindControl("tboxtravelhistory")).Visible = false;
             }
             else if (e.CommandName == "mydelete")
@@ -1353,15 +1394,15 @@ namespace webaftersales.DAILYHEALTHPROFILE
             }
         }
 
-        private void updatetravelhistory(string id, string sorting, string travelhistory)
+        private void updatetravelhistory(string id, string sorting,string dt, string tm, string travelhistory)
         {
             try
             {
                 
-                string str = " update dhptravelhistory set sorting=@sorting,travelhistory=@travelhistory where id = @id" +
+                string str = " update dhptravelhistory set sorting=@sorting,dt=@dt,tm=@tm,travelhistory=@travelhistory where id = @id" +
                        " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from DHPtravelhistory_history) " +
-                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,TRAVELHISTORY) " +
-                      " values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@sorting,@travelhistory)";
+                      " insert into DHPtravelhistory_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,SORTING,DT,TM,TRAVELHISTORY) " +
+                      " values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@sorting,@dt,@tm,@travelhistory)";
                 using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
                 {
                     using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
@@ -1370,6 +1411,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         DataTable tb = new DataTable();
                         sqlcmd.Parameters.AddWithValue("@id", id);
                         sqlcmd.Parameters.AddWithValue("@sorting", sorting);
+                        sqlcmd.Parameters.AddWithValue("@dt", dt);
+                        sqlcmd.Parameters.AddWithValue("@tm", tm);
                         sqlcmd.Parameters.AddWithValue("@travelhistory", travelhistory);
                         sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
                         sqlcmd.Parameters.AddWithValue("@empno", empno);
@@ -1393,11 +1436,11 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         protected void LinkButton5_Click(object sender, EventArgs e)
         {
-            inserttravelhistory(tboxother.Text);
+            inserttravelhistory(tboxother.Text, tboxinputdt.Text, tboxinputtm.Text);
         }
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            inserttravelhistory(dltravelhistory.Text);
+            inserttravelhistory(dltravelhistory.Text,tboxinputdt.Text, tboxinputtm.Text);
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -1410,6 +1453,203 @@ namespace webaftersales.DAILYHEALTHPROFILE
             {
                 Response.Redirect("~/DAILYHEALTHPROFILE/reportgen.aspx");
             }
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string str = "declare @id as integer  =  (select isnull(max(isnull(id,0)),0)+1 from personsinteract)" +
+                    " insert into personsinteract (id,empno,dhpid,fullname,dated,remarks)values(@id,@empno,@dhpid,@fullname,@dated,@remarks)"+
+                           " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from PERSONSINTERACT_history) " +
+                         " insert into PERSONSINTERACT_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,fullname,dated,remarks) " +
+                      " values(@idpp,@id,@empno,@dhpid,'Insert',@editedby,getdate(),@fullname,@dated,@remarks)"; ;
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@dated", tboxdate.Text);
+                        sqlcmd.Parameters.AddWithValue("@remarks", tboxremarkstransaction.Text);
+                        sqlcmd.Parameters.AddWithValue("@fullname", tboxfullname.Text);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+            finally
+            {
+                getpersoninteract();
+            }
+        }
+        private void getpersoninteract()
+        {
+            try
+            {
+
+                string str = " select * from personsinteract where dhpid=@dhpid and empno=@empno";
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        DataTable tb = new DataTable();
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = sqlcmd;
+                        da.Fill(tb);
+                        GridView6.DataSource = tb;
+                        GridView6.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "g2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+        }
+
+        protected void GridView6_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "myedit")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView6.Rows[rowindex];
+                ((LinkButton)row.FindControl("btneditg2")).Visible = false;
+                ((LinkButton)row.FindControl("btndeleteg2")).Visible = false;
+                ((Label)row.FindControl("lblfullnameg2")).Visible = false;
+                ((Label)row.FindControl("lbldated")).Visible = false;
+                ((Label)row.FindControl("lblremarks")).Visible = false;
+
+                ((TextBox)row.FindControl("tboxdateedit")).Visible = true;
+                ((TextBox)row.FindControl("tboxremarksedit")).Visible = true;
+                ((TextBox)row.FindControl("tboxfullnameg2")).Visible = true;
+                ((LinkButton)row.FindControl("btnupdateg2")).Visible = true;
+                ((LinkButton)row.FindControl("btncancelg2")).Visible = true;
+            }
+            else if (e.CommandName == "mycancel")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView6.Rows[rowindex];
+                ((LinkButton)row.FindControl("btneditg2")).Visible = true;
+                ((LinkButton)row.FindControl("btndeleteg2")).Visible = true;
+                ((Label)row.FindControl("lblfullnameg2")).Visible = true;
+                ((Label)row.FindControl("lbldated")).Visible = true;
+                ((Label)row.FindControl("lblremarks")).Visible = true;
+
+                ((TextBox)row.FindControl("tboxdateedit")).Visible = false;
+                ((TextBox)row.FindControl("tboxremarksedit")).Visible = false;
+                ((TextBox)row.FindControl("tboxfullnameg2")).Visible = false;
+                ((LinkButton)row.FindControl("btnupdateg2")).Visible = false;
+                ((LinkButton)row.FindControl("btncancelg2")).Visible = false;
+            }
+            else if (e.CommandName == "myupdate")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView6.Rows[rowindex];
+
+                updatepersonsinteract(((Label)row.FindControl("lblidg2")).Text,
+             ((TextBox)row.FindControl("tboxfullnameg2")).Text, ((TextBox)row.FindControl("tboxdateedit")).Text,
+                ((TextBox)row.FindControl("tboxremarksedit")).Text);
+            }
+            else if (e.CommandName == "mydelete")
+            {
+                int rowindex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                GridViewRow row = GridView6.Rows[rowindex];
+
+                deletepersonsinteract(((Label)row.FindControl("lblidg2")).Text);
+            }
+        }
+        private void updatepersonsinteract(string id, string fullname, string date, string remarks)
+        {
+            try
+            {
+
+                string str = "update personsinteract set fullname=@fullname,dated=@dated,remarks=@remarks where id = @id" +
+                       " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from PERSONSINTERACT_history) " +
+                         " insert into PERSONSINTERACT_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,fullname,dated,remarks) " +
+                      " values(@idpp,@id,@empno,@dhpid,'Update',@editedby,getdate(),@fullname,@dated,@remarks)";
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@fullname", fullname);
+                        sqlcmd.Parameters.AddWithValue("@dated", date);
+                        sqlcmd.Parameters.AddWithValue("@remarks", remarks);
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "g2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                getpersoninteract();
+            }
+        }
+        private void deletepersonsinteract(string id)
+        {
+            try
+            {
+
+                string str = "delete from personsinteract where id = @id"+
+                            " declare @idpp as integer = (select isnull(max(isnull(id,0)),0)+1 from PERSONSINTERACT_history) " +
+                         " insert into PERSONSINTERACT_history (ID,ITEMID,EMPNO,DHPID,ACTIONMADE,EMPNOEDITEDBY,DATEALTERED,fullname,dated,remarks) " +
+                      " values(@idpp,@id,@empno,@dhpid,'Delete',@editedby,getdate(),'','','')";
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcon.Open();
+                        sqlcmd.Parameters.AddWithValue("@id", id);
+                        sqlcmd.Parameters.AddWithValue("@empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@dhpid", dhpid);
+                        sqlcmd.Parameters.AddWithValue("@editedby", Session["dhp_currentuser"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomValidator err = new CustomValidator();
+                err.ValidationGroup = "g2";
+                err.IsValid = false;
+                err.ErrorMessage = ex.Message.ToString();
+                Page.Validators.Add(err);
+            }
+            finally
+            {
+                getpersoninteract();
+            }
+        }
+
+        protected void GridView6_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView6.PageIndex = e.NewPageIndex;
+            getpersoninteract();
         }
     }
 }

@@ -174,6 +174,18 @@
             <ContentTemplate>
                 <div class=" container">
                     <asp:Panel ID="pnl1" runat="server">
+                        <table border="0" style="width: 100%">
+                            <tr>
+                                <td class="text-info">DATE: 
+                                    <asp:TextBox ID="tboxinputdt" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                                </td>
+                                <td class="text-info">TIME:
+                            <asp:TextBox ID="tboxinputtm" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        </table>
+
+
                         <div class="input-group">
                             <asp:DropDownList CssClass="form-control" Height="35" ID="dltravelhistory" runat="server">
                                 <asp:ListItem Value="Home">Home</asp:ListItem>
@@ -206,41 +218,54 @@
 
                 <br />
                 <asp:ValidationSummary ID="ValidationSummary6" ValidationGroup="travelval" CssClass="alert alert-danger" runat="server" />
-                <asp:GridView ID="GridView3" AllowPaging="true" CssClass="table" runat="server" AutoGenerateColumns="false" OnPageIndexChanging="GridView3_PageIndexChanging" OnRowCommand="GridView3_RowCommand">
-                    <Columns>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:LinkButton CommandName="myedit" ID="btnedit" runat="server">Edit</asp:LinkButton>
-                                <asp:LinkButton CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record')" runat="server">Delete</asp:LinkButton>
-                                <asp:LinkButton CommandName="myupdate" ID="btnupdate" Visible="false" runat="server">Update</asp:LinkButton>
-                                <asp:LinkButton CommandName="mycancel" ID="btncancel" Visible="false" runat="server">Cancel</asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Sorting">
-                            <ItemTemplate>
-                                <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
-                                <asp:Label ID="lblsorting" runat="server" Text='<%# Bind("SORTING") %>'></asp:Label>
-                                <asp:TextBox ID="tboxsorting" Visible="false" Width="70" TextMode="Number" CssClass="form-control" Text='<%# Bind("SORTING") %>' runat="server"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Travel History">
-                            <ItemTemplate>
-                                <asp:Label ID="lbltravelhistory" runat="server" Text='<%# Bind("TRAVELHISTORY") %>'></asp:Label>
-                                <asp:TextBox ID="tboxtravelhistory" Visible="false" CssClass="form-control" Text='<%# Bind("TRAVELHISTORY") %>' runat="server"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                    <EmptyDataTemplate>
-                        <div class="alert alert-info">
-                            <h3><strong>Travel History is Empty!</strong>
-                            </h3>
-                        </div>
-                    </EmptyDataTemplate>
-                    <EditRowStyle BorderStyle="None" BorderWidth="0px" />
-                    <PagerSettings PageButtonCount="8" />
-                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
-                </asp:GridView>
-
+                <asp:Panel ID="Panel5" runat="server" ScrollBars="Auto">
+                    <asp:GridView ID="GridView3" AllowPaging="true" CssClass="table" runat="server" AutoGenerateColumns="false" OnPageIndexChanging="GridView3_PageIndexChanging" OnRowCommand="GridView3_RowCommand">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton CommandName="myedit" ID="btnedit" runat="server">Edit</asp:LinkButton>
+                                    <asp:LinkButton CommandName="mydelete" ID="btndelete" OnClientClick="return confirm('delete this record')" runat="server">Delete</asp:LinkButton>
+                                    <asp:LinkButton CommandName="myupdate" ID="btnupdate" Visible="false" runat="server">Update</asp:LinkButton>
+                                    <asp:LinkButton CommandName="mycancel" ID="btncancel" Visible="false" runat="server">Cancel</asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Sorting">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblid" Visible="false" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                                    <asp:Label ID="lblsorting" runat="server" Text='<%# Bind("SORTING") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxsorting" Visible="false" Width="70" TextMode="Number" CssClass="form-control" Text='<%# Bind("SORTING") %>' runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Date">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbldt" runat="server" Text='<%# Bind("DT") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxdt" Visible="false" TextMode="Date" CssClass="form-control" Text='<%# Bind("DT") %>' runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Time">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbltm" runat="server" Text='<%# Bind("TM") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxtm" Visible="false" TextMode="Time" CssClass="form-control" Text='<%# Bind("TM") %>' runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Travel History">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbltravelhistory" runat="server" Text='<%# Bind("TRAVELHISTORY") %>'></asp:Label>
+                                    <asp:TextBox ID="tboxtravelhistory" Visible="false" CssClass="form-control" Text='<%# Bind("TRAVELHISTORY") %>' runat="server"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <EmptyDataTemplate>
+                            <div class="alert alert-info">
+                                <h3><strong>Travel History is Empty!</strong>
+                                </h3>
+                            </div>
+                        </EmptyDataTemplate>
+                        <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                        <PagerSettings PageButtonCount="8" />
+                        <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                    </asp:GridView>
+                </asp:Panel>
                 <div class="alert alert-success" style="text-wrap: avoid">
                     <h4>
                         <asp:Label ID="lbltravelsummary" runat="server"></asp:Label></h4>
@@ -248,7 +273,65 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
-
+        
+        <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+            <ContentTemplate>
+                <h3><strong class="text-info">Mga taong nakasama/nakasalamuha</strong></h3>
+                <div class="container">
+                    <blockquote>
+                        Full name:<br />
+                        <asp:TextBox ID="tboxfullname" placeholder="Full name" CssClass="form-control" runat="server"></asp:TextBox><br />
+                        Date:<br />
+                        <asp:TextBox ID="tboxdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
+                        Remarks:<br />
+                        <asp:TextBox ID="tboxremarkstransaction" CssClass="form-control" runat="server"></asp:TextBox><br />
+                        <asp:Button ID="Button4" CssClass="btn btn-primary" ValidationGroup="g2" runat="server" Text="add" OnClick="Button4_Click" />
+                    </blockquote>
+                    <asp:ValidationSummary ID="ValidationSummary7" CssClass="alert alert-danger" ValidationGroup="g2" runat="server" />
+                </div>
+                <br />
+                <asp:GridView ID="GridView6" runat="server" CssClass="table" AllowPaging="True" AutoGenerateColumns="False" OnRowCommand="GridView6_RowCommand" OnPageIndexChanging="GridView6_PageIndexChanging">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btneditg2" CommandName="myedit" runat="server">Edit</asp:LinkButton>
+                                <asp:LinkButton ID="btndeleteg2" CommandName="mydelete" OnClientClick="return confirm('delete this record?')" runat="server">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="btnupdateg2" Visible="false" CommandName="myupdate" runat="server">Update</asp:LinkButton>
+                                <asp:LinkButton ID="btncancelg2" Visible="false" CommandName="mycancel" runat="server">Cancel</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Full name">
+                            <ItemTemplate>
+                                <asp:Label ID="lblidg2" runat="server" Text='<%# Bind("ID") %>' Visible="false"></asp:Label>
+                                <asp:Label ID="lblfullnameg2" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                                <asp:TextBox ID="tboxfullnameg2" Visible="false" CssClass="form-control" Text='<%# Bind("FULLNAME") %>' runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Date">
+                            <ItemTemplate>
+                                <asp:Label ID="lbldated" runat="server" Text='<%# Bind("DATED") %>'></asp:Label>
+                                <asp:TextBox ID="tboxdateedit" TextMode="Date" CssClass="form-control" Text='<%# Bind("DATED") %>' Visible="false" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Remarks/Details">
+                            <ItemTemplate>
+                                <asp:Label ID="lblremarks" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label>
+                                <asp:TextBox ID="tboxremarksedit" Text='<%# Bind("REMARKS") %>' CssClass="form-control" Visible="false" runat="server"></asp:TextBox>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <EmptyDataTemplate>
+                        <div class="alert alert-info">
+                            <h3><strong>Contact tracing is Empty!</strong>
+                            </h3>
+                        </div>
+                    </EmptyDataTemplate>
+                    <EditRowStyle BorderStyle="None" BorderWidth="0px" />
+                    <PagerSettings PageButtonCount="8" />
+                    <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
+                </asp:GridView>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
 
 
@@ -294,7 +377,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><strong>DRY COUGH</strong><br />
+                            <td><strong>COUGH</strong><br />
                                 <small class="text-info">(tuyo o matigas na ubo)</small>
                             </td>
                             <td>
@@ -471,6 +554,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
+
         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
             <ContentTemplate>
                 <br />
@@ -573,6 +657,8 @@
 
         </div>
         <br />--%>
+
+
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
