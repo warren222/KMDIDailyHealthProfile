@@ -1178,7 +1178,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex = e.NewPageIndex;
+            GridView3.PageIndex = e.NewPageIndex;
             gettravelhistory();
         }
         private void gettravelhistory()
