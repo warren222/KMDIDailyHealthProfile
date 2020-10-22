@@ -149,7 +149,7 @@
                         <HeaderStyle Wrap="False" />
                         <RowStyle Wrap="False" />
                         <EmptyDataTemplate>
-                            <div class="alert alert-info">
+                            <div class="alert alert-warning">
                                 <h3><strong>Empty Table!</strong>
                                 </h3>
                             </div>
@@ -256,7 +256,7 @@
                             </asp:TemplateField>
                         </Columns>
                         <EmptyDataTemplate>
-                            <div class="alert alert-info">
+                            <div class="alert alert-warning">
                                 <h3><strong>Travel History is Empty!</strong>
                                 </h3>
                             </div>
@@ -273,8 +273,8 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
-        
-        <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+
+        <asp:UpdatePanel ID="UpdatePanel9" runat="server">
             <ContentTemplate>
                 <h3><strong class="text-info">Mga taong nakasama/nakasalamuha</strong></h3>
                 <div class="container">
@@ -321,7 +321,7 @@
                         </asp:TemplateField>
                     </Columns>
                     <EmptyDataTemplate>
-                        <div class="alert alert-info">
+                        <div class="alert alert-warning">
                             <h3><strong>Contact tracing is Empty!</strong>
                             </h3>
                         </div>
@@ -330,6 +330,7 @@
                     <PagerSettings PageButtonCount="8" />
                     <PagerStyle CssClass="GridPager" HorizontalAlign="Left" />
                 </asp:GridView>
+             
             </ContentTemplate>
         </asp:UpdatePanel>
 
@@ -635,7 +636,7 @@
                             <HeaderStyle Wrap="False" />
                             <RowStyle Wrap="False" />
                             <EmptyDataTemplate>
-                                <div class="alert alert-info">
+                                <div class="alert alert-warning">
                                     <h3><strong>Empty Table!</strong>
                                     </h3>
                                 </div>
@@ -716,7 +717,7 @@
                             <HeaderStyle Wrap="False" />
                             <RowStyle Wrap="False" />
                             <EmptyDataTemplate>
-                                <div class="alert alert-info">
+                                <div class="alert alert-warning">
                                     <h3><strong>Empty Table!</strong>
                                     </h3>
                                 </div>
@@ -750,7 +751,7 @@
                             <HeaderStyle Wrap="False" />
                             <RowStyle Wrap="False" />
                             <EmptyDataTemplate>
-                                <div class="alert alert-info">
+                                <div class="alert alert-warning">
                                     <h3><strong>Empty Table!</strong>
                                     </h3>
                                 </div>
