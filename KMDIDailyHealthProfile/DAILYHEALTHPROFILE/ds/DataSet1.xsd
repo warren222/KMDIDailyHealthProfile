@@ -158,6 +158,18 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="NoLogin" msprop:Generator_TableClassName="NoLoginDataTable" msprop:Generator_TableVarName="tableNoLogin" msprop:Generator_RowChangedName="NoLoginRowChanged" msprop:Generator_TablePropName="NoLogin" msprop:Generator_RowDeletingName="NoLoginRowDeleting" msprop:Generator_RowChangingName="NoLoginRowChanging" msprop:Generator_RowEvHandlerName="NoLoginRowChangeEventHandler" msprop:Generator_RowDeletedName="NoLoginRowDeleted" msprop:Generator_RowClassName="NoLoginRow" msprop:Generator_UserTableName="NoLogin" msprop:Generator_RowEvArgName="NoLoginRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EMPNO" msprop:Generator_ColumnVarNameInTable="columnEMPNO" msprop:Generator_ColumnPropNameInRow="EMPNO" msprop:Generator_ColumnPropNameInTable="EMPNOColumn" msprop:Generator_UserColumnName="EMPNO" type="xs:string" minOccurs="0" />
+              <xs:element name="NAME" msprop:Generator_ColumnVarNameInTable="columnNAME" msprop:Generator_ColumnPropNameInRow="NAME" msprop:Generator_ColumnPropNameInTable="NAMEColumn" msprop:Generator_UserColumnName="NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="RDATE" msprop:Generator_ColumnVarNameInTable="columnRDATE" msprop:Generator_ColumnPropNameInRow="RDATE" msprop:Generator_ColumnPropNameInTable="RDATEColumn" msprop:Generator_UserColumnName="RDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="DEPARTMENT" msprop:Generator_ColumnVarNameInTable="columnDEPARTMENT" msprop:Generator_ColumnPropNameInRow="DEPARTMENT" msprop:Generator_ColumnPropNameInTable="DEPARTMENTColumn" msprop:Generator_UserColumnName="DEPARTMENT" type="xs:string" minOccurs="0" />
+              <xs:element name="POSCODE" msprop:Generator_ColumnVarNameInTable="columnPOSCODE" msprop:Generator_ColumnPropNameInRow="POSCODE" msprop:Generator_ColumnPropNameInTable="POSCODEColumn" msprop:Generator_UserColumnName="POSCODE" type="xs:string" minOccurs="0" />
+              <xs:element name="DATE" msprop:Generator_ColumnVarNameInTable="columnDATE" msprop:Generator_ColumnPropNameInRow="DATE" msprop:Generator_ColumnPropNameInTable="DATEColumn" msprop:Generator_UserColumnName="DATE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

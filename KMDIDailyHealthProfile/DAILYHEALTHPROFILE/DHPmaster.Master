@@ -50,6 +50,12 @@
                                      <li>
                                         <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/contacttracing.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; Contact Tracing</asp:LinkButton>
                                     </li>
+                                         <li>
+                                        <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/nologin.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; No Login Report</asp:LinkButton>
+                                    </li>
+                                         <li>
+                                        <asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/travelhistory.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; Travel History Report</asp:LinkButton>
+                                    </li>
                                 </ul></li>
 
                     </ul>
