@@ -38,6 +38,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         private NoLoginDataTable tableNoLogin;
         
+        private TravelHistoryReportDataTable tableTravelHistoryReport;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -86,6 +88,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 }
                 if ((ds.Tables["NoLogin"] != null)) {
                     base.Tables.Add(new NoLoginDataTable(ds.Tables["NoLogin"]));
+                }
+                if ((ds.Tables["TravelHistoryReport"] != null)) {
+                    base.Tables.Add(new TravelHistoryReportDataTable(ds.Tables["TravelHistoryReport"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -177,6 +182,16 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public TravelHistoryReportDataTable TravelHistoryReport {
+            get {
+                return this.tableTravelHistoryReport;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -263,6 +278,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 if ((ds.Tables["NoLogin"] != null)) {
                     base.Tables.Add(new NoLoginDataTable(ds.Tables["NoLogin"]));
                 }
+                if ((ds.Tables["TravelHistoryReport"] != null)) {
+                    base.Tables.Add(new TravelHistoryReportDataTable(ds.Tables["TravelHistoryReport"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -338,6 +356,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                     this.tableNoLogin.InitVars();
                 }
             }
+            this.tableTravelHistoryReport = ((TravelHistoryReportDataTable)(base.Tables["TravelHistoryReport"]));
+            if ((initTable == true)) {
+                if ((this.tableTravelHistoryReport != null)) {
+                    this.tableTravelHistoryReport.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -362,6 +386,8 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             base.Tables.Add(this.tableCONTACTTRACINGTBL);
             this.tableNoLogin = new NoLoginDataTable();
             base.Tables.Add(this.tableNoLogin);
+            this.tableTravelHistoryReport = new TravelHistoryReportDataTable();
+            base.Tables.Add(this.tableTravelHistoryReport);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -403,6 +429,12 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeNoLogin() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeTravelHistoryReport() {
             return false;
         }
         
@@ -481,6 +513,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void NoLoginRowChangeEventHandler(object sender, NoLoginRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void TravelHistoryReportRowChangeEventHandler(object sender, TravelHistoryReportRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3778,6 +3813,323 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "NoLoginDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TravelHistoryReportDataTable : global::System.Data.TypedTableBase<TravelHistoryReportRow> {
+            
+            private global::System.Data.DataColumn columnEMPNO;
+            
+            private global::System.Data.DataColumn columnFULLNAME;
+            
+            private global::System.Data.DataColumn columnTravel_History;
+            
+            private global::System.Data.DataColumn columnDEPARTMENT;
+            
+            private global::System.Data.DataColumn columnPOSCODE;
+            
+            private global::System.Data.DataColumn columnDATE;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TravelHistoryReportDataTable() {
+                this.TableName = "TravelHistoryReport";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TravelHistoryReportDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected TravelHistoryReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EMPNOColumn {
+                get {
+                    return this.columnEMPNO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FULLNAMEColumn {
+                get {
+                    return this.columnFULLNAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Travel_HistoryColumn {
+                get {
+                    return this.columnTravel_History;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DEPARTMENTColumn {
+                get {
+                    return this.columnDEPARTMENT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn POSCODEColumn {
+                get {
+                    return this.columnPOSCODE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DATEColumn {
+                get {
+                    return this.columnDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TravelHistoryReportRow this[int index] {
+                get {
+                    return ((TravelHistoryReportRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TravelHistoryReportRowChangeEventHandler TravelHistoryReportRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TravelHistoryReportRowChangeEventHandler TravelHistoryReportRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TravelHistoryReportRowChangeEventHandler TravelHistoryReportRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TravelHistoryReportRowChangeEventHandler TravelHistoryReportRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddTravelHistoryReportRow(TravelHistoryReportRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TravelHistoryReportRow AddTravelHistoryReportRow(string EMPNO, string FULLNAME, string Travel_History, string DEPARTMENT, string POSCODE, string DATE) {
+                TravelHistoryReportRow rowTravelHistoryReportRow = ((TravelHistoryReportRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        EMPNO,
+                        FULLNAME,
+                        Travel_History,
+                        DEPARTMENT,
+                        POSCODE,
+                        DATE};
+                rowTravelHistoryReportRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTravelHistoryReportRow);
+                return rowTravelHistoryReportRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TravelHistoryReportDataTable cln = ((TravelHistoryReportDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TravelHistoryReportDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnEMPNO = base.Columns["EMPNO"];
+                this.columnFULLNAME = base.Columns["FULLNAME"];
+                this.columnTravel_History = base.Columns["Travel_History"];
+                this.columnDEPARTMENT = base.Columns["DEPARTMENT"];
+                this.columnPOSCODE = base.Columns["POSCODE"];
+                this.columnDATE = base.Columns["DATE"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnEMPNO = new global::System.Data.DataColumn("EMPNO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMPNO);
+                this.columnFULLNAME = new global::System.Data.DataColumn("FULLNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFULLNAME);
+                this.columnTravel_History = new global::System.Data.DataColumn("Travel_History", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTravel_History);
+                this.columnDEPARTMENT = new global::System.Data.DataColumn("DEPARTMENT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDEPARTMENT);
+                this.columnPOSCODE = new global::System.Data.DataColumn("POSCODE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPOSCODE);
+                this.columnDATE = new global::System.Data.DataColumn("DATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDATE);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TravelHistoryReportRow NewTravelHistoryReportRow() {
+                return ((TravelHistoryReportRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TravelHistoryReportRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TravelHistoryReportRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TravelHistoryReportRowChanged != null)) {
+                    this.TravelHistoryReportRowChanged(this, new TravelHistoryReportRowChangeEvent(((TravelHistoryReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TravelHistoryReportRowChanging != null)) {
+                    this.TravelHistoryReportRowChanging(this, new TravelHistoryReportRowChangeEvent(((TravelHistoryReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TravelHistoryReportRowDeleted != null)) {
+                    this.TravelHistoryReportRowDeleted(this, new TravelHistoryReportRowChangeEvent(((TravelHistoryReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TravelHistoryReportRowDeleting != null)) {
+                    this.TravelHistoryReportRowDeleting(this, new TravelHistoryReportRowChangeEvent(((TravelHistoryReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveTravelHistoryReportRow(TravelHistoryReportRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TravelHistoryReportDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7172,6 +7524,189 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TravelHistoryReportRow : global::System.Data.DataRow {
+            
+            private TravelHistoryReportDataTable tableTravelHistoryReport;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TravelHistoryReportRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTravelHistoryReport = ((TravelHistoryReportDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EMPNO {
+                get {
+                    try {
+                        return ((string)(this[this.tableTravelHistoryReport.EMPNOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EMPNO\' in table \'TravelHistoryReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTravelHistoryReport.EMPNOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FULLNAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableTravelHistoryReport.FULLNAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FULLNAME\' in table \'TravelHistoryReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTravelHistoryReport.FULLNAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Travel_History {
+                get {
+                    try {
+                        return ((string)(this[this.tableTravelHistoryReport.Travel_HistoryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Travel_History\' in table \'TravelHistoryReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTravelHistoryReport.Travel_HistoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DEPARTMENT {
+                get {
+                    try {
+                        return ((string)(this[this.tableTravelHistoryReport.DEPARTMENTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DEPARTMENT\' in table \'TravelHistoryReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTravelHistoryReport.DEPARTMENTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string POSCODE {
+                get {
+                    try {
+                        return ((string)(this[this.tableTravelHistoryReport.POSCODEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'POSCODE\' in table \'TravelHistoryReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTravelHistoryReport.POSCODEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableTravelHistoryReport.DATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DATE\' in table \'TravelHistoryReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTravelHistoryReport.DATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEMPNONull() {
+                return this.IsNull(this.tableTravelHistoryReport.EMPNOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEMPNONull() {
+                this[this.tableTravelHistoryReport.EMPNOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFULLNAMENull() {
+                return this.IsNull(this.tableTravelHistoryReport.FULLNAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFULLNAMENull() {
+                this[this.tableTravelHistoryReport.FULLNAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTravel_HistoryNull() {
+                return this.IsNull(this.tableTravelHistoryReport.Travel_HistoryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTravel_HistoryNull() {
+                this[this.tableTravelHistoryReport.Travel_HistoryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDEPARTMENTNull() {
+                return this.IsNull(this.tableTravelHistoryReport.DEPARTMENTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDEPARTMENTNull() {
+                this[this.tableTravelHistoryReport.DEPARTMENTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPOSCODENull() {
+                return this.IsNull(this.tableTravelHistoryReport.POSCODEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPOSCODENull() {
+                this[this.tableTravelHistoryReport.POSCODEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDATENull() {
+                return this.IsNull(this.tableTravelHistoryReport.DATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDATENull() {
+                this[this.tableTravelHistoryReport.DATEColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -7395,6 +7930,40 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NoLoginRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class TravelHistoryReportRowChangeEvent : global::System.EventArgs {
+            
+            private TravelHistoryReportRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TravelHistoryReportRowChangeEvent(TravelHistoryReportRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TravelHistoryReportRow Row {
                 get {
                     return this.eventRow;
                 }

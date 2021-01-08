@@ -25,7 +25,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
 
                 if (!IsPostBack)
                 {
-                    tboxDate.Text = DateTime.Now.ToString();
+                    tboxDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                     SqlDataSource1.ConnectionString = sqlconstr;
                     ReportViewer1.LocalReport.Refresh();
                 }

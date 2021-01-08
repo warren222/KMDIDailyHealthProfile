@@ -16,11 +16,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
-        <div class="jumbotron">
-            <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
-        </div>
         <div class="container">
+            <div class="jumbotron">
+                <h1><strong>Kenneth and Mock</strong> <small>WINDOWS AND DOORS</small></h1>
+            </div>
+
 
             <div class="row">
                 <div class="col-sm-12">

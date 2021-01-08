@@ -820,6 +820,7 @@
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\rptNoLogin.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc" />
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\rptTravelHistoryReport.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\testresultRDLC.rdlc" />
   </ItemGroup>
   <PropertyGroup>
