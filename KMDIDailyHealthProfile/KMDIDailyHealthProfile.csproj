@@ -302,6 +302,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\nologin.aspx.cs">
+      <DependentUpon>nologin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\nologin.aspx.designer.cs">
+      <DependentUpon>nologin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\quarantinereport.aspx.cs">
       <DependentUpon>quarantinereport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -343,6 +350,13 @@
     </Compile>
     <Compile Include="DAILYHEALTHPROFILE\thirdparty\PRTreportthird.aspx.designer.cs">
       <DependentUpon>PRTreportthird.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\travelhistory.aspx.cs">
+      <DependentUpon>travelhistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\travelhistory.aspx.designer.cs">
+      <DependentUpon>travelhistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -459,6 +473,7 @@
     <Content Include="DAILYHEALTHPROFILE\dhppage3.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpreport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\dhpsignature.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\nologin.aspx" />
     <Content Include="DAILYHEALTHPROFILE\quarantinereport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\reportgen.aspx" />
     <Content Include="DAILYHEALTHPROFILE\RPTpage.aspx" />
@@ -466,6 +481,7 @@
     <Content Include="DAILYHEALTHPROFILE\testresultsummary.aspx" />
     <Content Include="DAILYHEALTHPROFILE\testresultsummaryreport.aspx" />
     <Content Include="DAILYHEALTHPROFILE\thirdparty\PRTreportthird.aspx" />
+    <Content Include="DAILYHEALTHPROFILE\travelhistory.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -802,7 +818,9 @@
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPT.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTcontacttracing.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc" />
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\rptNoLogin.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc" />
+    <EmbeddedResource Include="DAILYHEALTHPROFILE\report\rptTravelHistoryReport.rdlc" />
     <EmbeddedResource Include="DAILYHEALTHPROFILE\report\testresultRDLC.rdlc" />
   </ItemGroup>
   <PropertyGroup>
