@@ -103,7 +103,7 @@
         </asp:Panel>
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
-                <asp:GridView ID="GridView1" AutoGenerateColumns="false" GridLines="None" runat="server" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                <asp:GridView ID="GridView1" AutoGenerateColumns="false" GridLines="None" runat="server" OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -170,7 +170,7 @@
                                             Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
                                             CssClass='<%# Eval("page2").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 2</asp:LinkButton>
                                         <asp:LinkButton ID="LinkButton6" CommandName="page3"
-                                            Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'
+                                            Visible='<%# Eval("CURRENTUSER").ToString() == "Admin"  ? true : false %>'
                                             CssClass='<%# Eval("page3").ToString() ==  Eval("empno").ToString() ? "btn btn-primary" : "btn btn-default" %>' runat="server">Page 3</asp:LinkButton>
                                         <asp:LinkButton ID="LinkButton7" CommandName="myreport"
                                             Visible='<%# Eval("CURRENTUSER").ToString() == "Admin" ? true : false %>'

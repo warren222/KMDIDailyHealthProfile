@@ -72,7 +72,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void access()
         {
-            if (acct == "Admin")
+            if (acct == "Admin" || acct == "Unique")
             {
                 //pnl1.Visible = true;
                 pnl2.Enabled = true;

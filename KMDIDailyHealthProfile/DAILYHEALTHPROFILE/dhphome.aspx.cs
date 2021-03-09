@@ -408,5 +408,26 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 }
             }
         }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+           
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton page3 = (LinkButton)e.Row.FindControl("LinkButton6");
+                LinkButton page2 = (LinkButton)e.Row.FindControl("LinkButton5");
+                if (acct == "Admin" || acct == "Unique")
+                {
+                    page3.Visible = true;
+                    page2.Visible = true;
+                }
+                else
+                {
+                    page3.Visible = false;
+                    page2.Visible = true;
+                }
+            }
+
+        }
     }
 }

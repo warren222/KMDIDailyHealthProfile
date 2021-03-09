@@ -77,7 +77,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         private void access()
         {
-            if (acct == "Admin")
+            if (acct == "Admin" || acct == "Unique")
             {
                 btnaddnewrecord.Visible = true;
                 Button3.Visible = true;
@@ -210,7 +210,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView1.DataSource = tb;
                         GridView1.DataBind();
-                        if (acct == "Admin")
+                        if (acct == "Admin" || acct == "Unique")
                         {
                             GridView1.Columns[0].Visible = true;
                         }
@@ -620,7 +620,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                         da.Fill(tb);
                         GridView2.DataSource = tb;
                         GridView2.DataBind();
-                        if (acct == "Admin")
+                        if (acct == "Admin" || acct == "Unique")
                         {
                             GridView2.Columns[0].Visible = true;
                         }
