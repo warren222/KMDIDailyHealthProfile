@@ -424,7 +424,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 else
                 {
                     page3.Visible = false;
-                    page2.Visible = true;
+                    page2.Visible = false;
                 }
             }
 
