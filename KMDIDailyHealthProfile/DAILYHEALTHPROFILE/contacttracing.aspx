@@ -11,7 +11,7 @@
         <div class="input-group">
            
                
-            <asp:TextBox ID="tboxsearchkey" placeholder="Search names" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="tboxsearchkey" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
             <div class="input-group-btn">
           
                 <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>
@@ -30,24 +30,34 @@
 
                     <asp:GridView ID="GridView1" AutoGenerateColumns="false" AllowPaging="true" CssClass="table table-bordered" runat="server" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="25">
                         <Columns>
-                            <asp:TemplateField HeaderText="PATIENT">
+                              <asp:TemplateField HeaderText="EMPNO">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblpatient" runat="server" Text='<%# Bind("PATIENT") %>'></asp:Label>
+                                    <asp:Label ID="lblEMPNO" runat="server" Text='<%# Bind("EMPNO") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="CONTACTED PERSON">
+                            <asp:TemplateField HeaderText="FULLNAME">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblfullname" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
+                                    <asp:Label ID="lblFULLNAME" runat="server" Text='<%# Bind("FULLNAME") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="DATE">
+                            <asp:TemplateField HeaderText="Person_Interract">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbldated" runat="server" Text='<%# Bind("DATED") %>'></asp:Label>
+                                    <asp:Label ID="lblPerson_Interract" runat="server" Text='<%# Bind("Person_Interract") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="REMARKS">
+                            <asp:TemplateField HeaderText="DEPARTMENT">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblremarks" runat="server" Text='<%# Bind("REMARKS") %>'></asp:Label>
+                                    <asp:Label ID="lblDEPARTMENT" runat="server" Text='<%# Bind("DEPARTMENT") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="POSCODE">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblPOSCODE" runat="server" Text='<%# Bind("POSCODE") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                              <asp:TemplateField HeaderText="DATE">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblDATE" runat="server" Text='<%# Bind("DATE") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

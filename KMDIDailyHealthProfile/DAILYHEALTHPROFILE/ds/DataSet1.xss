@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:DHPtravelhistory" ZOrder="6" X="733" Y="142" Height="105" Width="165" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
     <Shape ID="DesignTable:DHPPAGE2" ZOrder="5" X="905" Y="144" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:QUARANTINETTB" ZOrder="4" X="1062" Y="145" Height="181" Width="169" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
-    <Shape ID="DesignTable:CONTACTTRACINGTBL" ZOrder="3" X="1361" Y="148" Height="105" Width="199" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
+    <Shape ID="DesignTable:CONTACTTRACINGTBL" ZOrder="3" X="1361" Y="148" Height="143" Width="199" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="139" />
     <Shape ID="DesignTable:NoLogin" ZOrder="2" X="1300" Y="316" Height="143" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
     <Shape ID="DesignTable:TravelHistoryReport" ZOrder="1" X="1511" Y="335" Height="143" Width="183" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="139" />
   </Shapes>

@@ -58,7 +58,7 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE
                     {
                         sqlcmd.CommandText = "cotacttracingspage";
                         sqlcmd.CommandType = CommandType.StoredProcedure;
-                        sqlcmd.Parameters.AddWithValue("@searchkey", tboxsearchkey.Text);
+                        sqlcmd.Parameters.AddWithValue("@date", tboxsearchkey.Text);
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = sqlcmd;
                         da.Fill(tb);

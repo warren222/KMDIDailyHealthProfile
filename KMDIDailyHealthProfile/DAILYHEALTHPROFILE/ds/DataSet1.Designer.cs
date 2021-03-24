@@ -3254,13 +3254,17 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CONTACTTRACINGTBLDataTable : global::System.Data.TypedTableBase<CONTACTTRACINGTBLRow> {
             
-            private global::System.Data.DataColumn columnPATIENT;
+            private global::System.Data.DataColumn columnEMPNO;
             
             private global::System.Data.DataColumn columnFULLNAME;
             
-            private global::System.Data.DataColumn columnDATED;
+            private global::System.Data.DataColumn columnPerson_Interract;
             
-            private global::System.Data.DataColumn columnREMARKS;
+            private global::System.Data.DataColumn columnDEPARTMENT;
+            
+            private global::System.Data.DataColumn columnPOSCODE;
+            
+            private global::System.Data.DataColumn columnDATE;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3297,9 +3301,9 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PATIENTColumn {
+            public global::System.Data.DataColumn EMPNOColumn {
                 get {
-                    return this.columnPATIENT;
+                    return this.columnEMPNO;
                 }
             }
             
@@ -3313,17 +3317,33 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DATEDColumn {
+            public global::System.Data.DataColumn Person_InterractColumn {
                 get {
-                    return this.columnDATED;
+                    return this.columnPerson_Interract;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn REMARKSColumn {
+            public global::System.Data.DataColumn DEPARTMENTColumn {
                 get {
-                    return this.columnREMARKS;
+                    return this.columnDEPARTMENT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn POSCODEColumn {
+                get {
+                    return this.columnPOSCODE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DATEColumn {
+                get {
+                    return this.columnDATE;
                 }
             }
             
@@ -3364,13 +3384,15 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CONTACTTRACINGTBLRow AddCONTACTTRACINGTBLRow(string PATIENT, string FULLNAME, string DATED, string REMARKS) {
+            public CONTACTTRACINGTBLRow AddCONTACTTRACINGTBLRow(string EMPNO, string FULLNAME, string Person_Interract, string DEPARTMENT, string POSCODE, string DATE) {
                 CONTACTTRACINGTBLRow rowCONTACTTRACINGTBLRow = ((CONTACTTRACINGTBLRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        PATIENT,
+                        EMPNO,
                         FULLNAME,
-                        DATED,
-                        REMARKS};
+                        Person_Interract,
+                        DEPARTMENT,
+                        POSCODE,
+                        DATE};
                 rowCONTACTTRACINGTBLRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCONTACTTRACINGTBLRow);
                 return rowCONTACTTRACINGTBLRow;
@@ -3393,23 +3415,29 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnPATIENT = base.Columns["PATIENT"];
+                this.columnEMPNO = base.Columns["EMPNO"];
                 this.columnFULLNAME = base.Columns["FULLNAME"];
-                this.columnDATED = base.Columns["DATED"];
-                this.columnREMARKS = base.Columns["REMARKS"];
+                this.columnPerson_Interract = base.Columns["Person_Interract"];
+                this.columnDEPARTMENT = base.Columns["DEPARTMENT"];
+                this.columnPOSCODE = base.Columns["POSCODE"];
+                this.columnDATE = base.Columns["DATE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnPATIENT = new global::System.Data.DataColumn("PATIENT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPATIENT);
+                this.columnEMPNO = new global::System.Data.DataColumn("EMPNO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMPNO);
                 this.columnFULLNAME = new global::System.Data.DataColumn("FULLNAME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFULLNAME);
-                this.columnDATED = new global::System.Data.DataColumn("DATED", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDATED);
-                this.columnREMARKS = new global::System.Data.DataColumn("REMARKS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnREMARKS);
+                this.columnPerson_Interract = new global::System.Data.DataColumn("Person_Interract", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPerson_Interract);
+                this.columnDEPARTMENT = new global::System.Data.DataColumn("DEPARTMENT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDEPARTMENT);
+                this.columnPOSCODE = new global::System.Data.DataColumn("POSCODE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPOSCODE);
+                this.columnDATE = new global::System.Data.DataColumn("DATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDATE);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7229,17 +7257,17 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PATIENT {
+            public string EMPNO {
                 get {
                     try {
-                        return ((string)(this[this.tableCONTACTTRACINGTBL.PATIENTColumn]));
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.EMPNOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PATIENT\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EMPNO\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCONTACTTRACINGTBL.PATIENTColumn] = value;
+                    this[this.tableCONTACTTRACINGTBL.EMPNOColumn] = value;
                 }
             }
             
@@ -7261,46 +7289,78 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DATED {
+            public string Person_Interract {
                 get {
                     try {
-                        return ((string)(this[this.tableCONTACTTRACINGTBL.DATEDColumn]));
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.Person_InterractColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DATED\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Person_Interract\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCONTACTTRACINGTBL.DATEDColumn] = value;
+                    this[this.tableCONTACTTRACINGTBL.Person_InterractColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string REMARKS {
+            public string DEPARTMENT {
                 get {
                     try {
-                        return ((string)(this[this.tableCONTACTTRACINGTBL.REMARKSColumn]));
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.DEPARTMENTColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'REMARKS\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DEPARTMENT\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCONTACTTRACINGTBL.REMARKSColumn] = value;
+                    this[this.tableCONTACTTRACINGTBL.DEPARTMENTColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPATIENTNull() {
-                return this.IsNull(this.tableCONTACTTRACINGTBL.PATIENTColumn);
+            public string POSCODE {
+                get {
+                    try {
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.POSCODEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'POSCODE\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTACTTRACINGTBL.POSCODEColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPATIENTNull() {
-                this[this.tableCONTACTTRACINGTBL.PATIENTColumn] = global::System.Convert.DBNull;
+            public string DATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableCONTACTTRACINGTBL.DATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DATE\' in table \'CONTACTTRACINGTBL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCONTACTTRACINGTBL.DATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEMPNONull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.EMPNOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEMPNONull() {
+                this[this.tableCONTACTTRACINGTBL.EMPNOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7317,26 +7377,50 @@ namespace KMDIDailyHealthProfile.DAILYHEALTHPROFILE.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDATEDNull() {
-                return this.IsNull(this.tableCONTACTTRACINGTBL.DATEDColumn);
+            public bool IsPerson_InterractNull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.Person_InterractColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDATEDNull() {
-                this[this.tableCONTACTTRACINGTBL.DATEDColumn] = global::System.Convert.DBNull;
+            public void SetPerson_InterractNull() {
+                this[this.tableCONTACTTRACINGTBL.Person_InterractColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsREMARKSNull() {
-                return this.IsNull(this.tableCONTACTTRACINGTBL.REMARKSColumn);
+            public bool IsDEPARTMENTNull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.DEPARTMENTColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetREMARKSNull() {
-                this[this.tableCONTACTTRACINGTBL.REMARKSColumn] = global::System.Convert.DBNull;
+            public void SetDEPARTMENTNull() {
+                this[this.tableCONTACTTRACINGTBL.DEPARTMENTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPOSCODENull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.POSCODEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPOSCODENull() {
+                this[this.tableCONTACTTRACINGTBL.POSCODEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDATENull() {
+                return this.IsNull(this.tableCONTACTTRACINGTBL.DATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDATENull() {
+                this[this.tableCONTACTTRACINGTBL.DATEColumn] = global::System.Convert.DBNull;
             }
         }
         
