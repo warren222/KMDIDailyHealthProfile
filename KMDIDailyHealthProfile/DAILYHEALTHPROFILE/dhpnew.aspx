@@ -178,9 +178,11 @@
                             <tr>
                                 <td class="text-info">DATE: 
                                     <asp:TextBox ID="tboxinputdt" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ValidationGroup="travelval" ID="RequiredFieldValidator6" ControlToValidate="tboxinputdt" runat="server" ForeColor="red" ErrorMessage="date is required">*</asp:RequiredFieldValidator>
                                 </td>
                                 <td class="text-info">TIME:
                             <asp:TextBox ID="tboxinputtm" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ValidationGroup="travelval" ID="RequiredFieldValidator7" ControlToValidate="tboxinputtm" runat="server" ForeColor="red" ErrorMessage="time is required">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                         </table>
@@ -202,7 +204,7 @@
                                 <asp:ListItem Value="Church">Church</asp:ListItem>
                             </asp:DropDownList>
                             <div class="input-group-btn">
-                                <asp:LinkButton ID="LinkButton4" Height="35" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">add</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton4" ValidationGroup="travelval" Height="35" CssClass="btn btn-default" runat="server" OnClick="LinkButton4_Click">add</asp:LinkButton>
                             </div>
                         </div>
                         <br />
@@ -210,7 +212,7 @@
                             <div class="input-group-addon">Name of place</div>
                             <asp:TextBox ID="tboxother" CssClass="form-control" runat="server"></asp:TextBox>
                             <div class="input-group-btn">
-                                <asp:LinkButton ID="LinkButton5" CssClass="btn btn-default" runat="server" OnClick="LinkButton5_Click">add</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton5" ValidationGroup="travelval" CssClass="btn btn-default" runat="server" OnClick="LinkButton5_Click">add</asp:LinkButton>
                             </div>
                         </div>
                     </asp:Panel>
@@ -282,7 +284,9 @@
                         Full name:<br />
                         <asp:TextBox ID="tboxfullname" placeholder="Full name" CssClass="form-control" runat="server"></asp:TextBox><br />
                         Date:<br />
-                        <asp:TextBox ID="tboxdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox><br />
+                        <asp:TextBox ID="tboxdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="tboxdate"  ValidationGroup="g2"  runat="server" ErrorMessage="date is required" ForeColor="Red">*</asp:RequiredFieldValidator>
+                       <br />
                         Remarks:<br />
                         <asp:TextBox ID="tboxremarkstransaction" CssClass="form-control" runat="server"></asp:TextBox><br />
                         <asp:Button ID="Button4" CssClass="btn btn-primary" ValidationGroup="g2" runat="server" Text="add" OnClick="Button4_Click" />

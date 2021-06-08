@@ -1436,11 +1436,17 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         protected void LinkButton5_Click(object sender, EventArgs e)
         {
-            inserttravelhistory(tboxother.Text, tboxinputdt.Text, tboxinputtm.Text);
+            if (IsValid)
+            {
+                inserttravelhistory(tboxother.Text, tboxinputdt.Text, tboxinputtm.Text);
+            }
         }
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            inserttravelhistory(dltravelhistory.Text,tboxinputdt.Text, tboxinputtm.Text);
+            if (IsValid)
+            {
+                inserttravelhistory(dltravelhistory.Text, tboxinputdt.Text, tboxinputtm.Text);
+            }
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
