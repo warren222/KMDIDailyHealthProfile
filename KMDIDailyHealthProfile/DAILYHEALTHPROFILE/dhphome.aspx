@@ -11,8 +11,55 @@
 
 
         <div class="well">
-            <h3><strong>Daily Health Profile </strong></h3>
 
+            <asp:Panel ID="Panel7" runat="server">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">
+                        <h2>My Time Log</h2>
+                    </div>
+                    <div class="panel-body">
+
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <asp:LinkButton ID="LinkButton9" Font-Size="Large" runat="server" CssClass="form-control btn btn-success" OnClick="LinkButton9_Click">Time in</asp:LinkButton>
+                                <br />
+                                <div class="text-center">
+                                    <h3>
+                                        <asp:Label ID="lblToday" runat="server" Text="Label"></asp:Label></h3>
+                                </div>
+                                <asp:GridView ID="GridView2" ShowHeader="false" CssClass="table" AutoGenerateColumns="False" Width="100%" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <Columns>
+                                        <asp:TemplateField HeaderStyle-CssClass="text-center" HeaderText="Log">
+                                            <ItemTemplate>
+                                                <div class="text-center">
+                                                    <asp:Label ID="Label1" runat="server" Font-Size="Larger" Text='<%# Bind("Time") %>'></asp:Label>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <EditRowStyle BackColor="#7C6F57" />
+                                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#E3EAEB" />
+                                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                    <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                                </asp:GridView>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="panel-footer">
+                    </div>
+                </div>
+            </asp:Panel>
+            <br />
+            <div class="text-center">
+                <h3><strong>Daily Health Profile </strong></h3>
+            </div>
             <br />
             <div class="row">
                 <div class="col-sm-6">
@@ -213,7 +260,8 @@
         <br />
         <strong>
             <asp:Label CssClass="text-muted" ID="lblcountrow" runat="server" Text="Label"></asp:Label></strong>
-        <br /><br />
+        <br />
+        <br />
         <asp:Label ID="lblserver" CssClass="text-success" runat="server" Text="Label"></asp:Label>
     </div>
 </asp:Content>

@@ -20,7 +20,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
 
                 if (!IsPostBack)
                 {
-
+                    log();
+                    lblToday.Text = DateTime.Now.ToString("MMMM dd, yyyy");
                     if (Session["dhpsearchkey"] != null)
                     {
                         tboxsearchkey.Text = Session["dhpsearchkey"].ToString();
@@ -428,6 +429,56 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 }
             }
 
+        }
+
+        protected void LinkButton9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcmd.CommandText = "Date_Time_Record_Stp";
+                        sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Create");
+                        sqlcmd.Parameters.AddWithValue("@Emp_no", Session["dhp_EMPNO"].ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message);
+            }
+            finally
+            {
+                log();
+            }
+        }
+        private void log()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(ConnectionString.sqlconstr()))
+                {
+                    sqlcon.Open();
+                    using (SqlCommand sqlcmd = sqlcon.CreateCommand())
+                    {
+                        sqlcmd.CommandText = "Date_Time_Record_Stp";
+                        sqlcmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlcmd.Parameters.AddWithValue("@Command", "Load");
+                        sqlcmd.Parameters.AddWithValue("@Emp_no", Session["dhp_EMPNO"].ToString());
+                        GridView2.DataSource = sqlcmd.ExecuteReader();
+                        GridView2.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message);
+            }
         }
     }
 }
