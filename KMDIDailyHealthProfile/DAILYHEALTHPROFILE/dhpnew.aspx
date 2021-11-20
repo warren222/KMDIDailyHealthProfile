@@ -182,7 +182,7 @@
                                 </td>
                                 <td class="text-info">TIME:
                             <asp:TextBox ID="tboxinputtm" CssClass="form-control" TextMode="Time" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ValidationGroup="travelval" ID="RequiredFieldValidator7" ControlToValidate="tboxinputtm" runat="server" ForeColor="red" ErrorMessage="time is required">*</asp:RequiredFieldValidator>
+                                    <br />
                                 </td>
                             </tr>
                         </table>
