@@ -38,8 +38,8 @@ namespace webaftersales.DAILYHEALTHPROFILE
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            //Response.Redirect("http://dhp.kennethandmock.com");
-            Response.Redirect("http://121.58.229.248:8083/dhpApp/DAILYHEALTHPROFILE/dhplogin.aspx");
+            Response.Redirect("http://dhp.kennethandmock.com");
+            //Response.Redirect("http://121.58.229.248:8083/dhpApp/DAILYHEALTHPROFILE/dhplogin.aspx");
         }
         protected void lll(object sender, EventArgs e)
         {
