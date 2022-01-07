@@ -203,6 +203,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAILYHEALTHPROFILE\AntiGenValidity.aspx.cs">
+      <DependentUpon>AntiGenValidity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DAILYHEALTHPROFILE\AntiGenValidity.aspx.designer.cs">
+      <DependentUpon>AntiGenValidity.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAILYHEALTHPROFILE\backtrackaccess.aspx.cs">
       <DependentUpon>backtrackaccess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -460,6 +467,7 @@
     <Content Include="bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DAILYHEALTHPROFILE\AntiGenValidity.aspx" />
     <Content Include="DAILYHEALTHPROFILE\backtrackaccess.aspx" />
     <Content Include="DAILYHEALTHPROFILE\contacttracing.aspx" />
     <Content Include="DAILYHEALTHPROFILE\contacttracingreport.aspx" />
@@ -486,9 +494,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Accept-icon.png" />
+    <Content Include="images\Actions-window-close-icon.png" />
     <Content Include="images\blank.jpg" />
     <Content Include="images\Ok-icon.png" />
     <Content Include="images\physician.png" />
+    <Content Include="images\Question-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

@@ -32,6 +32,9 @@
                         <li class="active">
                             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/DAILYHEALTHPROFILE/dhphome.aspx">
                                  <span class="glyphicon glyphicon-home"></span>&nbsp;Home</asp:HyperLink></li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton10" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/AntiGenValidity.aspx">&nbsp; Test Validity Checker</asp:LinkButton>
+                        </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">More<span class="caret"></span>
                                 <ul class="dropdown-menu">
@@ -47,15 +50,16 @@
                                     <li>
                                         <asp:LinkButton ID="LinkButton6" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/backtrackaccess.aspx"><span class="glyphicon glyphicon-cog"></span>&nbsp; Backtrack Access</asp:LinkButton>
                                     </li>
-                                     <li>
+                                    <li>
                                         <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/contacttracing.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; Contact Tracing</asp:LinkButton>
                                     </li>
-                                         <li>
+                                    <li>
                                         <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/nologin.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; No Login Report</asp:LinkButton>
                                     </li>
-                                         <li>
+                                    <li>
                                         <asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/DAILYHEALTHPROFILE/travelhistory.aspx"><span class="glyphicon glyphicon-user"></span>&nbsp; Travel History Report</asp:LinkButton>
                                     </li>
+
                                 </ul></li>
 
                     </ul>
