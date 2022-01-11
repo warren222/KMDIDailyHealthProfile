@@ -55,7 +55,9 @@
 
                         </asp:Panel>
                         <br />
+                        <div>
                         <asp:Label ID="lblRemarks" Font-Size="Large" runat="server" CssClass="label label-info" Text=""></asp:Label><br />
+                            </div>
                         <br />
                         <asp:Panel ID="Panel2" ScrollBars="Auto" runat="server">
                             <table style="width: 100%" border="1">

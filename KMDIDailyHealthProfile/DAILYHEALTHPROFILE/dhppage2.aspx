@@ -200,13 +200,13 @@
                             <asp:TextBox ID="TBOXantigenserialno" runat="server"></asp:TextBox>
                         </td>
                     </tr>
-                    <tr>
+                <%--    <tr>
                         <td>Test Validity
                         </td>
                         <td>
                             <asp:TextBox ID="tboxAntigenValidity" Width="50px" TextMode="Number" runat="server"></asp:TextBox>Days
                         </td>
-                    </tr>
+                    </tr>--%>
                 </table>
                 <div class="container">
                     <blockquote>

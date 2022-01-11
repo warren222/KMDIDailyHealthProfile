@@ -37,7 +37,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                   
                     getdata();
-                    getvalidity();
+                    //getvalidity();
                     //gettravelhistory();
 
                     access();
@@ -248,32 +248,32 @@ namespace webaftersales.DAILYHEALTHPROFILE
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
-        private void getvalidity()
-        {
-            try
-            {
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                {
-                    sqlcon.Open();
-                    string str = "select [ANTIGEN_TEST_VALIDITY] from [EMPTBL] where empno = @empno";
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
-                    {
-                        sqlcmd.Parameters.AddWithValue("@Empno", empno);
-                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
-                        {
-                            while (rd.Read())
-                            {
-                                tboxAntigenValidity.Text = rd[0].ToString();
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                errorrmessage(ex.Message.ToString());
-            }
-        }
+        //private void getvalidity()
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+        //        {
+        //            sqlcon.Open();
+        //            string str = "select [ANTIGEN_TEST_VALIDITY] from [EMPTBL] where empno = @empno";
+        //            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+        //            {
+        //                sqlcmd.Parameters.AddWithValue("@Empno", empno);
+        //                using (SqlDataReader rd = sqlcmd.ExecuteReader())
+        //                {
+        //                    while (rd.Read())
+        //                    {
+        //                        tboxAntigenValidity.Text = rd[0].ToString();
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorrmessage(ex.Message.ToString());
+        //    }
+        //}
         private void getdata()
         {
             try
@@ -367,27 +367,27 @@ namespace webaftersales.DAILYHEALTHPROFILE
             insert();
         }
 
-        private void updateValidity()
-        {
-           try
-            {
-                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
-                {
-                    sqlcon.Open();
-                    string str = "update EMPTBL set [ANTIGEN_TEST_VALIDITY] = @validity where empno = @Empno";
-                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
-                    {
-                        sqlcmd.Parameters.AddWithValue("@Empno", empno);
-                        sqlcmd.Parameters.AddWithValue("@validity", tboxAntigenValidity.Text.ToString());
-                        sqlcmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                errorrmessage(ex.Message);
-            }
-        }
+        //private void updateValidity()
+        //{
+        //   try
+        //    {
+        //        using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+        //        {
+        //            sqlcon.Open();
+        //            string str = "update EMPTBL set [ANTIGEN_TEST_VALIDITY] = @validity where empno = @Empno";
+        //            using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+        //            {
+        //                sqlcmd.Parameters.AddWithValue("@Empno", empno);
+        //                sqlcmd.Parameters.AddWithValue("@validity", tboxAntigenValidity.Text.ToString());
+        //                sqlcmd.ExecuteNonQuery();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorrmessage(ex.Message);
+        //    }
+        //}
 
         private void insert()
         {
@@ -499,7 +499,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             }
             finally
             {
-                updateValidity();
+               
                 CustomValidator err = new CustomValidator();
                 err.ValidationGroup = "val2";
                 err.IsValid = false;
