@@ -55,8 +55,8 @@
 
                         </asp:Panel>
                         <br />
-                        <div>
-                        <asp:Label ID="lblRemarks" Font-Size="Large" runat="server" CssClass="label label-info" Text=""></asp:Label><br />
+                        <div class="alert alert-info">
+                        <asp:Label ID="lblRemarks" Font-Size="Large" runat="server" Text=""></asp:Label><br />
                             </div>
                         <br />
                         <asp:Panel ID="Panel2" ScrollBars="Auto" runat="server">
