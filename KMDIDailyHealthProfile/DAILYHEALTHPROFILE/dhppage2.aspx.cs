@@ -26,17 +26,20 @@ namespace webaftersales.DAILYHEALTHPROFILE
                 testresultphotos();
                 loadimages();
                 loadsignature();
+          
                 if (!IsPostBack)
                 {
                     lbldate.Text = Session["dhpdate"].ToString();
                     lblname.Text = Session["dhpname"].ToString();
                     lblempno.Text = Session["dhpempno"].ToString();
+                  
                     lblage.Text = Session["dhpage"].ToString();
                     lblbirthday.Text = Session["dhpbirthday"].ToString();
                   
                     getdata();
+                    getvalidity();
                     //gettravelhistory();
-                
+
                     access();
 
                     if (tboxpatientname.Text == "")
@@ -245,6 +248,32 @@ namespace webaftersales.DAILYHEALTHPROFILE
             err.ErrorMessage = message;
             Page.Validators.Add(err);
         }
+        private void getvalidity()
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    sqlcon.Open();
+                    string str = "select [ANTIGEN_TEST_VALIDITY] from [EMPTBL] where empno = @empno";
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@Empno", empno);
+                        using (SqlDataReader rd = sqlcmd.ExecuteReader())
+                        {
+                            while (rd.Read())
+                            {
+                                tboxAntigenValidity.Text = rd[0].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message.ToString());
+            }
+        }
         private void getdata()
         {
             try
@@ -334,8 +363,32 @@ namespace webaftersales.DAILYHEALTHPROFILE
         }
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
+          
             insert();
         }
+
+        private void updateValidity()
+        {
+           try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(sqlconstr))
+                {
+                    sqlcon.Open();
+                    string str = "update EMPTBL set [ANTIGEN_TEST_VALIDITY] = @validity where empno = @Empno";
+                    using (SqlCommand sqlcmd = new SqlCommand(str, sqlcon))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@Empno", empno);
+                        sqlcmd.Parameters.AddWithValue("@validity", tboxAntigenValidity.Text.ToString());
+                        sqlcmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errorrmessage(ex.Message);
+            }
+        }
+
         private void insert()
         {
             try
@@ -446,6 +499,7 @@ namespace webaftersales.DAILYHEALTHPROFILE
             }
             finally
             {
+                updateValidity();
                 CustomValidator err = new CustomValidator();
                 err.ValidationGroup = "val2";
                 err.IsValid = false;
@@ -474,7 +528,16 @@ namespace webaftersales.DAILYHEALTHPROFILE
             sqlcmd.Parameters.AddWithValue("@comment", tboxCOM.Text);
             sqlcmd.Parameters.AddWithValue("@fittowork", fittowork);
 
-            sqlcmd.Parameters.AddWithValue("@antigendate", TBOXantigendate.Text);
+            string dd = Convert.ToDateTime(Session["dhpdate"].ToString()).ToString("yyyy-MM-dd");
+            if (antigentestresult == " *NO TEST DONE")
+            {
+                sqlcmd.Parameters.AddWithValue("@antigendate", dd);
+            }
+            else
+            {
+                sqlcmd.Parameters.AddWithValue("@antigendate", TBOXantigendate.Text);
+            }
+           
             sqlcmd.Parameters.AddWithValue("@antigentime", TBOXantigentime.Text);
             sqlcmd.Parameters.AddWithValue("@antigenserial", TBOXantigenserialno.Text);
             sqlcmd.Parameters.AddWithValue("@antigenresult",antigentestresult );

@@ -2,12 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daily Health Profile Report</title>
+    <title>Antigen Test Clearance</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="well text-center">
-        <h3><strong>Antigen Test Validation</strong></h3>
+        <h3><strong>Antigen Test Clearance</strong></h3>
 
     </div>
     <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
@@ -17,8 +17,9 @@
             <div class="col-sm-4">
             </div>
             <div class="col-sm-4">
-                <span></span>
+                <span>Employee number</span>
                 <div class="input-group">
+
                     <asp:TextBox ID="tboxempno" CssClass="form-control" runat="server"></asp:TextBox>
                     <div class="input-group-btn">
                         <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" OnClick="LinkButton1_Click">check</asp:LinkButton>
@@ -36,35 +37,94 @@
                 <div class="col-sm-6">
                     <div class="well text-center">
                         <asp:Panel ID="Panel1" ScrollBars="Auto" runat="server">
-                            <table style="width: 100%">
-                                <tr>
-                                    <td>
-                                        <asp:Image ID="Image1" Visible="false" runat="server" ImageUrl="~/images/Accept-icon.png" />
-                                        <asp:Image ID="Image2" Visible="false" runat="server" ImageUrl="~/images/Actions-window-close-icon.png" />
-                                        <asp:Image ID="Image3" Visible="true" runat="server" ImageUrl="~/images/Question-icon.png" />
 
-                                    </td>
+                            <div class="row" style="width: 99%;">
+                                <div class="col-sm-3">
+                                    <asp:Image ID="Image1" Visible="false" Width="100" Height="100" runat="server" ImageUrl="~/images/Accept-icon.png" />
+                                    <asp:Image ID="Image2" Visible="false" Width="100" Height="100" runat="server" ImageUrl="~/images/Actions-window-close-icon.png" />
+                                    <asp:Image ID="Image3" Visible="true" Width="100" Height="100" runat="server" ImageUrl="~/images/Question-icon.png" />
+                                </div>
+                                <div class="col-sm-9">
+
+                                    <asp:Label ID="lblFullname" Font-Size="X-Large" runat="server" Text="Name"></asp:Label><br />
+                                    <br />
+                                    <asp:Label ID="lblClearance" Font-Size="XX-Large" Font-Bold="true" runat="server" Text="Status"></asp:Label><br />
+                                    <asp:Label ID="lblDate" Font-Size="Large" CssClass="text-center" runat="server" Text="Date"></asp:Label>
+                                </div>
+                            </div>
+
+                        </asp:Panel>
+                        <br />
+                        <asp:Label ID="lblRemarks" Font-Size="Large" runat="server" CssClass="label label-info" Text=""></asp:Label><br />
+                        <br />
+                        <asp:Panel ID="Panel2" ScrollBars="Auto" runat="server">
+                            <table style="width: 100%" border="1">
+                                <tr>
+                                    <th colspan="2"><span>Latest antigen test record</span></th>
+                                </tr>
+                                <tr>
+                                    <td>Result</td>
                                     <td>
-                                        <asp:Label ID="lblFullname" Font-Size="XX-Large" runat="server" Text="Name"></asp:Label><br />
-                                        <asp:Label ID="lbliscleared" Font-Size="X-Large" runat="server" Text="Status"></asp:Label>
-                                    </td>
+                                        <asp:Label ID="lblantigenresult" Font-Size="Medium" Font-Bold="true" runat="server" Text="Test result"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="">Date Tested</span></td>
+                                    <td>
+                                        <asp:Label ID="lblantigendate" runat="server" Font-Size="Small" Text=""></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="">Expiration Date</span></td>
+                                    <td>
+                                        <asp:Label ID="lbltestvaliditydate" Font-Size="Small" runat="server" Text=""></asp:Label></td>
                                 </tr>
                             </table>
                         </asp:Panel>
                         <br />
-                        <asp:Panel ID="Panel2" ScrollBars="Auto" runat="server">
-                            <asp:Label ID="lblEmpno" Visible="false" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="lbltestvalidity" Visible="false" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="lblantigenserial" Visible="false" runat="server" Text="Label"></asp:Label>
-                            <asp:Label ID="lblantigenresult" Font-Size="Larger" Font-Bold="true" runat="server" Text="Test result"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Label ID="lbldate" runat="server" Font-Size="Large" Text=""></asp:Label><br />
-                            <span class="text-muted">(Date Tested)</span>
-                            <br />
-                            <br />
-                            <asp:Label ID="lbltextvaliditydate" Font-Size="Large" runat="server" Text=""></asp:Label><br />
-                            <span class="text-muted">(Valid until)</span>
+                        <asp:Panel ID="Panel3" ScrollBars="Auto" runat="server">
+                            <table style="width: 100%" border="1">
+                                <tr>
+                                    <th colspan="2"><span>Last 2 DHP reports</span></th>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>May Sintomas</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblDHP_Report_1_Date" Font-Size="Small" runat="server" Text=""></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblDHP_Report_1" Font-Size="Small" runat="server" Text=""></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblDHP_Report_2_Date" Font-Size="Small" runat="server" Text=""></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblDHP_Report_2" Font-Size="Small" runat="server" Text=""></asp:Label></td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        <br />
+                        <asp:Panel ID="Panel4" ScrollBars="Auto" runat="server">
+                            <table style="width: 100%" border="1">
+                                <tr>
+                                    <th colspan="2"><span>Latest quarantine record</span></th>
+                                </tr>
+                                <tr>
+                                    <td>Date quarantined</td>
+                                    <td>
+                                        <asp:Label ID="lblQuarantine_Date" Font-Size="Small" runat="server" Text=""></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td>Expected date finish</td>
+                                    <td>
+                                        <asp:Label ID="lblEnd_Quarantine_Date" Font-Size="Small" runat="server" Text=""></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td>Date ended</td>
+                                    <td>
+                                        <asp:Label ID="lblEnded_Quarantine_Date" Font-Size="Small" runat="server" Text=""></asp:Label></td>
+                                </tr>
+                            </table>
                         </asp:Panel>
                     </div>
                 </div>

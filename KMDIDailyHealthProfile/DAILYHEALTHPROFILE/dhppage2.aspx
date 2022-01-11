@@ -132,7 +132,7 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>--%>
-  
+
     <br />
     <strong>Possible Exposure to Virus:</strong>&nbsp;<label class="text-success">(Please record possible incident where the patient/ employee could’ve contracted the virus)</label>
     <asp:TextBox ID="tboxexposuretovirus" CssClass="form-control" TextMode="MultiLine" Rows="10" runat="server"></asp:TextBox>
@@ -200,12 +200,20 @@
                             <asp:TextBox ID="TBOXantigenserialno" runat="server"></asp:TextBox>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Test Validity
+                        </td>
+                        <td>
+                            <asp:TextBox ID="tboxAntigenValidity" Width="50px" TextMode="Number" runat="server"></asp:TextBox>Days
+                        </td>
+                    </tr>
                 </table>
-                    <div class="container">
+                <div class="container">
                     <blockquote>
                         <asp:CheckBoxList ID="cboxantigen" runat="server">
                             <asp:ListItem Value="SARS-COV-2 ANTIGEN NOT PRESENT">SARS-COV-2 ANTIGEN NOT PRESENT</asp:ListItem>
                             <asp:ListItem Value="SARS-COV-2 ANTIGEN PRESENT">SARS-COV-2 ANTIGEN PRESENT</asp:ListItem>
+                            <asp:ListItem Value="NO TEST DONE">NO TEST DONE</asp:ListItem>
                         </asp:CheckBoxList>
                     </blockquote>
                 </div>
