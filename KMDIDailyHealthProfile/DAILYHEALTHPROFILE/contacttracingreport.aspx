@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/DAILYHEALTHPROFILE/DHPmaster.Master" CodeBehind="contacttracingreport.aspx.cs" Inherits="KMDIDailyHealthProfile.DAILYHEALTHPROFILE.contacttracingreport" %>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -15,16 +15,15 @@
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server">
-    </asp:SqlDataSource>
 
-    <rsweb:ReportViewer ID="ReportViewer2" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="800px">
-        <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPTcontacttracing.rdlc">
-            <DataSources>
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
-            </DataSources>
-        </LocalReport>
-    </rsweb:ReportViewer>
-
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+    <div style="overflow-x: auto">
+        <rsweb:ReportViewer ID="ReportViewer2" runat="server" SizeToReportContent="true">
+            <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPTcontacttracing.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+                </DataSources>
+            </LocalReport>
+        </rsweb:ReportViewer>
+    </div>
 </asp:Content>

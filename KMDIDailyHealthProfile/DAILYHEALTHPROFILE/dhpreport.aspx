@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/DAILYHEALTHPROFILE/DHPmaster.Master" CodeBehind="dhpreport.aspx.cs" Inherits="KMDIDailyHealthProfile.DAILYHEALTHPROFILE.dhpreport" %>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -17,7 +17,7 @@
     </div>
     <asp:ValidationSummary ID="ValidationSummary1" CssClass="alert alert-danger" ValidationGroup="val1" runat="server" />
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         SelectCommand="
 
 select * into #tbl from (select empno,rdate,id from dhrtbl where rdate = case when ISDATE(@RDATE)=1 THEN CAST(@RDATE AS DATE) ELSE @RDATE END) as tbl
@@ -45,12 +45,13 @@ ORDER BY SURNAME ASC">
             <asp:SessionParameter Name="RDATE" SessionField="dhpdatekey" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-        <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc">
-            <DataSources>
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
-            </DataSources>
-        </LocalReport>
-    </rsweb:ReportViewer>
-
+    <div style="overflow-x: auto">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" SizeToReportContent="true">
+            <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPTdhpreport.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+                </DataSources>
+            </LocalReport>
+        </rsweb:ReportViewer>
+    </div>
 </asp:Content>

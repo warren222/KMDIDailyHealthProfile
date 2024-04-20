@@ -2,7 +2,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 
 <asp:Content ID="content1" runat="server" ContentPlaceHolderID="head">
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" 
+    <asp:SqlDataSource ID="SqlDataSource1"
         SelectCommand="
         select * into #my_tb from( 
 select 
@@ -64,11 +64,13 @@ select * from #my_tb where DEPTID = @department and edate = case when @rb = '1' 
         </SelectParameters>
 
     </asp:SqlDataSource>
-    <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-        <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc">
-            <DataSources>
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
-            </DataSources>
-        </LocalReport>
-    </rsweb:ReportViewer>
+    <div style="overflow-x: auto">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" SizeToReportContent="true">
+            <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPTquarantine.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+                </DataSources>
+            </LocalReport>
+        </rsweb:ReportViewer>
+    </div>
 </asp:Content>

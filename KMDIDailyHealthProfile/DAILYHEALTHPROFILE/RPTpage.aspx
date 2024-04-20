@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/DAILYHEALTHPROFILE/DHPmaster.Master" AutoEventWireup="true" CodeBehind="RPTpage.aspx.cs" Inherits="KMDIDailyHealthProfile.DAILYHEALTHPROFILE.RPTpage" %>
 
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -17,7 +17,7 @@
         </div>
     </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-     <asp:SqlDataSource ID="SqlDataSource1" runat="server" SelectCommand="
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" SelectCommand="
         SELECT 
         [ID]
       ,[EMPNO]
@@ -85,12 +85,12 @@
       ,[OS]
       ,[COMMENT]
          FROM [ASNWERSHEETtbl] WHERE (([DHPID] = @DHPID) AND ([EMPNO] = @EMPNO))">
-            <SelectParameters>
-                <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
-                <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+        <SelectParameters>
+            <asp:SessionParameter Name="DHPID" SessionField="dhp_id" Type="String" />
+            <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server"
         SelectCommand="SELECT SURNAME,
 FIRSTNAME,
 MI,
@@ -103,12 +103,12 @@ ADDRESS,
 surname+', '+firstname+' '+mi as FULLNAME,
 CAST(DATEDIFF(DD,CAST(BIRTHDAY AS DATE),GETDATE())/365.25 AS INT) AS AGE FROM [EMPTBL] as a WHERE ([EMPNO] = @EMPNO)">
         <SelectParameters>
-        
+
             <asp:SessionParameter Name="EMPNO" SessionField="dhpempno" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server"
         SelectCommand="
 
  SELECT 
@@ -161,10 +161,10 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
     </asp:SqlDataSource>
 
     <div class="well">
-           <asp:CheckBox ID="cbox" runat="server" Text="Alter (DATE TEST IS CONDUCTED)" /> 
+        <asp:CheckBox ID="cbox" runat="server" Text="Alter (DATE TEST IS CONDUCTED)" />
         <div class="input-group">
             <div class="input-group-addon">
-             select date
+                select date
             </div>
             <asp:TextBox ID="tboxdate" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             <div class=" input-group-btn">
@@ -172,18 +172,19 @@ STUFF((SELECT ', '+[TRAVELHISTORY]
             </div>
         </div>
     </div>
+    <div style="overflow-x: auto">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" SizeToReportContent="true">
+            <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPT.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet2" />
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet3" />
+                    <rsweb:ReportDataSource DataSourceId="SqlDataSource4" Name="DataSet4" />
+                </DataSources>
+            </LocalReport>
 
-    <rsweb:ReportViewer ID="ReportViewer1" Width="100%" Height="800px" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-        <LocalReport ReportPath="DAILYHEALTHPROFILE\report\RPT.rdlc">
-            <DataSources>
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource2" Name="DataSet2" />
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource3" Name="DataSet3" />
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource4" Name="DataSet4" />
-            </DataSources>
-        </LocalReport>
-
-    </rsweb:ReportViewer>
+        </rsweb:ReportViewer>
+    </div>
     <br />
     <asp:LinkButton ID="LinkButton2" CssClass="btn btn-default" runat="server" OnClick="LinkButton2_Click" Visible="False"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Physician signature</asp:LinkButton>
 </asp:Content>
